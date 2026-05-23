@@ -5,10 +5,13 @@ import { motion, AnimatePresence } from "motion/react";
 
 const links = [
   { href: "#servicios", label: "Servicios" },
-  { href: "#nosotros", label: "Nosotros" },
+  { href: "#proceso", label: "Proceso" },
   { href: "#trabajos", label: "Trabajos" },
+  { href: "#equipo", label: "Equipo" },
   { href: "#contacto", label: "Contacto" },
 ];
+
+const WA_TATI = "https://wa.me/5493541232353?text=Hola%20%C3%93rbita%20Digital%2C%20quiero%20hablar%20de%20mi%20proyecto";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -33,7 +36,7 @@ export default function Navbar() {
           if (entry.isIntersecting) setActiveSection("#" + entry.target.id);
         });
       },
-      { threshold: 0.35 }
+      { threshold: 0.3 }
     );
 
     sections.forEach((s) => observer.observe(s));
@@ -44,7 +47,7 @@ export default function Navbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-white/90 backdrop-blur-md border-b border-[#0b0f17]/6 shadow-sm shadow-[#0b0f17]/5"
+          ? "bg-white/85 backdrop-blur-xl border-b border-[#0b0f17]/8 shadow-sm shadow-[#7c3aed]/6"
           : "bg-transparent"
       }`}
     >
@@ -53,29 +56,29 @@ export default function Navbar() {
 
           {/* Logo */}
           <a
-            href="#"
-            className="flex items-center gap-2.5"
+            href="#inicio"
+            className="flex items-center gap-2.5 cursor-pointer"
             aria-label="Órbita Digital - Inicio"
           >
             <img
-  src="/logofondotr.png"
-  alt="Órbita Digital"
-  className="w-12 h-12 object-contain"
-/>
+              src="/logofondotr.png"
+              alt="Órbita Digital"
+              className="w-11 h-11 object-contain"
+            />
             <span className="font-display font-bold text-[#0b0f17] text-lg leading-none">
-              Órbita <span className="text-[#0d47ff]">Digital</span>
+              Órbita <span className="text-[#7c3aed]">Digital</span>
             </span>
           </a>
 
           {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-8" aria-label="Navegación principal">
+          <nav className="hidden md:flex items-center gap-7" aria-label="Navegación principal">
             {links.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className={`relative font-sans text-sm font-medium pb-1 transition-colors duration-200 ${
+                className={`relative font-sans text-sm font-medium pb-1 transition-colors duration-200 cursor-pointer ${
                   activeSection === link.href
-                    ? "text-[#0d47ff]"
+                    ? "text-[#7c3aed]"
                     : "text-[#0b0f17]/55 hover:text-[#0b0f17]"
                 }`}
               >
@@ -83,7 +86,7 @@ export default function Navbar() {
                 {activeSection === link.href && (
                   <motion.span
                     layoutId="nav-underline"
-                    className="absolute bottom-0 left-0 right-0 h-0.5 rounded-full bg-[#0d47ff]"
+                    className="absolute bottom-0 left-0 right-0 h-0.5 rounded-full bg-[#7c3aed]"
                   />
                 )}
               </a>
@@ -92,8 +95,10 @@ export default function Navbar() {
 
           {/* Desktop CTA */}
           <a
-            href="#contacto"
-            className="hidden md:inline-flex items-center h-9 px-6 rounded-full bg-[#0d47ff] hover:bg-[#7c3aed] text-white text-sm font-sans font-semibold transition-all duration-200 shadow-md shadow-[#0d47ff]/20 hover:shadow-[#7c3aed]/25"
+            href={WA_TATI}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden md:inline-flex items-center h-9 px-6 rounded-full bg-[#7c3aed] hover:bg-[#0d47ff] text-white text-sm font-sans font-semibold transition-all duration-200 shadow-md shadow-[#7c3aed]/25 hover:shadow-[#0d47ff]/25 cursor-pointer"
           >
             Hablemos
           </a>
@@ -101,7 +106,7 @@ export default function Navbar() {
           {/* Mobile hamburger */}
           <button
             onClick={() => setMenuOpen((v) => !v)}
-            className="md:hidden flex flex-col gap-1.5 p-2 -mr-2"
+            className="md:hidden flex flex-col gap-1.5 p-2 -mr-2 cursor-pointer"
             aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
             aria-expanded={menuOpen}
           >
@@ -132,7 +137,7 @@ export default function Navbar() {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.25, ease: "easeInOut" }}
-            className="md:hidden overflow-hidden bg-white/95 backdrop-blur-xl border-b border-[#0b0f17]/6"
+            className="md:hidden overflow-hidden bg-white/97 backdrop-blur-xl border-b border-[#0b0f17]/6"
           >
             <nav className="flex flex-col px-4 py-5 gap-1" aria-label="Menú móvil">
               {links.map((link) => (
@@ -140,9 +145,9 @@ export default function Navbar() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setMenuOpen(false)}
-                  className={`font-sans text-base font-medium py-3 px-3 rounded-xl transition-colors ${
+                  className={`font-sans text-base font-medium py-3 px-3 rounded-xl transition-colors cursor-pointer ${
                     activeSection === link.href
-                      ? "text-[#0d47ff] bg-[#0d47ff]/6"
+                      ? "text-[#7c3aed] bg-[#7c3aed]/6"
                       : "text-[#0b0f17]/60 hover:text-[#0b0f17] hover:bg-[#0b0f17]/4"
                   }`}
                 >
@@ -150,9 +155,11 @@ export default function Navbar() {
                 </a>
               ))}
               <a
-                href="#contacto"
+                href={WA_TATI}
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={() => setMenuOpen(false)}
-                className="mt-3 flex items-center justify-center h-12 rounded-full bg-[#0d47ff] hover:bg-[#7c3aed] text-white font-sans font-semibold transition-colors duration-200"
+                className="mt-3 flex items-center justify-center h-12 rounded-full bg-[#7c3aed] hover:bg-[#0d47ff] text-white font-sans font-semibold transition-colors duration-200 cursor-pointer"
               >
                 Hablemos
               </a>
