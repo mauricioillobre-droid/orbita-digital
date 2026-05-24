@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Works from "@/components/Works";
+import AnimatedPageHero from "@/components/AnimatedPageHero";
 const WA_URL = "https://wa.me/5493541232353?text=Hola%20%C3%93rbita%20Digital%2C%20quiero%20hablar%20de%20mi%20proyecto";
 
 export const metadata: Metadata = {
@@ -22,13 +23,10 @@ export default function TrabajosPage() {
               backgroundSize: "32px 32px",
             }} />
           <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <span className="inline-block text-[#7c3aed] font-sans font-medium text-xs tracking-[0.18em] uppercase mb-5">
-              Portfolio
-            </span>
-            <h1 className="font-display font-bold text-4xl sm:text-6xl text-[#0b0f17] mb-6 leading-tight">
+            <AnimatedPageHero eyebrow="Portfolio">
               Proyectos reales.{" "}
               <span className="text-[#0d47ff]">Soluciones concretas.</span>
-            </h1>
+            </AnimatedPageHero>
             <p className="font-sans text-lg text-[#0b0f17]/55 max-w-2xl mx-auto leading-relaxed">
               Cada proyecto tiene su propio contexto y su propio desafío. Estos son algunos de los trabajos que hicimos hasta ahora.
             </p>

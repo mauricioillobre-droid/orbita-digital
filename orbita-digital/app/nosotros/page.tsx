@@ -3,6 +3,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import About from "@/components/About";
 import Link from "next/link";
+import AnimatedPageHero from "@/components/AnimatedPageHero";
 
 export const metadata: Metadata = {
   title: "Nosotros | Órbita Digital",
@@ -22,13 +23,10 @@ export default function NosotrosPage() {
               backgroundSize: "32px 32px",
             }} />
           <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <span className="inline-block text-[#7c3aed] font-sans font-medium text-xs tracking-[0.18em] uppercase mb-5">
-              Quiénes somos
-            </span>
-            <h1 className="font-display font-bold text-4xl sm:text-6xl text-[#0b0f17] mb-6 leading-tight">
+            <AnimatedPageHero eyebrow="Quiénes somos">
               Dos personas.<br />
               <span className="text-[#7c3aed]">Un criterio compartido.</span>
-            </h1>
+            </AnimatedPageHero>
             <p className="font-sans text-lg text-[#0b0f17]/55 max-w-2xl mx-auto leading-relaxed">
               No somos una agencia de producción masiva. Somos Mauri y Tati, dos personas
               con habilidades complementarias que decidieron construir algo juntos.

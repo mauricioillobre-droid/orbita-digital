@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "motion/react";
+import { useEffect, useRef } from "react";
+import { gsap, prefersReduced } from "@/lib/gsap-utils";
 
 const team = [
   {
@@ -30,8 +31,35 @@ function LinkedInIcon() {
 }
 
 export default function About() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const cardsRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (prefersReduced()) return;
+
+    const ctx = gsap.context(() => {
+      gsap.fromTo(sectionRef.current,
+        { y: 40, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.8, ease: "power2.out",
+          scrollTrigger: { trigger: sectionRef.current, start: "top 80%", once: true } }
+      );
+
+      if (cardsRef.current) {
+        const cards = Array.from(cardsRef.current.children);
+        gsap.fromTo(cards,
+          { y: 50, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.6, ease: "power2.out", stagger: 0.12,
+            scrollTrigger: { trigger: cardsRef.current, start: "top 80%", once: true } }
+        );
+      }
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
     <section
+      ref={sectionRef}
       id="equipo"
       className="relative py-24 lg:py-32 bg-[#faf9ff]"
       aria-labelledby="about-heading"
@@ -40,14 +68,10 @@ export default function About() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-          {team.map((member, i) => (
-            <motion.div
+        <div ref={cardsRef} className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+          {team.map((member) => (
+            <div
               key={member.name}
-              initial={{ opacity: 0, y: 36 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.6, delay: i * 0.15 }}
               className="group rounded-2xl border border-[#e8eaf0] bg-white p-10 hover:border-[#7c3aed]/25 hover:shadow-xl hover:shadow-[#7c3aed]/8 transition-all duration-300"
             >
               <div className="flex flex-col items-center text-center gap-5">
@@ -75,20 +99,13 @@ export default function About() {
 
                 {/* Info */}
                 <div className="w-full">
-                  <h3 className="font-display font-bold text-2xl text-[#0b0f17] mb-0.5">
-                    {member.name}
-                  </h3>
-                  <p
-                    className="font-sans text-sm font-semibold tracking-wide mb-4"
-                    style={{ color: member.accentColor }}
-                  >
+                  <h3 className="font-display font-bold text-2xl text-[#0b0f17] mb-0.5">{member.name}</h3>
+                  <p className="font-sans text-sm font-semibold tracking-wide mb-4" style={{ color: member.accentColor }}>
                     {member.role}
                   </p>
                   <p className="font-sans text-[#0b0f17]/50 text-base leading-relaxed mb-6 text-left">
                     {member.bio}
                   </p>
-
-                  {/* LinkedIn */}
                   <a
                     href={member.linkedin}
                     target="_blank"
@@ -101,7 +118,7 @@ export default function About() {
                   </a>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

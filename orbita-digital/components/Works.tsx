@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "motion/react";
+import { useEffect, useRef } from "react";
+import { gsap, prefersReduced, splitWords } from "@/lib/gsap-utils";
 
 const projects = [
   {
@@ -46,8 +47,35 @@ const projects = [
 ];
 
 export default function Works() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const cardsRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (prefersReduced()) return;
+
+    const ctx = gsap.context(() => {
+      gsap.fromTo(sectionRef.current,
+        { y: 40, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.8, ease: "power2.out",
+          scrollTrigger: { trigger: sectionRef.current, start: "top 80%", once: true } }
+      );
+
+      if (cardsRef.current) {
+        const cards = Array.from(cardsRef.current.children);
+        gsap.fromTo(cards,
+          { y: 50, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.6, ease: "power2.out", stagger: 0.12,
+            scrollTrigger: { trigger: cardsRef.current, start: "top 80%", once: true } }
+        );
+      }
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
     <section
+      ref={sectionRef}
       id="trabajos"
       className="relative py-24 lg:py-32 bg-white"
       aria-labelledby="works-heading"
@@ -56,14 +84,10 @@ export default function Works() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Grid 2 columnas */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-          {projects.map((project, i) => (
-            <motion.article
-              key={`${project.title}-${i}`}
-              initial={{ opacity: 0, y: 36 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.15 }}
-              transition={{ duration: 0.55, delay: i * 0.08 }}
+        <div ref={cardsRef} className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          {projects.map((project) => (
+            <article
+              key={`${project.title}-${project.image}`}
               className="group relative rounded-2xl overflow-hidden border border-[#e8eaf0] bg-white cursor-pointer"
             >
               {/* Imagen */}
@@ -74,14 +98,8 @@ export default function Works() {
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   loading="lazy"
                 />
-
-                {/* Overlay hover */}
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0b0f17]/80 via-[#0b0f17]/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-350 flex flex-col justify-end p-6">
-                  <motion.div
-                    initial={{ y: 10, opacity: 0 }}
-                    whileHover={{ y: 0, opacity: 1 }}
-                    className="translate-y-3 group-hover:translate-y-0 transition-transform duration-300"
-                  >
+                  <div className="translate-y-3 group-hover:translate-y-0 transition-transform duration-300">
                     <span
                       className="inline-flex items-center px-3 py-1 rounded-full text-xs font-sans font-semibold mb-2"
                       style={{
@@ -92,14 +110,12 @@ export default function Works() {
                     >
                       {project.category}
                     </span>
-                    <h3 className="font-display font-bold text-white text-xl">
-                      {project.title}
-                    </h3>
-                  </motion.div>
+                    <h3 className="font-display font-bold text-white text-xl">{project.title}</h3>
+                  </div>
                 </div>
               </div>
 
-              {/* Body — visible sin hover */}
+              {/* Body */}
               <div className="px-5 py-4 bg-white group-hover:bg-[#faf9ff] transition-colors duration-300">
                 <div className="flex items-center justify-between gap-3">
                   <div>
@@ -119,10 +135,7 @@ export default function Works() {
                   </div>
                   <div
                     className="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 -translate-x-2 group-hover:translate-x-0"
-                    style={{
-                      backgroundColor: `${project.accentColor}12`,
-                      color: project.accentColor,
-                    }}
+                    style={{ backgroundColor: `${project.accentColor}12`, color: project.accentColor }}
                     aria-hidden
                   >
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -136,7 +149,7 @@ export default function Works() {
                   </p>
                 )}
               </div>
-            </motion.article>
+            </article>
           ))}
         </div>
       </div>

@@ -1,7 +1,8 @@
 "use client";
 
-import { motion } from "motion/react";
+import { useEffect, useRef } from "react";
 import Link from "next/link";
+import { gsap, prefersReduced, splitWords } from "@/lib/gsap-utils";
 
 const services = [
   {
@@ -43,20 +44,71 @@ const services = [
 ];
 
 export default function ServicesPreview() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const eyebrowRef = useRef<HTMLSpanElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const cardsRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (prefersReduced()) return;
+
+    const ctx = gsap.context(() => {
+      gsap.fromTo(sectionRef.current,
+        { y: 40, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.8, ease: "power2.out",
+          scrollTrigger: { trigger: sectionRef.current, start: "top 80%", once: true } }
+      );
+
+      gsap.fromTo(eyebrowRef.current,
+        { x: -20, opacity: 0 },
+        { x: 0, opacity: 1, duration: 0.5, ease: "power2.out",
+          scrollTrigger: { trigger: eyebrowRef.current, start: "top 85%", once: true } }
+      );
+
+      if (titleRef.current) {
+        const words = splitWords(titleRef.current);
+        gsap.fromTo(words,
+          { y: 60, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.7, ease: "power3.out", stagger: 0.08,
+            scrollTrigger: { trigger: titleRef.current, start: "top 85%", once: true } }
+        );
+      }
+
+      if (cardsRef.current) {
+        const cards = Array.from(cardsRef.current.children);
+        gsap.fromTo(cards,
+          { y: 50, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.6, ease: "power2.out", stagger: 0.12,
+            scrollTrigger: { trigger: cardsRef.current, start: "top 80%", once: true } }
+        );
+      }
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section className="relative py-24 lg:py-32 bg-[#faf9ff]" aria-labelledby="services-preview-heading">
+    <section
+      ref={sectionRef}
+      className="relative py-24 lg:py-32 bg-[#faf9ff]"
+      aria-labelledby="services-preview-heading"
+    >
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#0b0f17]/7 to-transparent" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div initial={{ opacity: 0, y: 26 }} whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }} transition={{ duration: 0.6 }}
-          className="mb-14">
-          <span className="inline-block text-[#7c3aed] font-sans font-medium text-xs tracking-[0.18em] uppercase mb-4">
+        <div className="mb-14">
+          <span
+            ref={eyebrowRef}
+            className="inline-block text-[#7c3aed] font-sans font-medium text-xs tracking-[0.18em] uppercase mb-4"
+          >
             Lo que hacemos
           </span>
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-5">
-            <h2 id="services-preview-heading"
-              className="font-display font-bold text-3xl sm:text-5xl text-[#0b0f17] max-w-lg">
+            <h2
+              ref={titleRef}
+              id="services-preview-heading"
+              className="font-display font-bold text-3xl sm:text-5xl text-[#0b0f17] max-w-lg"
+            >
               Tres servicios,{" "}
               <span className="text-[#7c3aed]">un solo equipo.</span>
             </h2>
@@ -69,15 +121,14 @@ export default function ServicesPreview() {
               </svg>
             </Link>
           </div>
-        </motion.div>
+        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-          {services.map((s, i) => (
-            <motion.div key={s.title}
-              initial={{ opacity: 0, y: 32 }} whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.15 }}
-              transition={{ duration: 0.55, delay: i * 0.1 }}
-              className="group rounded-2xl border border-[#e8eaf0] bg-white p-7 hover:border-[#7c3aed]/25 hover:shadow-lg hover:shadow-[#7c3aed]/7 transition-all duration-300 overflow-hidden relative">
+        <div ref={cardsRef} className="grid grid-cols-1 md:grid-cols-3 gap-5">
+          {services.map((s) => (
+            <div
+              key={s.title}
+              className="group rounded-2xl border border-[#e8eaf0] bg-white p-7 hover:border-[#7c3aed]/25 hover:shadow-lg hover:shadow-[#7c3aed]/7 transition-all duration-300 overflow-hidden relative"
+            >
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl"
                 style={{ background: `radial-gradient(ellipse at top left, ${s.color}06 0%, transparent 60%)` }} aria-hidden />
               <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-5 transition-colors duration-300 relative"
@@ -86,7 +137,7 @@ export default function ServicesPreview() {
               </div>
               <h3 className="font-display font-bold text-lg text-[#0b0f17] mb-2 relative">{s.title}</h3>
               <p className="font-sans text-[#0b0f17]/50 text-sm leading-relaxed relative">{s.description}</p>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

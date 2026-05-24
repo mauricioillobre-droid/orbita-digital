@@ -1,7 +1,8 @@
 "use client";
 
-import { motion } from "motion/react";
+import { useEffect, useRef } from "react";
 import Link from "next/link";
+import { gsap, prefersReduced, splitWords } from "@/lib/gsap-utils";
 
 const projects = [
   { title: "Floripa por Mauri", category: "Landing Page", image: "/trabajo-landing.jpg", color: "#0d47ff" },
@@ -11,20 +12,71 @@ const projects = [
 ];
 
 export default function WorksPreview() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const eyebrowRef = useRef<HTMLSpanElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const cardsRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (prefersReduced()) return;
+
+    const ctx = gsap.context(() => {
+      gsap.fromTo(sectionRef.current,
+        { y: 40, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.8, ease: "power2.out",
+          scrollTrigger: { trigger: sectionRef.current, start: "top 80%", once: true } }
+      );
+
+      gsap.fromTo(eyebrowRef.current,
+        { x: -20, opacity: 0 },
+        { x: 0, opacity: 1, duration: 0.5, ease: "power2.out",
+          scrollTrigger: { trigger: eyebrowRef.current, start: "top 85%", once: true } }
+      );
+
+      if (titleRef.current) {
+        const words = splitWords(titleRef.current);
+        gsap.fromTo(words,
+          { y: 60, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.7, ease: "power3.out", stagger: 0.08,
+            scrollTrigger: { trigger: titleRef.current, start: "top 85%", once: true } }
+        );
+      }
+
+      if (cardsRef.current) {
+        const cards = Array.from(cardsRef.current.children);
+        gsap.fromTo(cards,
+          { y: 50, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.6, ease: "power2.out", stagger: 0.12,
+            scrollTrigger: { trigger: cardsRef.current, start: "top 80%", once: true } }
+        );
+      }
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section className="relative py-24 lg:py-32 bg-white" aria-labelledby="works-preview-heading">
+    <section
+      ref={sectionRef}
+      className="relative py-24 lg:py-32 bg-white"
+      aria-labelledby="works-preview-heading"
+    >
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#0b0f17]/7 to-transparent" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div initial={{ opacity: 0, y: 26 }} whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }} transition={{ duration: 0.6 }}
-          className="mb-14">
-          <span className="inline-block text-[#7c3aed] font-sans font-medium text-xs tracking-[0.18em] uppercase mb-4">
+        <div className="mb-14">
+          <span
+            ref={eyebrowRef}
+            className="inline-block text-[#7c3aed] font-sans font-medium text-xs tracking-[0.18em] uppercase mb-4"
+          >
             Portafolio
           </span>
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-5">
-            <h2 id="works-preview-heading"
-              className="font-display font-bold text-3xl sm:text-5xl text-[#0b0f17] max-w-lg">
+            <h2
+              ref={titleRef}
+              id="works-preview-heading"
+              className="font-display font-bold text-3xl sm:text-5xl text-[#0b0f17] max-w-lg"
+            >
               Proyectos reales,{" "}
               <span className="text-[#0d47ff]">resultados concretos.</span>
             </h2>
@@ -37,15 +89,14 @@ export default function WorksPreview() {
               </svg>
             </Link>
           </div>
-        </motion.div>
+        </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-          {projects.map((p, i) => (
-            <motion.div key={`${p.title}-${i}`}
-              initial={{ opacity: 0, y: 32 }} whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.15 }}
-              transition={{ duration: 0.5, delay: i * 0.08 }}
-              className="group relative rounded-2xl overflow-hidden border border-[#e8eaf0] bg-white cursor-pointer">
+        <div ref={cardsRef} className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+          {projects.map((p) => (
+            <div
+              key={p.title}
+              className="group relative rounded-2xl overflow-hidden border border-[#e8eaf0] bg-white cursor-pointer"
+            >
               <div className="relative h-56 sm:h-64 overflow-hidden">
                 <img src={p.image} alt={p.title}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
@@ -67,7 +118,7 @@ export default function WorksPreview() {
                   </span>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

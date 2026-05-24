@@ -1,7 +1,8 @@
 "use client";
 
-import { motion } from "motion/react";
+import { useEffect, useRef } from "react";
 import { useForm, ValidationError } from "@formspree/react";
+import { gsap, prefersReduced, splitWords } from "@/lib/gsap-utils";
 
 const WA_TATI = "https://wa.me/5493541232353?text=Hola%20%C3%93rbita%20Digital%2C%20quiero%20hablar%20de%20mi%20proyecto";
 const WA_MAURI = "https://wa.me/5548984211589?text=Hola%20%C3%93rbita%20Digital%2C%20quiero%20hablar%20de%20mi%20proyecto";
@@ -30,11 +31,7 @@ function ContactForm() {
 
   if (state.succeeded) {
     return (
-      <motion.div
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
-        className="flex flex-col items-center justify-center gap-4 py-12 text-center"
-      >
+      <div className="flex flex-col items-center justify-center gap-4 py-12 text-center">
         <div className="w-16 h-16 rounded-full bg-[#7c3aed]/10 border border-[#7c3aed]/20 flex items-center justify-center">
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#7c3aed"
             strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
@@ -42,75 +39,49 @@ function ContactForm() {
             <polyline points="22 4 12 14.01 9 11.01" />
           </svg>
         </div>
-        <h3 className="font-display font-bold text-xl text-[#0b0f17]">
-          ¡Mensaje recibido!
-        </h3>
+        <h3 className="font-display font-bold text-xl text-[#0b0f17]">¡Mensaje recibido!</h3>
         <p className="font-sans text-[#0b0f17]/55 text-sm max-w-xs">
           Te respondemos en menos de 24 horas. También podés escribirnos directamente por WhatsApp.
         </p>
-      </motion.div>
+      </div>
     );
   }
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4" noValidate>
-      {/* Nombre */}
       <div>
         <label htmlFor="name" className="block font-sans text-sm font-medium text-[#0b0f17]/70 mb-1.5">
           Nombre
         </label>
-        <input
-          id="name"
-          type="text"
-          name="name"
-          required
-          placeholder="Tu nombre"
-          className="w-full h-11 px-4 rounded-xl border border-[#e8eaf0] bg-white font-sans text-sm text-[#0b0f17] placeholder-[#0b0f17]/30 focus:outline-none focus:border-[#7c3aed]/50 focus:ring-2 focus:ring-[#7c3aed]/10 transition-all duration-200"
-        />
+        <input id="name" type="text" name="name" required placeholder="Tu nombre"
+          className="w-full h-11 px-4 rounded-xl border border-[#e8eaf0] bg-white font-sans text-sm text-[#0b0f17] placeholder-[#0b0f17]/30 focus:outline-none focus:border-[#7c3aed]/50 focus:ring-2 focus:ring-[#7c3aed]/10 transition-all duration-200" />
         <ValidationError field="name" prefix="Nombre" errors={state.errors}
           className="mt-1 text-xs text-red-500 font-sans" />
       </div>
 
-      {/* Email */}
       <div>
         <label htmlFor="email" className="block font-sans text-sm font-medium text-[#0b0f17]/70 mb-1.5">
           Email
         </label>
-        <input
-          id="email"
-          type="email"
-          name="email"
-          required
-          placeholder="tu@email.com"
-          className="w-full h-11 px-4 rounded-xl border border-[#e8eaf0] bg-white font-sans text-sm text-[#0b0f17] placeholder-[#0b0f17]/30 focus:outline-none focus:border-[#7c3aed]/50 focus:ring-2 focus:ring-[#7c3aed]/10 transition-all duration-200"
-        />
+        <input id="email" type="email" name="email" required placeholder="tu@email.com"
+          className="w-full h-11 px-4 rounded-xl border border-[#e8eaf0] bg-white font-sans text-sm text-[#0b0f17] placeholder-[#0b0f17]/30 focus:outline-none focus:border-[#7c3aed]/50 focus:ring-2 focus:ring-[#7c3aed]/10 transition-all duration-200" />
         <ValidationError field="email" prefix="Email" errors={state.errors}
           className="mt-1 text-xs text-red-500 font-sans" />
       </div>
 
-      {/* Mensaje */}
       <div>
         <label htmlFor="message" className="block font-sans text-sm font-medium text-[#0b0f17]/70 mb-1.5">
           Contanos tu proyecto
         </label>
-        <textarea
-          id="message"
-          name="message"
-          required
-          rows={4}
+        <textarea id="message" name="message" required rows={4}
           placeholder="Contanos tu proyecto, en qué etapa estás y qué necesitás..."
-          className="w-full px-4 py-3 rounded-xl border border-[#e8eaf0] bg-white font-sans text-sm text-[#0b0f17] placeholder-[#0b0f17]/30 focus:outline-none focus:border-[#7c3aed]/50 focus:ring-2 focus:ring-[#7c3aed]/10 transition-all duration-200 resize-none"
-        />
+          className="w-full px-4 py-3 rounded-xl border border-[#e8eaf0] bg-white font-sans text-sm text-[#0b0f17] placeholder-[#0b0f17]/30 focus:outline-none focus:border-[#7c3aed]/50 focus:ring-2 focus:ring-[#7c3aed]/10 transition-all duration-200 resize-none" />
         <ValidationError field="message" prefix="Mensaje" errors={state.errors}
           className="mt-1 text-xs text-red-500 font-sans" />
       </div>
 
-      {/* Submit */}
-      <button
-        type="submit"
-        disabled={state.submitting}
-        className="w-full h-12 rounded-xl bg-[#7c3aed] hover:bg-[#0d47ff] disabled:opacity-60 disabled:cursor-not-allowed text-white font-sans font-semibold text-sm transition-all duration-200 shadow-lg shadow-[#7c3aed]/20 hover:shadow-[#0d47ff]/20 cursor-pointer"
-      >
+      <button type="submit" disabled={state.submitting}
+        className="w-full h-12 rounded-xl bg-[#7c3aed] hover:bg-[#0d47ff] disabled:opacity-60 disabled:cursor-not-allowed text-white font-sans font-semibold text-sm transition-all duration-200 shadow-lg shadow-[#7c3aed]/20 hover:shadow-[#0d47ff]/20 cursor-pointer">
         {state.submitting ? "Enviando..." : "Enviar mensaje"}
       </button>
     </form>
@@ -118,38 +89,67 @@ function ContactForm() {
 }
 
 export default function Contact() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const eyebrowRef = useRef<HTMLSpanElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
+
+  useEffect(() => {
+    if (prefersReduced()) return;
+
+    const ctx = gsap.context(() => {
+      gsap.fromTo(sectionRef.current,
+        { y: 40, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.8, ease: "power2.out",
+          scrollTrigger: { trigger: sectionRef.current, start: "top 80%", once: true } }
+      );
+
+      gsap.fromTo(eyebrowRef.current,
+        { x: -20, opacity: 0 },
+        { x: 0, opacity: 1, duration: 0.5, ease: "power2.out",
+          scrollTrigger: { trigger: eyebrowRef.current, start: "top 85%", once: true } }
+      );
+
+      if (titleRef.current) {
+        const words = splitWords(titleRef.current);
+        gsap.fromTo(words,
+          { y: 60, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.7, ease: "power3.out", stagger: 0.08,
+            scrollTrigger: { trigger: titleRef.current, start: "top 85%", once: true } }
+        );
+      }
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
     <section
+      ref={sectionRef}
       id="contacto"
       className="relative py-24 lg:py-32 bg-white overflow-hidden"
       aria-labelledby="contact-heading"
     >
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#0b0f17]/8 to-transparent" />
 
-      {/* Background blob */}
       <div aria-hidden className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div
-          className="w-[500px] h-[500px] rounded-full opacity-25"
+        <div className="w-[500px] h-[500px] rounded-full opacity-25"
           style={{
             background: "radial-gradient(circle, rgba(124,58,237,0.14) 0%, rgba(13,71,255,0.06) 45%, transparent 70%)",
             filter: "blur(90px)",
-          }}
-        />
+          }} />
       </div>
 
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 28 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-14"
-        >
-          <span className="inline-block text-[#7c3aed] font-sans font-medium text-xs tracking-[0.18em] uppercase mb-4">
+        <div className="text-center mb-14">
+          <span
+            ref={eyebrowRef}
+            className="inline-block text-[#7c3aed] font-sans font-medium text-xs tracking-[0.18em] uppercase mb-4"
+          >
             Contacto
           </span>
           <h2
+            ref={titleRef}
             id="contact-heading"
             className="font-display font-bold text-3xl sm:text-5xl text-[#0b0f17] mb-4"
           >
@@ -175,47 +175,25 @@ export default function Contact() {
               </span>
             ))}
           </div>
-        </motion.div>
+        </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
           {/* Formulario */}
-          <motion.div
-            initial={{ opacity: 0, x: -28 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.6 }}
-            className="rounded-2xl border border-[#e8eaf0] bg-white p-8 shadow-sm"
-          >
-            <h3 className="font-display font-bold text-lg text-[#0b0f17] mb-6">
-              Envianos un mensaje
-            </h3>
+          <div className="rounded-2xl border border-[#e8eaf0] bg-white p-8 shadow-sm">
+            <h3 className="font-display font-bold text-lg text-[#0b0f17] mb-6">Envianos un mensaje</h3>
             <ContactForm />
-          </motion.div>
+          </div>
 
           {/* Info + CTA directos */}
-          <motion.div
-            initial={{ opacity: 0, x: 28 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="flex flex-col gap-6"
-          >
-            {/* Divider texto */}
+          <div className="flex flex-col gap-6">
             <div className="flex items-center gap-4">
               <div className="flex-1 h-px bg-[#0b0f17]/8" />
-              <span className="font-sans text-sm text-[#0b0f17]/35 whitespace-nowrap">
-                o escribinos directo
-              </span>
+              <span className="font-sans text-sm text-[#0b0f17]/35 whitespace-nowrap">o escribinos directo</span>
               <div className="flex-1 h-px bg-[#0b0f17]/8" />
             </div>
 
-            {/* WhatsApp Tati */}
-            <a
-              href={WA_TATI}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex items-center gap-4 p-5 rounded-2xl border border-[#e8eaf0] bg-white hover:border-[#25D366]/30 hover:bg-[#25D366]/4 transition-all duration-300 cursor-pointer"
-            >
+            <a href={WA_TATI} target="_blank" rel="noopener noreferrer"
+              className="group flex items-center gap-4 p-5 rounded-2xl border border-[#e8eaf0] bg-white hover:border-[#25D366]/30 hover:bg-[#25D366]/4 transition-all duration-300 cursor-pointer">
               <div className="w-12 h-12 rounded-xl bg-[#25D366]/10 flex items-center justify-center text-[#25D366] flex-shrink-0 group-hover:bg-[#25D366]/18 transition-colors duration-300">
                 <WhatsAppIcon size={22} />
               </div>
@@ -228,13 +206,8 @@ export default function Contact() {
               </svg>
             </a>
 
-            {/* WhatsApp Mauri */}
-            <a
-              href={WA_MAURI}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex items-center gap-4 p-5 rounded-2xl border border-[#e8eaf0] bg-white hover:border-[#25D366]/30 hover:bg-[#25D366]/4 transition-all duration-300 cursor-pointer"
-            >
+            <a href={WA_MAURI} target="_blank" rel="noopener noreferrer"
+              className="group flex items-center gap-4 p-5 rounded-2xl border border-[#e8eaf0] bg-white hover:border-[#25D366]/30 hover:bg-[#25D366]/4 transition-all duration-300 cursor-pointer">
               <div className="w-12 h-12 rounded-xl bg-[#25D366]/10 flex items-center justify-center text-[#25D366] flex-shrink-0 group-hover:bg-[#25D366]/18 transition-colors duration-300">
                 <WhatsAppIcon size={22} />
               </div>
@@ -247,11 +220,8 @@ export default function Contact() {
               </svg>
             </a>
 
-            {/* Email */}
-            <a
-              href="mailto:orbitadigital10@gmail.com"
-              className="group flex items-center gap-4 p-5 rounded-2xl border border-[#e8eaf0] bg-white hover:border-[#7c3aed]/25 hover:bg-[#7c3aed]/4 transition-all duration-300 cursor-pointer"
-            >
+            <a href="mailto:orbitadigital10@gmail.com"
+              className="group flex items-center gap-4 p-5 rounded-2xl border border-[#e8eaf0] bg-white hover:border-[#7c3aed]/25 hover:bg-[#7c3aed]/4 transition-all duration-300 cursor-pointer">
               <div className="w-12 h-12 rounded-xl bg-[#7c3aed]/8 flex items-center justify-center text-[#7c3aed] flex-shrink-0 group-hover:bg-[#7c3aed]/14 transition-colors duration-300">
                 <EmailIcon />
               </div>
@@ -264,11 +234,10 @@ export default function Contact() {
               </svg>
             </a>
 
-            {/* Note */}
             <p className="font-sans text-xs text-[#0b0f17]/35 text-center px-4">
               Respondemos en menos de 24 horas. Si es urgente, WhatsApp es más rápido.
             </p>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

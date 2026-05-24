@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import Services from "@/components/Services";
 import Process from "@/components/Process";
 import Link from "next/link";
+import AnimatedPageHero from "@/components/AnimatedPageHero";
 
 const WA_URL = "https://wa.me/5493541232353?text=Hola%20%C3%93rbita%20Digital%2C%20quiero%20hablar%20de%20mi%20proyecto";
 
@@ -32,13 +33,10 @@ export default function ServiciosPage() {
               }} />
           </div>
           <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <span className="inline-block text-[#7c3aed] font-sans font-medium text-xs tracking-[0.18em] uppercase mb-5">
-              Servicios
-            </span>
-            <h1 className="font-display font-bold text-4xl sm:text-6xl text-[#0b0f17] mb-6 leading-tight">
+            <AnimatedPageHero eyebrow="Servicios">
               Todo lo que necesita tu presencia digital,{" "}
               <span className="text-[#7c3aed]">en un solo lugar.</span>
-            </h1>
+            </AnimatedPageHero>
             <p className="font-sans text-lg text-[#0b0f17]/55 max-w-2xl mx-auto leading-relaxed mb-10">
               Diseño, desarrollo y automatización que trabajan juntos para que tu negocio tenga una presencia digital sólida, coherente y que genere resultados reales.
             </p>

@@ -1,7 +1,8 @@
 "use client";
 
-import { motion } from "motion/react";
+import { useEffect, useRef } from "react";
 import Link from "next/link";
+import { gsap, prefersReduced, splitWords } from "@/lib/gsap-utils";
 
 const team = [
   {
@@ -23,20 +24,71 @@ const team = [
 ];
 
 export default function TeamPreview() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const eyebrowRef = useRef<HTMLSpanElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const cardsRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (prefersReduced()) return;
+
+    const ctx = gsap.context(() => {
+      gsap.fromTo(sectionRef.current,
+        { y: 40, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.8, ease: "power2.out",
+          scrollTrigger: { trigger: sectionRef.current, start: "top 80%", once: true } }
+      );
+
+      gsap.fromTo(eyebrowRef.current,
+        { x: -20, opacity: 0 },
+        { x: 0, opacity: 1, duration: 0.5, ease: "power2.out",
+          scrollTrigger: { trigger: eyebrowRef.current, start: "top 85%", once: true } }
+      );
+
+      if (titleRef.current) {
+        const words = splitWords(titleRef.current);
+        gsap.fromTo(words,
+          { y: 60, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.7, ease: "power3.out", stagger: 0.08,
+            scrollTrigger: { trigger: titleRef.current, start: "top 85%", once: true } }
+        );
+      }
+
+      if (cardsRef.current) {
+        const cards = Array.from(cardsRef.current.children);
+        gsap.fromTo(cards,
+          { y: 50, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.6, ease: "power2.out", stagger: 0.12,
+            scrollTrigger: { trigger: cardsRef.current, start: "top 80%", once: true } }
+        );
+      }
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section className="relative py-24 lg:py-32 bg-[#faf9ff]" aria-labelledby="team-preview-heading">
+    <section
+      ref={sectionRef}
+      className="relative py-24 lg:py-32 bg-[#faf9ff]"
+      aria-labelledby="team-preview-heading"
+    >
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#7c3aed]/10 to-transparent" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div initial={{ opacity: 0, y: 26 }} whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }} transition={{ duration: 0.6 }}
-          className="mb-14">
-          <span className="inline-block text-[#7c3aed] font-sans font-medium text-xs tracking-[0.18em] uppercase mb-4">
+        <div className="mb-14">
+          <span
+            ref={eyebrowRef}
+            className="inline-block text-[#7c3aed] font-sans font-medium text-xs tracking-[0.18em] uppercase mb-4"
+          >
             El equipo
           </span>
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-5">
-            <h2 id="team-preview-heading"
-              className="font-display font-bold text-3xl sm:text-5xl text-[#0b0f17] max-w-md">
+            <h2
+              ref={titleRef}
+              id="team-preview-heading"
+              className="font-display font-bold text-3xl sm:text-5xl text-[#0b0f17] max-w-md"
+            >
               Mauri y Tati.{" "}
               <span className="text-[#7c3aed]">Órbita Digital.</span>
             </h2>
@@ -49,33 +101,24 @@ export default function TeamPreview() {
               </svg>
             </Link>
           </div>
-        </motion.div>
+        </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
-          {team.map((m, i) => (
-            <motion.div key={m.name}
-              initial={{ opacity: 0, y: 32 }} whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.55, delay: i * 0.12 }}
-              className="group flex flex-col items-center text-center p-10 rounded-2xl border border-[#e8eaf0] bg-white hover:border-[#7c3aed]/25 hover:shadow-lg hover:shadow-[#7c3aed]/7 transition-all duration-300">
-
-              {/* Foto */}
+        <div ref={cardsRef} className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
+          {team.map((m) => (
+            <div
+              key={m.name}
+              className="group flex flex-col items-center text-center p-10 rounded-2xl border border-[#e8eaf0] bg-white hover:border-[#7c3aed]/25 hover:shadow-lg hover:shadow-[#7c3aed]/7 transition-all duration-300"
+            >
               <img src={m.image} alt={`Foto de ${m.name}`}
                 className="w-32 h-32 rounded-full object-cover object-top mb-6"
                 style={{ border: `3px solid ${m.color}25`, boxShadow: `0 8px 28px ${m.color}25` }} />
-
-              {/* Nombre y rol */}
               <h3 className="font-display font-bold text-[#0b0f17] text-2xl mb-1">{m.name}</h3>
               <p className="font-sans text-xs font-semibold tracking-wide uppercase mb-4" style={{ color: m.color }}>
                 {m.role}
               </p>
-
-              {/* Descripción */}
               <p className="font-sans text-[#0b0f17]/50 text-base leading-relaxed mb-6">
                 {m.summary}
               </p>
-
-              {/* LinkedIn */}
               <a href={m.linkedin} target="_blank" rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 font-sans text-sm font-medium text-[#7c3aed] hover:underline transition-all duration-200 mt-auto">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
@@ -83,7 +126,7 @@ export default function TeamPreview() {
                 </svg>
                 LinkedIn
               </a>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
