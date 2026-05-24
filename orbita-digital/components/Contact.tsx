@@ -91,7 +91,7 @@ function ContactForm() {
       {/* Mensaje */}
       <div>
         <label htmlFor="message" className="block font-sans text-sm font-medium text-[#0b0f17]/70 mb-1.5">
-          ¿En qué puedo ayudarte?
+          Contanos tu proyecto
         </label>
         <textarea
           id="message"
@@ -157,8 +157,24 @@ export default function Contact() {
             <span className="text-[#7c3aed]">tu proyecto?</span>
           </h2>
           <p className="font-sans text-[#0b0f17]/50 text-lg">
-            Contanos en qué estás pensando. Respondemos en menos de 24 horas.
+            Contanos en qué estás trabajando, en qué etapa estás y qué necesitás. Respondemos el mismo día.
           </p>
+          {/* Bullets */}
+          <div className="flex flex-wrap items-center justify-center gap-6 mt-6">
+            {[
+              "Trabajás directo con el equipo",
+              "Cada proyecto es único para nosotros",
+              "Atención rápida y personalizada",
+            ].map((text) => (
+              <span key={text} className="flex items-center gap-2 text-sm text-[#0b0f17]/60">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7c3aed"
+                  strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                  <path d="M20 6L9 17l-5-5" />
+                </svg>
+                {text}
+              </span>
+            ))}
+          </div>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
