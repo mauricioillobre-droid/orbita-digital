@@ -1,15 +1,11 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #0d47ff;
-  --color-accent: #7c3aed;
+  --color-primary: #7c3aed;
+  --color-accent: #0d47ff;
   --color-bg: #ffffff;
   --font-sans: var(--font-ubuntu);
   --font-display: var(--font-ubuntu);
-}
-
-*, *::before, *::after {
-  cursor: auto;
 }
 
 html {
@@ -19,6 +15,14 @@ html {
 body {
   background-color: #ffffff;
   color: #0b0f17;
+}
+
+/* ── Cursor personalizado: ocultar nativo solo en desktop ── */
+[data-custom-cursor="true"],
+[data-custom-cursor="true"] *,
+[data-custom-cursor="true"] *::before,
+[data-custom-cursor="true"] *::after {
+  cursor: none !important;
 }
 
 /* ── Scroll animations (Intersection Observer) ── */
