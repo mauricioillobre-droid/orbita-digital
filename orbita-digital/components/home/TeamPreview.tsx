@@ -35,8 +35,8 @@ export default function TeamPreview() {
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-5">
             <h2 id="team-preview-heading"
               className="font-display font-bold text-3xl sm:text-5xl text-[#0b0f17] max-w-md">
-              Somos dos.{" "}
-              <span className="text-[#7c3aed]">Nada más.</span>
+              Mauri y Tati.{" "}
+              <span className="text-[#7c3aed]">Órbita Digital.</span>
             </h2>
             <Link href="/nosotros"
               className="group inline-flex items-center gap-2 font-sans text-sm font-semibold text-[#7c3aed] hover:text-[#0d47ff] transition-colors duration-200 cursor-pointer whitespace-nowrap">
@@ -49,7 +49,7 @@ export default function TeamPreview() {
           </div>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 max-w-2xl">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 max-w-2xl mx-auto">
           {team.map((m, i) => (
             <motion.div key={m.name}
               initial={{ opacity: 0, y: 32 }} whileInView={{ opacity: 1, y: 0 }}

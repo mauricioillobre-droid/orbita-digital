@@ -153,11 +153,11 @@ export default function Contact() {
             id="contact-heading"
             className="font-display font-bold text-3xl sm:text-5xl text-[#0b0f17] mb-4"
           >
-            ¿Tenés un proyecto{" "}
-            <span className="text-[#7c3aed]">en mente?</span>
+            ¿Arrancamos con{" "}
+            <span className="text-[#7c3aed]">tu proyecto?</span>
           </h2>
           <p className="font-sans text-[#0b0f17]/50 text-lg">
-            Contanos en qué estás trabajando. Respondemos en menos de 24 horas.
+            Contanos en qué estás pensando. Respondemos en menos de 24 horas.
           </p>
         </motion.div>
 
@@ -204,7 +204,7 @@ export default function Contact() {
                 <WhatsAppIcon size={22} />
               </div>
               <div className="flex-1 min-w-0">
-                <p className="font-sans text-xs text-[#0b0f17]/45 mb-0.5">WhatsApp · Tati</p>
+                <p className="font-sans text-xs text-[#0b0f17]/45 mb-0.5">WhatsApp</p>
                 <p className="font-sans text-sm font-semibold text-[#0b0f17]/80">+54 9 3541-232353</p>
               </div>
               <svg className="w-4 h-4 text-[#0b0f17]/20 group-hover:text-[#25D366] transition-colors duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden>

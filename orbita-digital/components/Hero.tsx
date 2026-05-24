@@ -112,7 +112,7 @@ export default function Hero() {
           className="font-display font-bold text-4xl sm:text-6xl lg:text-7xl text-[#0b0f17] leading-[1.07] tracking-tight mb-6"
         >
           Construimos presencia digital{" "}
-          <span className="text-[#7c3aed]">que genera resultados</span>
+          <span className="text-[#7c3aed]">que funciona.</span>
         </motion.h1>
 
         <motion.p
@@ -121,8 +121,8 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 0.32 }}
           className="font-sans text-lg sm:text-xl text-[#0b0f17]/55 max-w-2xl mx-auto mb-10 leading-relaxed"
         >
-          Desarrollamos sitios, sistemas y estrategias visuales para negocios
-          que quieren crecer con consistencia, no con suerte.
+          Sitios web, identidad visual y automatizaciones para negocios
+          que quieren crecer con consistencia.
         </motion.p>
 
         <motion.div
@@ -167,9 +167,9 @@ export default function Hero() {
           className="flex flex-col sm:flex-row items-center justify-center gap-8 sm:gap-12 mt-16 pt-12 border-t border-[#0b0f17]/6"
         >
           {[
-            { value: "50+", label: "Proyectos entregados" },
-            { value: "100%", label: "Clientes satisfechos" },
-            { value: "24h", label: "Tiempo de respuesta" },
+            { value: "+20", label: "Proyectos entregados" },
+            { value: "2", label: "Especialistas dedicados" },
+            { value: "<24h", label: "Tiempo de respuesta" },
           ].map((stat) => (
             <div key={stat.label} className="text-center">
               <p className="font-display font-bold text-3xl text-[#0b0f17] mb-1">

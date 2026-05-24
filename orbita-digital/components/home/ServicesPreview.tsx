@@ -52,13 +52,13 @@ export default function ServicesPreview() {
           viewport={{ once: true, amount: 0.3 }} transition={{ duration: 0.6 }}
           className="mb-14">
           <span className="inline-block text-[#7c3aed] font-sans font-medium text-xs tracking-[0.18em] uppercase mb-4">
-            En qué te ayudamos
+            Lo que hacemos
           </span>
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-5">
             <h2 id="services-preview-heading"
               className="font-display font-bold text-3xl sm:text-5xl text-[#0b0f17] max-w-lg">
-              Tres cosas que{" "}
-              <span className="text-[#7c3aed]">hacemos bien.</span>
+              Tres servicios,{" "}
+              <span className="text-[#7c3aed]">un solo equipo.</span>
             </h2>
             <Link href="/servicios"
               className="group inline-flex items-center gap-2 font-sans text-sm font-semibold text-[#7c3aed] hover:text-[#0d47ff] transition-colors duration-200 cursor-pointer whitespace-nowrap">
