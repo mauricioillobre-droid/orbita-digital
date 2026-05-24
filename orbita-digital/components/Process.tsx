@@ -7,7 +7,7 @@ const steps = [
     number: "01",
     title: "Diagnóstico",
     description:
-      "Entendemos tu negocio, tus objetivos y tu punto de partida. Sin suposiciones, con preguntas reales.",
+      "Entendemos tu negocio, tus objetivos y tu punto de partida.",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
         strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
@@ -18,9 +18,9 @@ const steps = [
   },
   {
     number: "02",
-    title: "Estrategia",
+    title: "Propuesta",
     description:
-      "Definimos el enfoque, el alcance y los entregables concretos. Nada vago, nada indefinido.",
+      "Definimos el alcance, los entregables y los tiempos. Sin sorpresas.",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
         strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
@@ -33,7 +33,7 @@ const steps = [
     number: "03",
     title: "Ejecución",
     description:
-      "Construimos con criterio, iteramos con foco y comunicamos cada avance. Siempre sabés en qué estamos.",
+      "Construimos con criterio y te mantenemos informado en cada etapa.",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
         strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
@@ -43,9 +43,9 @@ const steps = [
   },
   {
     number: "04",
-    title: "Lanzamiento y soporte",
+    title: "Entrega",
     description:
-      "Entregamos, acompañamos el inicio y seguimos disponibles. El proyecto no termina en la entrega.",
+      "Lanzamos juntos y seguimos disponibles después del cierre.",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
         strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
@@ -81,11 +81,11 @@ export default function Process() {
             id="process-heading"
             className="font-display font-bold text-3xl sm:text-5xl text-[#0b0f17] mb-4"
           >
-            Un proceso claro,{" "}
-            <span className="text-[#7c3aed]">sin sorpresas</span>
+            Un proceso claro{" "}
+            <span className="text-[#7c3aed]">de principio a fin.</span>
           </h2>
           <p className="font-sans text-[#0b0f17]/50 text-lg max-w-lg mx-auto">
-            Cuatro pasos que van del diagnóstico al resultado.
+            Cuatro pasos simples para ir de la idea al resultado.
           </p>
         </motion.div>
 

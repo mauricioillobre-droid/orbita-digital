@@ -15,7 +15,7 @@ const services = [
     ),
     title: "Desarrollo Web",
     description:
-      "Sitios que cargan rápido, se ven bien en cualquier dispositivo y están construidos para convertir visitantes en clientes.",
+      "Creamos sitios web que van más allá de verse bien. Cada proyecto está pensado para cargar rápido, adaptarse a cualquier dispositivo y convertir visitantes en clientes. Sin plantillas, sin atajos.",
     items: ["Landing Pages", "Sitios Institucionales", "Tiendas Online", "Optimización de Conversión"],
     color: "#0d47ff",
   },
@@ -30,7 +30,7 @@ const services = [
     ),
     title: "Automatización e Integraciones",
     description:
-      "Sistemas que trabajan en segundo plano: atención automática, seguimiento de leads y flujos que escalan sin aumentar el equipo.",
+      "Conectamos tus herramientas y automatizamos los procesos que te consumen tiempo. Desde confirmaciones automáticas hasta atención por WhatsApp — sistemas que trabajan mientras vos te enfocás en crecer.",
     items: ["Bots de WhatsApp", "Atención Automatizada", "Integración con CRM", "Flujos de Venta"],
     color: "#7c3aed",
   },
@@ -44,7 +44,7 @@ const services = [
     ),
     title: "Diseño y Contenido",
     description:
-      "Identidad visual y contenido que comunica con claridad quién sos, qué hacés y por qué elegirte.",
+      "Una identidad visual bien construida genera confianza antes de que alguien lea una sola palabra. Creamos marcas, diseñamos piezas y gestionamos contenido con criterio estético y estratégico.",
     items: ["Identidad Visual", "Diseño Gráfico", "Gestión de Redes", "Edición de Video y Fotografía"],
     color: "#7c3aed",
   },
@@ -75,12 +75,9 @@ export default function Services() {
             id="services-heading"
             className="font-display font-bold text-3xl sm:text-5xl text-[#0b0f17] mb-4"
           >
-            Soluciones integradas para tu{" "}
-            <span className="text-[#0d47ff]">presencia digital</span>
+            Tres áreas. Un equipo.{" "}
+            <span className="text-[#0d47ff]">Un objetivo.</span>
           </h2>
-          <p className="font-sans text-[#0b0f17]/50 text-lg max-w-xl mx-auto leading-relaxed">
-            Diseño, desarrollo y automatización trabajando juntos de principio a fin.
-          </p>
         </motion.div>
 
         {/* Cards */}
