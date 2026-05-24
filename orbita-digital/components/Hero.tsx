@@ -160,45 +160,8 @@ export default function Hero() {
           </a>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.58 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-8 sm:gap-12 mt-16 pt-12 border-t border-[#0b0f17]/6"
-        >
-          {[
-            { value: "+20", label: "Proyectos entregados" },
-            { value: "2", label: "Especialistas dedicados" },
-            { value: "<24h", label: "Tiempo de respuesta" },
-          ].map((stat) => (
-            <div key={stat.label} className="text-center">
-              <p className="font-display font-bold text-3xl text-[#0b0f17] mb-1">
-                {stat.value}
-              </p>
-              <p className="font-sans text-sm text-[#0b0f17]/40">{stat.label}</p>
-            </div>
-          ))}
-        </motion.div>
       </motion.div>
 
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2, duration: 0.8 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-        aria-hidden
-      >
-        <span className="font-sans text-xs text-[#0b0f17]/30 tracking-widest uppercase">
-          Scroll
-        </span>
-        <motion.div
-          animate={{ y: [0, 6, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-          className="w-5 h-8 rounded-full border border-[#0b0f17]/15 flex items-start justify-center pt-1.5"
-        >
-          <div className="w-1 h-2 rounded-full bg-[#7c3aed]/60" />
-        </motion.div>
-      </motion.div>
     </section>
   );
 }

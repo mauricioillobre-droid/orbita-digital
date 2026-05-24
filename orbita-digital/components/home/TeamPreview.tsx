@@ -49,20 +49,20 @@ export default function TeamPreview() {
           </div>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 max-w-2xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 max-w-3xl mx-auto">
           {team.map((m, i) => (
             <motion.div key={m.name}
               initial={{ opacity: 0, y: 32 }} whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.55, delay: i * 0.12 }}
-              className="group flex items-start gap-4 p-6 rounded-2xl border border-[#e8eaf0] bg-white hover:border-[#7c3aed]/25 hover:shadow-lg hover:shadow-[#7c3aed]/7 transition-all duration-300">
+              className="group flex items-start gap-5 p-8 rounded-2xl border border-[#e8eaf0] bg-white hover:border-[#7c3aed]/25 hover:shadow-lg hover:shadow-[#7c3aed]/7 transition-all duration-300">
               <img src={m.image} alt={`Foto de ${m.name}`}
-                className="w-14 h-14 rounded-full object-cover object-top flex-shrink-0"
+                className="w-20 h-20 rounded-full object-cover object-top flex-shrink-0"
                 style={{ border: `2px solid ${m.color}20`, boxShadow: `0 4px 16px ${m.color}20` }} />
               <div>
-                <h3 className="font-display font-bold text-[#0b0f17] text-lg mb-0.5">{m.name}</h3>
+                <h3 className="font-display font-bold text-[#0b0f17] text-xl mb-0.5">{m.name}</h3>
                 <p className="font-sans text-xs font-semibold mb-2" style={{ color: m.color }}>{m.role}</p>
-                <p className="font-sans text-[#0b0f17]/50 text-sm leading-relaxed">{m.summary}</p>
+                <p className="font-sans text-[#0b0f17]/50 text-base leading-relaxed">{m.summary}</p>
               </div>
             </motion.div>
           ))}
