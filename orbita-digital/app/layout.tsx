@@ -3,7 +3,6 @@ import { Ubuntu } from "next/font/google";
 import "./globals.css";
 import ScrollProgressBar from "@/components/ScrollProgressBar";
 import IntroScreen from "@/components/IntroScreen";
-import CustomCursor from "@/components/CustomCursor";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 
 const ubuntu = Ubuntu({
@@ -73,7 +72,6 @@ export default function RootLayout({
       </head>
       <body className="antialiased">
         <IntroScreen />
-        <CustomCursor />
         <ScrollProgressBar />
         {children}
         <WhatsAppFloat />

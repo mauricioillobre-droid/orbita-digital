@@ -17,14 +17,6 @@ body {
   color: #0b0f17;
 }
 
-/* ── Cursor personalizado: ocultar nativo solo en desktop ── */
-[data-custom-cursor="true"],
-[data-custom-cursor="true"] *,
-[data-custom-cursor="true"] *::before,
-[data-custom-cursor="true"] *::after {
-  cursor: none !important;
-}
-
 /* ── Scroll animations (Intersection Observer) ── */
 .reveal {
   opacity: 0;
