@@ -5,9 +5,9 @@ import Link from "next/link";
 import { gsap, prefersReduced, splitWords } from "@/lib/gsap-utils";
 
 const projects = [
-  { title: "Floripa por Mauri", category: "Landing Page", image: "/trabajo-landing.jpg", color: "#0d47ff" },
+  { title: "Floripa por Mauri", category: "Landing Page", image: "/trabajo-landing.jpg", color: "#7c3aed" },
   { title: "Agente conversacional", category: "Automatización", image: "/trabajo-chatbot.jpg", color: "#7c3aed" },
-  { title: "Identidad Visual", category: "Diseño Gráfico", image: "/identidad-visual2.jpg", color: "#0d47ff" },
+  { title: "Identidad Visual", category: "Diseño Gráfico", image: "/identidad-visual2.jpg", color: "#7c3aed" },
   { title: "Gestión de Redes", category: "Redes Sociales", image: "/gestion-de-redes.jpg", color: "#7c3aed" },
 ];
 
@@ -78,10 +78,10 @@ export default function WorksPreview() {
               className="font-display font-bold text-3xl sm:text-5xl text-[#0b0f17] max-w-lg"
             >
               Proyectos reales,{" "}
-              <span className="text-[#0d47ff]">resultados concretos.</span>
+              <span className="text-[#7c3aed]">resultados concretos.</span>
             </h2>
             <Link href="/trabajos"
-              className="group inline-flex items-center gap-2 font-sans text-sm font-semibold text-[#7c3aed] hover:text-[#0d47ff] transition-colors duration-200 cursor-pointer whitespace-nowrap">
+              className="group inline-flex items-center gap-2 font-sans text-sm font-semibold text-[#7c3aed] hover:text-[#6d28d9] transition-colors duration-200 cursor-pointer whitespace-nowrap">
               Ver todos los trabajos
               <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200"
                 fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} aria-hidden>

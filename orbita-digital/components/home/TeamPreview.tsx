@@ -10,7 +10,7 @@ const team = [
     role: "Desarrollo & Automatización",
     image: "/Mauri.jpeg",
     summary: "Project manager y desarrollador. Sistemas automatizados, integraciones y flujos de trabajo que escalan.",
-    color: "#0d47ff",
+    color: "#7c3aed",
     linkedin: "https://linkedin.com/in/mauricio-illobre-385744368",
   },
   {
@@ -93,7 +93,7 @@ export default function TeamPreview() {
               <span className="text-[#7c3aed]">Órbita Digital.</span>
             </h2>
             <Link href="/nosotros"
-              className="group inline-flex items-center gap-2 font-sans text-sm font-semibold text-[#7c3aed] hover:text-[#0d47ff] transition-colors duration-200 cursor-pointer whitespace-nowrap">
+              className="group inline-flex items-center gap-2 font-sans text-sm font-semibold text-[#7c3aed] hover:text-[#6d28d9] transition-colors duration-200 cursor-pointer whitespace-nowrap">
               Conocernos mejor
               <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200"
                 fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} aria-hidden>

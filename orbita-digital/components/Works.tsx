@@ -8,7 +8,7 @@ const projects = [
     title: "Floripa por Mauri",
     category: "Landing Page",
     image: "/trabajo-landing.jpg",
-    accentColor: "#0d47ff",
+    accentColor: "#7c3aed",
     description:
       "Guía digital de Florianópolis basada en experiencia propia. Un sitio pensado para turistas que buscan recomendaciones reales — no las de una guía genérica, sino las de alguien que vive y conoce la isla.",
   },
@@ -24,7 +24,7 @@ const projects = [
     title: "Identidad Visual",
     category: "Diseño Gráfico",
     image: "/identidad-visual2.jpg",
-    accentColor: "#0d47ff",
+    accentColor: "#7c3aed",
     description:
       "Identidad visual completa para una agencia de viajes. Paleta, tipografía, isotipo y aplicaciones gráficas con un estilo que transmite aventura y confianza.",
   },
@@ -40,7 +40,7 @@ const projects = [
     title: "Identidad Visual",
     category: "Diseño Gráfico",
     image: "/identidad-visual1.jpg",
-    accentColor: "#0d47ff",
+    accentColor: "#7c3aed",
     description:
       "Identidad visual para una barbería con estética urbana. Logo, paleta y sistema de marca aplicado a piezas digitales e impresas.",
   },

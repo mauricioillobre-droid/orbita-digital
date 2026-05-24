@@ -18,7 +18,7 @@ const services = [
     description:
       "Creamos sitios web que van más allá de verse bien. Cada proyecto está pensado para cargar rápido, adaptarse a cualquier dispositivo y convertir visitantes en clientes. Sin plantillas, sin atajos.",
     items: ["Landing Pages", "Sitios Institucionales", "Tiendas Online", "Optimización de Conversión"],
-    color: "#0d47ff",
+    color: "#7c3aed",
   },
   {
     icon: (
@@ -119,7 +119,7 @@ export default function Services() {
             className="font-display font-bold text-3xl sm:text-5xl text-[#0b0f17] mb-4"
           >
             Tres áreas. Un equipo.{" "}
-            <span className="text-[#0d47ff]">Un objetivo.</span>
+            <span className="text-[#7c3aed]">Un objetivo.</span>
           </h2>
         </div>
 

@@ -25,7 +25,7 @@ export default function TrabajosPage() {
           <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <AnimatedPageHero eyebrow="Portfolio">
               Proyectos reales.{" "}
-              <span className="text-[#0d47ff]">Soluciones concretas.</span>
+              <span className="text-[#7c3aed]">Soluciones concretas.</span>
             </AnimatedPageHero>
             <p className="font-sans text-lg text-[#0b0f17]/55 max-w-2xl mx-auto leading-relaxed">
               Cada proyecto tiene su propio contexto y su propio desafío. Estos son algunos de los trabajos que hicimos hasta ahora.

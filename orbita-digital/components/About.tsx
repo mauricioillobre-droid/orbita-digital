@@ -10,7 +10,7 @@ const team = [
     image: "/Mauri.jpeg",
     linkedin: "https://www.linkedin.com/in/mauricio-illobre-385744368",
     bio: "Soy Mauri, project manager y desarrollador, co-creador de Órbita Digital. Actualmente vivo en Florianópolis, Brasil, donde combino mi experiencia laboral con el desarrollo de proyectos digitales orientados a la optimización de procesos y generación de ingresos. Me especializo en la creación de sistemas automatizados, integración de herramientas y desarrollo de flujos de trabajo eficientes que permiten a negocios mejorar su gestión, ahorrar tiempo y escalar sus operaciones. Trabajo con una filosofía basada en la simplicidad, la mejora constante y la disciplina.",
-    accentColor: "#0d47ff",
+    accentColor: "#7c3aed",
   },
   {
     name: "Tati",

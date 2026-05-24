@@ -132,7 +132,7 @@ export default function Process() {
         <div className="relative">
           <div
             className="hidden md:block absolute top-[52px] left-[12.5%] right-[12.5%] h-px"
-            style={{ background: "linear-gradient(to right, transparent, #7c3aed30, #0d47ff30, transparent)" }}
+            style={{ background: "linear-gradient(to right, transparent, #7c3aed40, transparent)" }}
             aria-hidden
           />
 

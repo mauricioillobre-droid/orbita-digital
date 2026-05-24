@@ -58,7 +58,7 @@ export default function NosotrosPage() {
                 {
                   title: "Pensamos en tu negocio",
                   description: "No nos limitamos a ejecutar lo que nos pedís. Si vemos algo que puede funcionar mejor, lo decimos. El resultado importa más que el proceso.",
-                  color: "#0d47ff",
+                  color: "#7c3aed",
                 },
                 {
                   title: "Un equipo, un proyecto",

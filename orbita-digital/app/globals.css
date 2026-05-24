@@ -2,7 +2,7 @@
 
 @theme {
   --color-primary: #7c3aed;
-  --color-accent: #0d47ff;
+  --color-accent: #7c3aed;
   --color-bg: #ffffff;
   --font-sans: var(--font-ubuntu);
   --font-display: var(--font-ubuntu);
@@ -98,7 +98,7 @@ body {
 ::-webkit-scrollbar { width: 5px; }
 ::-webkit-scrollbar-track { background: #f0f0f0; }
 ::-webkit-scrollbar-thumb { background: #7c3aed; border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: #0d47ff; }
+::-webkit-scrollbar-thumb:hover { background: #6d28d9; }
 
 /* ── Section divider shape ── */
 .section-wave {

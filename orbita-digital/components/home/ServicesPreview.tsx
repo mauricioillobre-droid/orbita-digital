@@ -15,7 +15,7 @@ const services = [
     ),
     title: "Desarrollo Web",
     description: "Tu sitio tiene que trabajar, no solo verse bien. Hacemos sitios que cargan rápido, convierten y escalan.",
-    color: "#0d47ff",
+    color: "#7c3aed",
   },
   {
     icon: (
@@ -113,7 +113,7 @@ export default function ServicesPreview() {
               <span className="text-[#7c3aed]">un solo equipo.</span>
             </h2>
             <Link href="/servicios"
-              className="group inline-flex items-center gap-2 font-sans text-sm font-semibold text-[#7c3aed] hover:text-[#0d47ff] transition-colors duration-200 cursor-pointer whitespace-nowrap">
+              className="group inline-flex items-center gap-2 font-sans text-sm font-semibold text-[#7c3aed] hover:text-[#6d28d9] transition-colors duration-200 cursor-pointer whitespace-nowrap">
               Ver detalle completo
               <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200"
                 fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} aria-hidden>
