@@ -39,29 +39,6 @@ export default function About() {
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#7c3aed]/12 to-transparent" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 28 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <span className="inline-block text-[#7c3aed] font-sans font-medium text-xs tracking-[0.18em] uppercase mb-4">
-            Quiénes somos
-          </span>
-          <h2
-            id="about-heading"
-            className="font-display font-bold text-3xl sm:text-5xl text-[#0b0f17] mb-4"
-          >
-            Dos personas,{" "}
-            <span className="text-[#7c3aed]">un criterio compartido</span>
-          </h2>
-          <p className="font-sans text-[#0b0f17]/50 text-lg max-w-xl mx-auto leading-relaxed">
-            Habilidades complementarias y un objetivo en común: hacer bien las cosas.
-          </p>
-        </motion.div>
-
         {/* Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           {team.map((member, i) => (
@@ -71,7 +48,7 @@ export default function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6, delay: i * 0.15 }}
-              className="group rounded-2xl border border-[#e8eaf0] bg-white p-8 hover:border-[#7c3aed]/25 hover:shadow-xl hover:shadow-[#7c3aed]/8 transition-all duration-300"
+              className="group rounded-2xl border border-[#e8eaf0] bg-white p-10 hover:border-[#7c3aed]/25 hover:shadow-xl hover:shadow-[#7c3aed]/8 transition-all duration-300"
             >
               <div className="flex flex-col items-center text-center gap-5">
                 {/* Foto */}
@@ -79,7 +56,7 @@ export default function About() {
                   <img
                     src={member.image}
                     alt={`Foto de ${member.name}`}
-                    className="w-24 h-24 rounded-full object-cover object-top"
+                    className="w-28 h-28 rounded-full object-cover object-top"
                     style={{
                       boxShadow: `0 8px 28px ${member.accentColor}30`,
                       border: `3px solid ${member.accentColor}20`,
@@ -107,7 +84,7 @@ export default function About() {
                   >
                     {member.role}
                   </p>
-                  <p className="font-sans text-[#0b0f17]/50 text-sm leading-relaxed mb-6 text-left">
+                  <p className="font-sans text-[#0b0f17]/50 text-base leading-relaxed mb-6 text-left">
                     {member.bio}
                   </p>
 

@@ -44,27 +44,27 @@ export default function NosotrosPage() {
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-14">
               <h2 className="font-display font-bold text-2xl sm:text-4xl text-[#0b0f17] mb-4">
-                Cómo trabajamos
+                Nuestra forma de trabajar.
               </h2>
               <p className="font-sans text-[#0b0f17]/50">
-                Tres principios que guían todo lo que hacemos.
+                Tres principios que están detrás de cada proyecto que tomamos.
               </p>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
               {[
                 {
-                  title: "Trabajo artesanal",
-                  description: "Cada proyecto recibe atención real. No usamos plantillas genéricas ni delegamos a terceros.",
+                  title: "Hecho a medida",
+                  description: "Cada proyecto arranca desde cero. Analizamos tu negocio, tu contexto y tus objetivos antes de escribir una sola línea de código o diseñar una sola pieza.",
                   color: "#7c3aed",
                 },
                 {
-                  title: "Visión de negocio",
-                  description: "Diseñamos y construimos pensando en conversión y escalabilidad, no solo en estética.",
+                  title: "Pensamos en tu negocio",
+                  description: "No nos limitamos a ejecutar lo que nos pedís. Si vemos algo que puede funcionar mejor, lo decimos. El resultado importa más que el proceso.",
                   color: "#0d47ff",
                 },
                 {
-                  title: "Equipo directo",
-                  description: "Trabajás siempre con las mismas personas. Sin intermediarios, sin sorpresas.",
+                  title: "Un equipo, un proyecto",
+                  description: "Trabajás directamente con Mauri y Tati en cada etapa. Sin terceros, sin delegaciones, sin sorpresas.",
                   color: "#7c3aed",
                 },
               ].map((v) => (
