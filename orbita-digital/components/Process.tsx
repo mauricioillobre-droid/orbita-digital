@@ -7,7 +7,7 @@ const steps = [
   {
     number: "01",
     title: "Escuchamos",
-    description: "Entendemos tu negocio, tus objetivos, tus limitaciones y tu contexto. No hay soluciones genéricas.",
+    description: "Antes de proponer cualquier solución, entendemos tu negocio en profundidad: tus objetivos, tu contexto y tus limitaciones reales.",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
         strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
@@ -19,7 +19,7 @@ const steps = [
   {
     number: "02",
     title: "Diseñamos juntos",
-    description: "Proponemos estrategia antes de presupuestos. Tú decides con información de por medio, con confianza.",
+    description: "Definimos la estrategia antes del presupuesto. Cada decisión se toma con información clara, para que elijas con criterio.",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
         strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
@@ -31,7 +31,7 @@ const steps = [
   {
     number: "03",
     title: "Ejecutamos con calidad",
-    description: "Entregables que funcionan. Innovación en cada detalle. Soporte constante durante el proceso.",
+    description: "Construimos con estándares altos y te mantenemos informado en cada etapa. El resultado final no es una sorpresa: es lo que acordamos.",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
         strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>

@@ -51,7 +51,7 @@ const services = [
     description: "La identidad visual de tu negocio importa más de lo que creés. Diseñamos con criterio, no con plantillas.",
     bullets: [
       "Identidad coherente (logo, paleta, estilo)",
-      "Contenido estratégico (que vende, no solo vira)",
+      "Contenido estratégico (que vende, no solo viral)",
       "Detalle en todo (porque el detalle genera confianza)",
     ],
     color: "#7c3aed",
