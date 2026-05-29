@@ -111,8 +111,8 @@ export default function Hero() {
           id="hero-heading"
           className="font-display font-bold text-4xl sm:text-6xl lg:text-7xl text-[#0b0f17] leading-[1.07] tracking-tight mb-6"
         >
-          Construimos presencia digital{" "}
-          <span className="text-[#7c3aed]">que funciona.</span>
+          Tu aliado digital que{" "}
+          <span className="text-[#7c3aed]">entiende tu negocio</span>
         </motion.h1>
 
         <motion.p
@@ -121,8 +121,8 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 0.32 }}
           className="font-sans text-lg sm:text-xl text-[#0b0f17]/55 max-w-2xl mx-auto mb-10 leading-relaxed"
         >
-          Sitios web, identidad visual y automatizaciones para negocios
-          que quieren crecer con consistencia.
+          Diseño + tecnología + automatización.{" "}
+          No solo ejecutamos: aconsejamos, innovamos y entregamos resultados.
         </motion.p>
 
         <motion.div

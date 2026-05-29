@@ -6,6 +6,7 @@ import ServicesPreview from "@/components/home/ServicesPreview";
 import WorksPreview from "@/components/home/WorksPreview";
 import TeamPreview from "@/components/home/TeamPreview";
 import HomeCTA from "@/components/home/HomeCTA";
+import Process from "@/components/Process";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       <main>
         <Hero />
         <StatsStrip />
+        <Process />
         <ServicesPreview />
         <WorksPreview />
         <TeamPreview />

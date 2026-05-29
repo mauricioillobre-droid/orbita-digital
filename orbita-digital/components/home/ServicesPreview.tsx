@@ -15,6 +15,11 @@ const services = [
     ),
     title: "Desarrollo Web",
     description: "Tu sitio tiene que trabajar, no solo verse bien. Hacemos sitios que cargan rápido, convierten y escalan.",
+    bullets: [
+      "Con asesoría previa (decisiones informadas)",
+      "Integración con herramientas (automatizamos flujos)",
+      "Soporte post-lanzamiento (crecemos juntos)",
+    ],
     color: "#7c3aed",
   },
   {
@@ -27,6 +32,11 @@ const services = [
     ),
     title: "Automatización",
     description: "Si algo se puede automatizar, no tiene sentido hacerlo a mano. Sistemas que trabajan aunque no estés.",
+    bullets: [
+      "Flujos integrados (WhatsApp, emails, reservas)",
+      "Planillas inteligentes (reportes automáticos)",
+      "Procesos que escalan (sin sumar trabajo manual)",
+    ],
     color: "#7c3aed",
   },
   {
@@ -39,6 +49,11 @@ const services = [
     ),
     title: "Diseño y Contenido",
     description: "La identidad visual de tu negocio importa más de lo que creés. Diseñamos con criterio, no con plantillas.",
+    bullets: [
+      "Identidad coherente (logo, paleta, estilo)",
+      "Contenido estratégico (que vende, no solo vira)",
+      "Detalle en todo (porque el detalle genera confianza)",
+    ],
     color: "#7c3aed",
   },
 ];
@@ -136,7 +151,15 @@ export default function ServicesPreview() {
                 {s.icon}
               </div>
               <h3 className="font-display font-bold text-lg text-[#0b0f17] mb-2 relative">{s.title}</h3>
-              <p className="font-sans text-[#0b0f17]/50 text-sm leading-relaxed relative">{s.description}</p>
+              <p className="font-sans text-[#0b0f17]/50 text-sm leading-relaxed relative mb-4">{s.description}</p>
+              <ul className="relative space-y-1.5">
+                {s.bullets.map((b) => (
+                  <li key={b} className="flex items-start gap-2 font-sans text-xs text-[#0b0f17]/60 leading-relaxed">
+                    <span className="mt-0.5 shrink-0 text-[#7c3aed] font-bold">✓</span>
+                    {b}
+                  </li>
+                ))}
+              </ul>
             </div>
           ))}
         </div>

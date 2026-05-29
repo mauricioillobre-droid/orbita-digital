@@ -6,20 +6,20 @@ import { gsap, prefersReduced, splitWords } from "@/lib/gsap-utils";
 const steps = [
   {
     number: "01",
-    title: "Diagnóstico",
-    description: "Entendemos tu negocio, tus objetivos y tu punto de partida.",
+    title: "Escuchamos",
+    description: "Entendemos tu negocio, tus objetivos, tus limitaciones y tu contexto. No hay soluciones genéricas.",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
         strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-        <circle cx="11" cy="11" r="8" />
-        <path d="M21 21l-4.35-4.35" />
+        <path d="M12 1a5 5 0 015 5v3a5 5 0 01-10 0V6a5 5 0 015-5z" />
+        <path d="M19 10a7 7 0 01-14 0M12 19v4M8 23h8" />
       </svg>
     ),
   },
   {
     number: "02",
-    title: "Propuesta",
-    description: "Definimos el alcance, los entregables y los tiempos. Sin sorpresas.",
+    title: "Diseñamos juntos",
+    description: "Proponemos estrategia antes de presupuestos. Tú decides con información de por medio, con confianza.",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
         strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
@@ -30,24 +30,12 @@ const steps = [
   },
   {
     number: "03",
-    title: "Ejecución",
-    description: "Construimos con criterio y te mantenemos informado en cada etapa.",
+    title: "Ejecutamos con calidad",
+    description: "Entregables que funcionan. Innovación en cada detalle. Soporte constante durante el proceso.",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
         strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
         <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
-      </svg>
-    ),
-  },
-  {
-    number: "04",
-    title: "Entrega",
-    description: "Lanzamos juntos y seguimos disponibles después del cierre.",
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-        strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-        <path d="M22 11.08V12a10 10 0 11-5.93-9.14" />
-        <polyline points="22 4 12 14.01 9 11.01" />
       </svg>
     ),
   },
@@ -120,11 +108,11 @@ export default function Process() {
             id="process-heading"
             className="font-display font-bold text-3xl sm:text-5xl text-[#0b0f17] mb-4"
           >
-            Un proceso claro{" "}
-            <span className="text-[#7c3aed]">de principio a fin.</span>
+            Cómo{" "}
+            <span className="text-[#7c3aed]">trabajamos</span>
           </h2>
           <p className="font-sans text-[#0b0f17]/50 text-lg max-w-lg mx-auto">
-            Cuatro pasos simples para ir de la idea al resultado.
+            Un proceso pensado para que entiendas cada paso.
           </p>
         </div>
 
@@ -136,7 +124,7 @@ export default function Process() {
             aria-hidden
           />
 
-          <div ref={stepsRef} className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-6">
+          <div ref={stepsRef} className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6">
             {steps.map((step, i) => (
               <div
                 key={step.number}
