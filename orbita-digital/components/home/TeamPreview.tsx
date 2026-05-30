@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import Link from "next/link";
-import { gsap, prefersReduced, splitWords } from "@/lib/gsap-utils";
+import Image from "next/image";
 
 const team = [
   {
@@ -30,41 +30,50 @@ export default function TeamPreview() {
   const cardsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (prefersReduced()) return;
+    const el = sectionRef.current;
+    if (!el) return;
+    let cleanup: (() => void) | undefined;
 
-    const ctx = gsap.context(() => {
-      gsap.fromTo(sectionRef.current,
-        { y: 40, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.8, ease: "power2.out",
-          scrollTrigger: { trigger: sectionRef.current, start: "top 80%", once: true } }
-      );
-
-      gsap.fromTo(eyebrowRef.current,
-        { x: -20, opacity: 0 },
-        { x: 0, opacity: 1, duration: 0.5, ease: "power2.out",
-          scrollTrigger: { trigger: eyebrowRef.current, start: "top 85%", once: true } }
-      );
-
-      if (titleRef.current) {
-        const words = splitWords(titleRef.current);
-        gsap.fromTo(words,
-          { y: 60, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.7, ease: "power3.out", stagger: 0.08,
-            scrollTrigger: { trigger: titleRef.current, start: "top 85%", once: true } }
-        );
-      }
-
-      if (cardsRef.current) {
-        const cards = Array.from(cardsRef.current.children);
-        gsap.fromTo(cards,
-          { y: 50, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.6, ease: "power2.out", stagger: 0.12,
-            scrollTrigger: { trigger: cardsRef.current, start: "top 80%", once: true } }
-        );
-      }
-    }, sectionRef);
-
-    return () => ctx.revert();
+    const observer = new IntersectionObserver(
+      async (entries) => {
+        if (!entries[0].isIntersecting) return;
+        observer.disconnect();
+        const { gsap, prefersReduced, splitWords } = await import("@/lib/gsap-utils");
+        if (prefersReduced()) return;
+        const ctx = gsap.context(() => {
+          gsap.fromTo(sectionRef.current,
+            { y: 40, opacity: 0 },
+            { y: 0, opacity: 1, duration: 0.8, ease: "power2.out",
+              scrollTrigger: { trigger: sectionRef.current, start: "top 80%", once: true } }
+          );
+          gsap.fromTo(eyebrowRef.current,
+            { x: -20, opacity: 0 },
+            { x: 0, opacity: 1, duration: 0.5, ease: "power2.out",
+              scrollTrigger: { trigger: eyebrowRef.current, start: "top 85%", once: true } }
+          );
+          if (titleRef.current) {
+            const words = splitWords(titleRef.current);
+            gsap.fromTo(words,
+              { y: 60, opacity: 0 },
+              { y: 0, opacity: 1, duration: 0.7, ease: "power3.out", stagger: 0.08,
+                scrollTrigger: { trigger: titleRef.current, start: "top 85%", once: true } }
+            );
+          }
+          if (cardsRef.current) {
+            const cards = Array.from(cardsRef.current.children);
+            gsap.fromTo(cards,
+              { y: 50, opacity: 0 },
+              { y: 0, opacity: 1, duration: 0.6, ease: "power2.out", stagger: 0.12,
+                scrollTrigger: { trigger: cardsRef.current, start: "top 80%", once: true } }
+            );
+          }
+        }, el);
+        cleanup = () => ctx.revert();
+      },
+      { rootMargin: "200px" }
+    );
+    observer.observe(el);
+    return () => { observer.disconnect(); cleanup?.(); };
   }, []);
 
   return (
@@ -127,9 +136,15 @@ export default function TeamPreview() {
                 el.style.borderColor = "rgba(124,58,237,0.12)";
               }}
             >
-              <img src={m.image} alt={`Foto de ${m.name}`}
+              <Image
+                src={m.image}
+                alt={`Foto de ${m.name}`}
+                width={128}
+                height={128}
                 className="w-32 h-32 rounded-full object-cover object-top mb-6"
-                style={{ border: `3px solid ${m.color}25`, boxShadow: `0 8px 28px ${m.color}25` }} />
+                style={{ border: `3px solid ${m.color}25`, boxShadow: `0 8px 28px ${m.color}25` }}
+                loading="lazy"
+              />
               <h3 className="font-display font-bold text-[#0b0f17] text-2xl mb-1">{m.name}</h3>
               <p className="font-sans text-xs font-semibold tracking-wide uppercase mb-4" style={{ color: m.color }}>
                 {m.role}

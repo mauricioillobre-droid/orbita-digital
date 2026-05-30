@@ -11,6 +11,15 @@ if (typeof window !== "undefined") {
 
 export { gsap, ScrollTrigger };
 
+export async function loadGSAP() {
+  const [{ gsap: g }, { ScrollTrigger: ST }] = await Promise.all([
+    import("gsap"),
+    import("gsap/ScrollTrigger"),
+  ]);
+  g.registerPlugin(ST);
+  return { gsap: g, ScrollTrigger: ST, prefersReduced, splitWords };
+}
+
 /** Returns true if the user prefers reduced motion. */
 export function prefersReduced(): boolean {
   return (

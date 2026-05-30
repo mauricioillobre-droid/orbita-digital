@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import Link from "next/link";
-import { gsap, prefersReduced, splitWords } from "@/lib/gsap-utils";
+import Image from "next/image";
 
 const projects = [
   { title: "Floripa por Mauri", category: "Landing Page", image: "/trabajo-landing.jpg", color: "#7c3aed" },
@@ -18,41 +18,50 @@ export default function WorksPreview() {
   const cardsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (prefersReduced()) return;
+    const el = sectionRef.current;
+    if (!el) return;
+    let cleanup: (() => void) | undefined;
 
-    const ctx = gsap.context(() => {
-      gsap.fromTo(sectionRef.current,
-        { y: 40, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.8, ease: "power2.out",
-          scrollTrigger: { trigger: sectionRef.current, start: "top 80%", once: true } }
-      );
-
-      gsap.fromTo(eyebrowRef.current,
-        { x: -20, opacity: 0 },
-        { x: 0, opacity: 1, duration: 0.5, ease: "power2.out",
-          scrollTrigger: { trigger: eyebrowRef.current, start: "top 85%", once: true } }
-      );
-
-      if (titleRef.current) {
-        const words = splitWords(titleRef.current);
-        gsap.fromTo(words,
-          { y: 60, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.7, ease: "power3.out", stagger: 0.08,
-            scrollTrigger: { trigger: titleRef.current, start: "top 85%", once: true } }
-        );
-      }
-
-      if (cardsRef.current) {
-        const cards = Array.from(cardsRef.current.children);
-        gsap.fromTo(cards,
-          { y: 50, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.6, ease: "power2.out", stagger: 0.12,
-            scrollTrigger: { trigger: cardsRef.current, start: "top 80%", once: true } }
-        );
-      }
-    }, sectionRef);
-
-    return () => ctx.revert();
+    const observer = new IntersectionObserver(
+      async (entries) => {
+        if (!entries[0].isIntersecting) return;
+        observer.disconnect();
+        const { gsap, prefersReduced, splitWords } = await import("@/lib/gsap-utils");
+        if (prefersReduced()) return;
+        const ctx = gsap.context(() => {
+          gsap.fromTo(sectionRef.current,
+            { y: 40, opacity: 0 },
+            { y: 0, opacity: 1, duration: 0.8, ease: "power2.out",
+              scrollTrigger: { trigger: sectionRef.current, start: "top 80%", once: true } }
+          );
+          gsap.fromTo(eyebrowRef.current,
+            { x: -20, opacity: 0 },
+            { x: 0, opacity: 1, duration: 0.5, ease: "power2.out",
+              scrollTrigger: { trigger: eyebrowRef.current, start: "top 85%", once: true } }
+          );
+          if (titleRef.current) {
+            const words = splitWords(titleRef.current);
+            gsap.fromTo(words,
+              { y: 60, opacity: 0 },
+              { y: 0, opacity: 1, duration: 0.7, ease: "power3.out", stagger: 0.08,
+                scrollTrigger: { trigger: titleRef.current, start: "top 85%", once: true } }
+            );
+          }
+          if (cardsRef.current) {
+            const cards = Array.from(cardsRef.current.children);
+            gsap.fromTo(cards,
+              { y: 50, opacity: 0 },
+              { y: 0, opacity: 1, duration: 0.6, ease: "power2.out", stagger: 0.12,
+                scrollTrigger: { trigger: cardsRef.current, start: "top 80%", once: true } }
+            );
+          }
+        }, el);
+        cleanup = () => ctx.revert();
+      },
+      { rootMargin: "200px" }
+    );
+    observer.observe(el);
+    return () => { observer.disconnect(); cleanup?.(); };
   }, []);
 
   return (
@@ -116,9 +125,15 @@ export default function WorksPreview() {
               }}
             >
               <div className="relative h-56 sm:h-64 overflow-hidden">
-                <img src={p.image} alt={p.title}
+                <Image
+                  src={p.image}
+                  alt={p.title}
+                  width={600}
+                  height={400}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  loading="lazy" />
+                  loading="lazy"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0b0f17]/75 via-[#0b0f17]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
                   <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-sans font-semibold mb-1.5"
                     style={{ backgroundColor: `${p.color}30`, color: "#fff", border: `1px solid ${p.color}50` }}>

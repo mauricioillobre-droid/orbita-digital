@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { gsap, prefersReduced } from "@/lib/gsap-utils";
+import Image from "next/image";
 
 const team = [
   {
@@ -35,26 +35,37 @@ export default function About() {
   const cardsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (prefersReduced()) return;
+    const el = sectionRef.current;
+    if (!el) return;
+    let cleanup: (() => void) | undefined;
 
-    const ctx = gsap.context(() => {
-      gsap.fromTo(sectionRef.current,
-        { y: 40, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.8, ease: "power2.out",
-          scrollTrigger: { trigger: sectionRef.current, start: "top 80%", once: true } }
-      );
-
-      if (cardsRef.current) {
-        const cards = Array.from(cardsRef.current.children);
-        gsap.fromTo(cards,
-          { y: 50, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.6, ease: "power2.out", stagger: 0.12,
-            scrollTrigger: { trigger: cardsRef.current, start: "top 80%", once: true } }
-        );
-      }
-    }, sectionRef);
-
-    return () => ctx.revert();
+    const observer = new IntersectionObserver(
+      async (entries) => {
+        if (!entries[0].isIntersecting) return;
+        observer.disconnect();
+        const { gsap, prefersReduced } = await import("@/lib/gsap-utils");
+        if (prefersReduced()) return;
+        const ctx = gsap.context(() => {
+          gsap.fromTo(sectionRef.current,
+            { y: 40, opacity: 0 },
+            { y: 0, opacity: 1, duration: 0.8, ease: "power2.out",
+              scrollTrigger: { trigger: sectionRef.current, start: "top 80%", once: true } }
+          );
+          if (cardsRef.current) {
+            const cards = Array.from(cardsRef.current.children);
+            gsap.fromTo(cards,
+              { y: 50, opacity: 0 },
+              { y: 0, opacity: 1, duration: 0.6, ease: "power2.out", stagger: 0.12,
+                scrollTrigger: { trigger: cardsRef.current, start: "top 80%", once: true } }
+            );
+          }
+        }, el);
+        cleanup = () => ctx.revert();
+      },
+      { rootMargin: "200px" }
+    );
+    observer.observe(el);
+    return () => { observer.disconnect(); cleanup?.(); };
   }, []);
 
   return (
@@ -77,14 +88,17 @@ export default function About() {
               <div className="flex flex-col items-center text-center gap-5">
                 {/* Foto */}
                 <div className="relative">
-                  <img
+                  <Image
                     src={member.image}
                     alt={`Foto de ${member.name}`}
+                    width={112}
+                    height={112}
                     className="w-28 h-28 rounded-full object-cover object-top"
                     style={{
                       boxShadow: `0 8px 28px ${member.accentColor}30`,
                       border: `3px solid ${member.accentColor}20`,
                     }}
+                    loading="lazy"
                   />
                   <div
                     className="absolute -bottom-1 -right-1 w-6 h-6 rounded-full border-2 border-white flex items-center justify-center"

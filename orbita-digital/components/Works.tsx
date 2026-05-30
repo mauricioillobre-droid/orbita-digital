@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { gsap, prefersReduced, splitWords } from "@/lib/gsap-utils";
+import Image from "next/image";
 
 const projects = [
   {
@@ -51,26 +51,37 @@ export default function Works() {
   const cardsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (prefersReduced()) return;
+    const el = sectionRef.current;
+    if (!el) return;
+    let cleanup: (() => void) | undefined;
 
-    const ctx = gsap.context(() => {
-      gsap.fromTo(sectionRef.current,
-        { y: 40, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.8, ease: "power2.out",
-          scrollTrigger: { trigger: sectionRef.current, start: "top 80%", once: true } }
-      );
-
-      if (cardsRef.current) {
-        const cards = Array.from(cardsRef.current.children);
-        gsap.fromTo(cards,
-          { y: 50, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.6, ease: "power2.out", stagger: 0.12,
-            scrollTrigger: { trigger: cardsRef.current, start: "top 80%", once: true } }
-        );
-      }
-    }, sectionRef);
-
-    return () => ctx.revert();
+    const observer = new IntersectionObserver(
+      async (entries) => {
+        if (!entries[0].isIntersecting) return;
+        observer.disconnect();
+        const { gsap, prefersReduced } = await import("@/lib/gsap-utils");
+        if (prefersReduced()) return;
+        const ctx = gsap.context(() => {
+          gsap.fromTo(sectionRef.current,
+            { y: 40, opacity: 0 },
+            { y: 0, opacity: 1, duration: 0.8, ease: "power2.out",
+              scrollTrigger: { trigger: sectionRef.current, start: "top 80%", once: true } }
+          );
+          if (cardsRef.current) {
+            const cards = Array.from(cardsRef.current.children);
+            gsap.fromTo(cards,
+              { y: 50, opacity: 0 },
+              { y: 0, opacity: 1, duration: 0.6, ease: "power2.out", stagger: 0.12,
+                scrollTrigger: { trigger: cardsRef.current, start: "top 80%", once: true } }
+            );
+          }
+        }, el);
+        cleanup = () => ctx.revert();
+      },
+      { rootMargin: "200px" }
+    );
+    observer.observe(el);
+    return () => { observer.disconnect(); cleanup?.(); };
   }, []);
 
   return (
@@ -92,11 +103,14 @@ export default function Works() {
             >
               {/* Imagen */}
               <div className="relative h-60 sm:h-72 overflow-hidden">
-                <img
+                <Image
                   src={project.image}
                   alt={project.title}
+                  width={600}
+                  height={400}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   loading="lazy"
+                  sizes="(max-width: 768px) 100vw, 50vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0b0f17]/80 via-[#0b0f17]/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-350 flex flex-col justify-end p-6">
                   <div className="translate-y-3 group-hover:translate-y-0 transition-transform duration-300">
