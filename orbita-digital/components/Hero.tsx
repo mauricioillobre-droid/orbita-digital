@@ -1,12 +1,21 @@
 "use client";
 
-import { useRef, useEffect } from "react";
-import { motion, useScroll, useTransform } from "motion/react";
+import { useRef, useEffect, useState } from "react";
+import { motion, useScroll, useTransform, useMotionValue, useSpring } from "motion/react";
 
 const WA_TATI = "https://wa.me/5493541232353?text=Hola%20%C3%93rbita%20Digital%2C%20quiero%20hablar%20de%20mi%20proyecto";
 
+const heroWords = [
+  { text: "Tu", colored: false },
+  { text: "aliado", colored: false },
+  { text: "digital", colored: false },
+  { text: "que", colored: false },
+  { text: "entiende tu negocio", colored: true },
+];
+
 export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
+  const [isDesktop, setIsDesktop] = useState(false);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start start", "end start"],
@@ -14,6 +23,26 @@ export default function Hero() {
 
   const blobY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
   const contentY = useTransform(scrollYProgress, [0, 1], ["0%", "12%"]);
+
+  // Cursor magnetic blob
+  const cursorX = useMotionValue(-200);
+  const cursorY = useMotionValue(-200);
+  const springX = useSpring(cursorX, { stiffness: 80, damping: 20 });
+  const springY = useSpring(cursorY, { stiffness: 80, damping: 20 });
+
+  useEffect(() => {
+    setIsDesktop(window.innerWidth > 768);
+  }, []);
+
+  useEffect(() => {
+    if (!isDesktop) return;
+    const handleMouseMove = (e: MouseEvent) => {
+      cursorX.set(e.clientX - 50);
+      cursorY.set(e.clientY - 50);
+    };
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, [isDesktop, cursorX, cursorY]);
 
   useEffect(() => {
     const els = document.querySelectorAll(".reveal, .reveal-left, .reveal-right");
@@ -36,9 +65,18 @@ export default function Hero() {
     <section
       ref={sectionRef}
       id="inicio"
-      className="relative min-h-dvh flex flex-col items-center justify-center overflow-hidden bg-white"
+      className="hero-bg relative min-h-dvh flex flex-col items-center justify-center overflow-hidden bg-white"
       aria-labelledby="hero-heading"
     >
+      {/* Atmospheric radial gradient */}
+      <div
+        aria-hidden
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(124,58,237,0.10) 0%, transparent 70%)",
+        }}
+      />
+
       <div
         aria-hidden
         className="absolute inset-0 pointer-events-none"
@@ -48,6 +86,23 @@ export default function Hero() {
           backgroundSize: "32px 32px",
         }}
       />
+
+      {/* Cursor magnetic blob */}
+      {isDesktop && (
+        <motion.div
+          aria-hidden
+          className="fixed pointer-events-none z-50"
+          style={{
+            left: springX,
+            top: springY,
+            width: 100,
+            height: 100,
+            background: "radial-gradient(circle, rgba(124,58,237,0.35) 0%, transparent 70%)",
+            filter: "blur(20px)",
+            borderRadius: "50%",
+          }}
+        />
+      )}
 
       <motion.div
         aria-hidden
@@ -104,16 +159,23 @@ export default function Hero() {
           </span>
         </motion.div>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 28 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.2 }}
+        <h1
           id="hero-heading"
           className="font-display font-bold text-4xl sm:text-6xl lg:text-7xl text-[#0b0f17] leading-[1.07] tracking-tight mb-6"
         >
-          Tu aliado digital que{" "}
-          <span className="text-[#7c3aed]">entiende tu negocio</span>
-        </motion.h1>
+          {heroWords.map((word, i) => (
+            <motion.span
+              key={i}
+              initial={{ opacity: 0, y: 28 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.2 + i * 0.08 }}
+              className={word.colored ? "text-[#7c3aed]" : ""}
+              style={{ display: "inline-block", marginRight: word.colored ? 0 : "0.25em" }}
+            >
+              {word.text}
+            </motion.span>
+          ))}
+        </h1>
 
         <motion.p
           initial={{ opacity: 0, y: 24 }}

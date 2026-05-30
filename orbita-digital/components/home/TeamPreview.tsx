@@ -70,6 +70,7 @@ export default function TeamPreview() {
   return (
     <section
       ref={sectionRef}
+      id="equipo"
       className="relative py-24 lg:py-32 bg-[#faf9ff]"
       aria-labelledby="team-preview-heading"
     >
@@ -107,7 +108,24 @@ export default function TeamPreview() {
           {team.map((m) => (
             <div
               key={m.name}
-              className="group flex flex-col items-center text-center p-10 rounded-2xl border border-[#e8eaf0] bg-white hover:border-[#7c3aed]/25 hover:shadow-lg hover:shadow-[#7c3aed]/7 transition-all duration-300"
+              className="group flex flex-col items-center text-center p-10 rounded-2xl"
+              style={{
+                border: "1px solid rgba(124,58,237,0.12)",
+                background: "rgba(124,58,237,0.02)",
+                transition: "all 0.3s ease",
+              }}
+              onMouseEnter={(e) => {
+                const el = e.currentTarget;
+                el.style.background = "rgba(124,58,237,0.05)";
+                el.style.boxShadow = "0 8px 32px rgba(124,58,237,0.10)";
+                el.style.borderColor = "rgba(124,58,237,0.25)";
+              }}
+              onMouseLeave={(e) => {
+                const el = e.currentTarget;
+                el.style.background = "rgba(124,58,237,0.02)";
+                el.style.boxShadow = "";
+                el.style.borderColor = "rgba(124,58,237,0.12)";
+              }}
             >
               <img src={m.image} alt={`Foto de ${m.name}`}
                 className="w-32 h-32 rounded-full object-cover object-top mb-6"

@@ -58,6 +58,7 @@ export default function WorksPreview() {
   return (
     <section
       ref={sectionRef}
+      id="trabajos"
       className="relative py-24 lg:py-32 bg-white"
       aria-labelledby="works-preview-heading"
     >
@@ -95,7 +96,24 @@ export default function WorksPreview() {
           {projects.map((p) => (
             <div
               key={p.title}
-              className="group relative rounded-2xl overflow-hidden border border-[#e8eaf0] bg-white cursor-pointer"
+              className="group relative rounded-2xl overflow-hidden cursor-pointer"
+              style={{
+                border: "1px solid rgba(124,58,237,0.12)",
+                background: "rgba(124,58,237,0.02)",
+                transition: "all 0.3s ease",
+              }}
+              onMouseEnter={(e) => {
+                const el = e.currentTarget;
+                el.style.background = "rgba(124,58,237,0.05)";
+                el.style.boxShadow = "0 8px 32px rgba(124,58,237,0.10)";
+                el.style.borderColor = "rgba(124,58,237,0.25)";
+              }}
+              onMouseLeave={(e) => {
+                const el = e.currentTarget;
+                el.style.background = "rgba(124,58,237,0.02)";
+                el.style.boxShadow = "";
+                el.style.borderColor = "rgba(124,58,237,0.12)";
+              }}
             >
               <div className="relative h-56 sm:h-64 overflow-hidden">
                 <img src={p.image} alt={p.title}
@@ -109,7 +127,7 @@ export default function WorksPreview() {
                   <h3 className="font-display font-bold text-white text-lg">{p.title}</h3>
                 </div>
               </div>
-              <div className="px-5 py-4 flex items-center justify-between bg-white group-hover:bg-[#faf9ff] transition-colors duration-300">
+              <div className="px-5 py-4 flex items-center justify-between bg-white/80">
                 <div>
                   <h3 className="font-display font-bold text-[#0b0f17] text-sm">{p.title}</h3>
                   <span className="inline-flex items-center mt-1 px-2 py-0.5 rounded-full text-xs font-sans font-semibold"
