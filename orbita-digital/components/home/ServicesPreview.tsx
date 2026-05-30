@@ -97,12 +97,24 @@ export default function ServicesPreview() {
             scrollTrigger: { trigger: cardsRef.current, start: "top 80%", once: true } }
         );
 
-        const bullets = cardsRef.current.querySelectorAll("li");
-        gsap.fromTo(bullets,
-          { opacity: 0, x: -14 },
-          { opacity: 1, x: 0, duration: 0.45, stagger: 0.07, ease: "power2.out",
-            scrollTrigger: { trigger: cardsRef.current, start: "top 75%", once: true } }
-        );
+        const bullets = sectionRef.current?.querySelectorAll(".service-bullet");
+        if (bullets && bullets.length > 0) {
+          gsap.fromTo(
+            bullets,
+            { opacity: 0, x: -14 },
+            {
+              opacity: 1,
+              x: 0,
+              duration: 0.45,
+              stagger: 0.07,
+              ease: "power2.out",
+              scrollTrigger: {
+                trigger: sectionRef.current,
+                start: "top 70%",
+              },
+            }
+          );
+        }
       }
     }, sectionRef);
 
@@ -181,7 +193,7 @@ export default function ServicesPreview() {
               <p className="font-sans text-sm leading-relaxed relative mb-4" style={{ color: "rgba(255,255,255,0.70)" }}>{s.description}</p>
               <ul className="relative space-y-1.5">
                 {s.bullets.map((b) => (
-                  <li key={b} className="flex items-start gap-2 font-sans text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.60)" }}>
+                  <li key={b} className="service-bullet flex items-start gap-2 font-sans text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.60)" }}>
                     <span className="mt-0.5 shrink-0 font-bold" style={{ color: "#a78bfa" }}>✓</span>
                     {b}
                   </li>
