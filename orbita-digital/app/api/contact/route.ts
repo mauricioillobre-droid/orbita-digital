@@ -28,13 +28,22 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'El nombre es requerido' }, { status: 400 })
   }
 
-  // Enviar al CRM en background (no bloqueamos la respuesta al usuario)
+  // Enviar al CRM — awaiteado para garantizar que Next.js no mate el proceso
   const crmUrl = `${WEBHOOK_URL}?secret=${WEBHOOK_SECRET}`
-  fetch(crmUrl, {
-    method:  'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body:    JSON.stringify({ name, email, message, phone, empresa, servicio }),
-  }).catch(err => console.error('[contact] Error enviando al CRM:', err))
+  try {
+    const crmRes = await fetch(crmUrl, {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body:    JSON.stringify({ name, email, message, phone, empresa, servicio }),
+    })
+    if (!crmRes.ok) {
+      const txt = await crmRes.text().catch(() => '')
+      console.error(`[contact] CRM respondió ${crmRes.status}: ${txt}`)
+    }
+  } catch (err) {
+    // Si el CRM falla, igual confirmamos al usuario — no es su problema
+    console.error('[contact] Error llamando al CRM:', err)
+  }
 
   return NextResponse.json({ ok: true })
 }
