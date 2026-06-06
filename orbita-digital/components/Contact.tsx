@@ -1,7 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import { useForm, ValidationError } from "@formspree/react";
+import { useEffect, useRef, useState } from "react";
 
 const WA_TATI = "https://wa.me/5493541232353?text=Hola%20%C3%93rbita%20Digital%2C%20quiero%20hablar%20de%20mi%20proyecto";
 const WA_MAURI = "https://wa.me/5548984211589?text=Hola%20%C3%93rbita%20Digital%2C%20quiero%20hablar%20de%20mi%20proyecto";
@@ -25,10 +24,34 @@ function EmailIcon() {
   );
 }
 
-function ContactForm() {
-  const [state, handleSubmit] = useForm("xjgzopyl");
+type FormStatus = 'idle' | 'submitting' | 'success' | 'error'
 
-  if (state.succeeded) {
+function ContactForm() {
+  const [status, setStatus] = useState<FormStatus>('idle')
+  const [fields, setFields] = useState({ name: '', email: '', message: '' })
+
+  const set = (k: keyof typeof fields) =>
+    (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+      setFields(prev => ({ ...prev, [k]: e.target.value }))
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault()
+    if (!fields.name.trim()) return
+    setStatus('submitting')
+    try {
+      const res = await fetch('/api/contact', {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body:    JSON.stringify(fields),
+      })
+      if (!res.ok) throw new Error('Error en el servidor')
+      setStatus('success')
+    } catch {
+      setStatus('error')
+    }
+  }
+
+  if (status === 'success') {
     return (
       <div className="flex flex-col items-center justify-center gap-4 py-12 text-center">
         <div className="w-16 h-16 rounded-full bg-[#7c3aed]/10 border border-[#7c3aed]/20 flex items-center justify-center">
@@ -43,7 +66,7 @@ function ContactForm() {
           Te respondemos en menos de 24 horas. También podés escribirnos directamente por WhatsApp.
         </p>
       </div>
-    );
+    )
   }
 
   return (
@@ -53,9 +76,8 @@ function ContactForm() {
           Nombre
         </label>
         <input id="name" type="text" name="name" required placeholder="Tu nombre"
+          value={fields.name} onChange={set('name')}
           className="w-full h-11 px-4 rounded-xl border border-[#e8eaf0] bg-white font-sans text-sm text-[#0b0f17] placeholder-[#0b0f17]/30 focus:outline-none focus:border-[#7c3aed]/50 focus:ring-2 focus:ring-[#7c3aed]/10 transition-all duration-200" />
-        <ValidationError field="name" prefix="Nombre" errors={state.errors}
-          className="mt-1 text-xs text-red-500 font-sans" />
       </div>
 
       <div>
@@ -63,9 +85,8 @@ function ContactForm() {
           Email
         </label>
         <input id="email" type="email" name="email" required placeholder="tu@email.com"
+          value={fields.email} onChange={set('email')}
           className="w-full h-11 px-4 rounded-xl border border-[#e8eaf0] bg-white font-sans text-sm text-[#0b0f17] placeholder-[#0b0f17]/30 focus:outline-none focus:border-[#7c3aed]/50 focus:ring-2 focus:ring-[#7c3aed]/10 transition-all duration-200" />
-        <ValidationError field="email" prefix="Email" errors={state.errors}
-          className="mt-1 text-xs text-red-500 font-sans" />
       </div>
 
       <div>
@@ -74,17 +95,22 @@ function ContactForm() {
         </label>
         <textarea id="message" name="message" required rows={4}
           placeholder="Contanos tu proyecto, en qué etapa estás y qué necesitás..."
+          value={fields.message} onChange={set('message')}
           className="w-full px-4 py-3 rounded-xl border border-[#e8eaf0] bg-white font-sans text-sm text-[#0b0f17] placeholder-[#0b0f17]/30 focus:outline-none focus:border-[#7c3aed]/50 focus:ring-2 focus:ring-[#7c3aed]/10 transition-all duration-200 resize-none" />
-        <ValidationError field="message" prefix="Mensaje" errors={state.errors}
-          className="mt-1 text-xs text-red-500 font-sans" />
       </div>
 
-      <button type="submit" disabled={state.submitting}
+      {status === 'error' && (
+        <p className="text-sm text-red-500 font-sans">
+          Hubo un error al enviar. Intentá de nuevo o escribinos por WhatsApp.
+        </p>
+      )}
+
+      <button type="submit" disabled={status === 'submitting'}
         className="w-full h-12 rounded-xl bg-[#7c3aed] hover:bg-[#0d47ff] disabled:opacity-60 disabled:cursor-not-allowed text-white font-sans font-semibold text-sm transition-all duration-200 shadow-lg shadow-[#7c3aed]/20 hover:shadow-[#0d47ff]/20 cursor-pointer">
-        {state.submitting ? "Enviando..." : "Enviar mensaje"}
+        {status === 'submitting' ? 'Enviando...' : 'Enviar mensaje'}
       </button>
     </form>
-  );
+  )
 }
 
 export default function Contact() {
