@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --od-black:   #0b0f17;
+  --od-blue:    #0d47ff;
+  --od-cyan:    #00b8ff;
+  --od-light:   #00e5ff;
+  --od-mid:     #3155a1;
+  --od-white:   #ffffff;
+  --od-gray:    #8892a4;
+  --od-surface: #111827;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #0b0f17;
+    color: #ffffff;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background-color: #0d47ff;
+    color: white;
+  }
+}
+
+@layer utilities {
+  .gradient-text {
+    background: linear-gradient(135deg, #0d47ff, #00b8ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-bg {
+    background: linear-gradient(135deg, #0d47ff, #00b8ff);
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
