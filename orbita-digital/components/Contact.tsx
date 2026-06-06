@@ -24,14 +24,29 @@ function EmailIcon() {
   );
 }
 
+const SERVICIOS_OPTIONS = [
+  'Sitio Web',
+  'E-commerce',
+  'App Mobile',
+  'Redes Sociales',
+  'SEO',
+  'Branding',
+  'Automatización',
+]
+
+const INPUT_CLASS = "w-full h-11 px-4 rounded-xl border border-[#e8eaf0] bg-white font-sans text-sm text-[#0b0f17] placeholder-[#0b0f17]/30 focus:outline-none focus:border-[#7c3aed]/50 focus:ring-2 focus:ring-[#7c3aed]/10 transition-all duration-200"
+const LABEL_CLASS = "block font-sans text-sm font-medium text-[#0b0f17]/70 mb-1.5"
+
 type FormStatus = 'idle' | 'submitting' | 'success' | 'error'
 
 function ContactForm() {
-  const [status, setStatus] = useState<FormStatus>('idle')
-  const [fields, setFields] = useState({ name: '', email: '', message: '' })
+  const [status, setStatus]   = useState<FormStatus>('idle')
+  const [fields, setFields]   = useState({
+    name: '', empresa: '', email: '', phone: '', servicio: '', message: '',
+  })
 
   const set = (k: keyof typeof fields) =>
-    (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+    (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
       setFields(prev => ({ ...prev, [k]: e.target.value }))
 
   async function handleSubmit(e: React.FormEvent) {
@@ -71,30 +86,52 @@ function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4" noValidate>
-      <div>
-        <label htmlFor="name" className="block font-sans text-sm font-medium text-[#0b0f17]/70 mb-1.5">
-          Nombre
-        </label>
-        <input id="name" type="text" name="name" required placeholder="Tu nombre"
-          value={fields.name} onChange={set('name')}
-          className="w-full h-11 px-4 rounded-xl border border-[#e8eaf0] bg-white font-sans text-sm text-[#0b0f17] placeholder-[#0b0f17]/30 focus:outline-none focus:border-[#7c3aed]/50 focus:ring-2 focus:ring-[#7c3aed]/10 transition-all duration-200" />
+
+      {/* Fila 1: Nombre + Empresa */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+          <label htmlFor="name" className={LABEL_CLASS}>Nombre *</label>
+          <input id="name" type="text" name="name" required placeholder="Tu nombre"
+            value={fields.name} onChange={set('name')} className={INPUT_CLASS} />
+        </div>
+        <div>
+          <label htmlFor="empresa" className={LABEL_CLASS}>Empresa</label>
+          <input id="empresa" type="text" name="empresa" placeholder="Tu empresa (opcional)"
+            value={fields.empresa} onChange={set('empresa')} className={INPUT_CLASS} />
+        </div>
       </div>
 
-      <div>
-        <label htmlFor="email" className="block font-sans text-sm font-medium text-[#0b0f17]/70 mb-1.5">
-          Email
-        </label>
-        <input id="email" type="email" name="email" required placeholder="tu@email.com"
-          value={fields.email} onChange={set('email')}
-          className="w-full h-11 px-4 rounded-xl border border-[#e8eaf0] bg-white font-sans text-sm text-[#0b0f17] placeholder-[#0b0f17]/30 focus:outline-none focus:border-[#7c3aed]/50 focus:ring-2 focus:ring-[#7c3aed]/10 transition-all duration-200" />
+      {/* Fila 2: Email + Teléfono */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+          <label htmlFor="email" className={LABEL_CLASS}>Email *</label>
+          <input id="email" type="email" name="email" required placeholder="tu@email.com"
+            value={fields.email} onChange={set('email')} className={INPUT_CLASS} />
+        </div>
+        <div>
+          <label htmlFor="phone" className={LABEL_CLASS}>WhatsApp / Teléfono</label>
+          <input id="phone" type="tel" name="phone" placeholder="+54 9 11..."
+            value={fields.phone} onChange={set('phone')} className={INPUT_CLASS} />
+        </div>
       </div>
 
+      {/* Servicio de interés */}
       <div>
-        <label htmlFor="message" className="block font-sans text-sm font-medium text-[#0b0f17]/70 mb-1.5">
-          Contanos tu proyecto
-        </label>
-        <textarea id="message" name="message" required rows={4}
-          placeholder="Contanos tu proyecto, en qué etapa estás y qué necesitás..."
+        <label htmlFor="servicio" className={LABEL_CLASS}>¿Qué necesitás?</label>
+        <select id="servicio" name="servicio" value={fields.servicio} onChange={set('servicio')}
+          className={`${INPUT_CLASS} appearance-none cursor-pointer`}>
+          <option value="">Seleccioná un servicio...</option>
+          {SERVICIOS_OPTIONS.map(s => (
+            <option key={s} value={s}>{s}</option>
+          ))}
+        </select>
+      </div>
+
+      {/* Mensaje */}
+      <div>
+        <label htmlFor="message" className={LABEL_CLASS}>Contanos tu proyecto</label>
+        <textarea id="message" name="message" rows={4}
+          placeholder="¿En qué etapa estás? ¿Qué necesitás lograr?"
           value={fields.message} onChange={set('message')}
           className="w-full px-4 py-3 rounded-xl border border-[#e8eaf0] bg-white font-sans text-sm text-[#0b0f17] placeholder-[#0b0f17]/30 focus:outline-none focus:border-[#7c3aed]/50 focus:ring-2 focus:ring-[#7c3aed]/10 transition-all duration-200 resize-none" />
       </div>

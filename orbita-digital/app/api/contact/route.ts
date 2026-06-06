@@ -15,14 +15,14 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ ok: true })
   }
 
-  let body: { name?: string; email?: string; message?: string }
+  let body: { name?: string; email?: string; message?: string; phone?: string; empresa?: string; servicio?: string }
   try {
     body = await req.json()
   } catch {
     return NextResponse.json({ error: 'Invalid JSON' }, { status: 400 })
   }
 
-  const { name, email, message } = body
+  const { name, email, message, phone, empresa, servicio } = body
 
   if (!name?.trim()) {
     return NextResponse.json({ error: 'El nombre es requerido' }, { status: 400 })
@@ -33,7 +33,7 @@ export async function POST(req: NextRequest) {
   fetch(crmUrl, {
     method:  'POST',
     headers: { 'Content-Type': 'application/json' },
-    body:    JSON.stringify({ name, email, message }),
+    body:    JSON.stringify({ name, email, message, phone, empresa, servicio }),
   }).catch(err => console.error('[contact] Error enviando al CRM:', err))
 
   return NextResponse.json({ ok: true })
