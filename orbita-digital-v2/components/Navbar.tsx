@@ -37,7 +37,7 @@ export default function Navbar() {
 
         <Link href="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
           <Image
-            src="/orbita-nuevo.png"
+            src="/images/orbita-nuevo.png"
             alt="Órbita Digital"
             width={140}
             height={44}

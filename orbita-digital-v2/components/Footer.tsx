@@ -13,7 +13,7 @@ export default function Footer() {
           <div>
             <Link href="/" style={{ display: 'inline-flex', alignItems: 'center', textDecoration: 'none', marginBottom: '14px' }}>
               <Image
-                src="/orbita-nuevo.png"
+                src="/images/orbita-nuevo.png"
                 alt="Órbita Digital"
                 width={130}
                 height={44}

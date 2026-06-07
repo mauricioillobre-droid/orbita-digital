@@ -22,7 +22,7 @@ const projects = [
     shortDesc: 'Diseño web y branding completo para nuestra propia agencia digital argentina. Identidad visual diferenciada, sitio de alta performance y sistema de automatización de leads integrado.',
     longDesc: 'Un caso que hacemos con mucho orgullo: diseñamos y desarrollamos nuestra propia presencia digital con los mismos estándares que aplicamos a cada cliente.',
     tags: ['Diseño', 'Desarrollo'],
-    image: '/images/trabajos/orbita.jpg',
+    image: '/images/identidad-visual1.jpg',
     alt: 'Diseño web y branding para agencia digital argentina',
     priority: false,
   },
