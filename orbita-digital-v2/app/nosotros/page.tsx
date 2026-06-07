@@ -75,7 +75,7 @@ export default function NosotrosPage() {
       <section className="section-pad" style={{ background: 'var(--surface)' }}>
         <div className="container-od">
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px' }}>
-            [
+            {[
               {
                 name: 'Tati',
                 role: 'Diseño & Contenido',
