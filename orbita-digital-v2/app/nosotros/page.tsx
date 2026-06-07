@@ -108,7 +108,7 @@ export default function NosotrosPage() {
                     alt={person.alt}
                     width={600}
                     height={300}
-                    style={{ objectFit: 'contain', width: '100%', height: '100%' }}
+                    style={{ objectFit: 'cover', objectPosition: 'center 15%', width: '100%', height: '100%' }}
                     loading="lazy"
                     sizes="(max-width: 768px) 100vw, 50vw"
                   />
