@@ -69,19 +69,24 @@ export default function TrabajosPage() {
               className="project-card reveal"
               style={{
                 display: 'grid',
-                gridTemplateColumns: i % 2 === 0 ? '55% 45%' : '45% 55%',
+                gridTemplateColumns: i % 2 === 0 ? '11fr 9fr' : '9fr 11fr',
+                gap: '0',
                 boxShadow: 'var(--shadow-card)',
                 borderRadius: 'var(--r-lg)',
                 overflow: 'hidden',
+                background: 'var(--surface)',
+                padding: '16px',
                 minHeight: '440px',
               }}
             >
-              {/* Imagen — position:relative + fill para llenar la celda completamente */}
+              {/* Imagen con border-radius propio — estilo Hostinger */}
               <div
                 style={{
                   position: 'relative',
                   order: i % 2 === 0 ? 0 : 1,
                   background: p.imgBg ?? 'var(--bg-2)',
+                  borderRadius: 'var(--r-md)',
+                  overflow: 'hidden',
                   minHeight: '380px',
                 }}
               >
