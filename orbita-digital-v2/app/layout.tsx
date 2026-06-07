@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { GoogleAnalytics } from '@next/third-parties/google'
 import { Hanken_Grotesk, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
 import Navbar from '@/components/Navbar'
@@ -73,6 +74,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <WhatsAppFAB />
         </RevealProvider>
       </body>
+      <GoogleAnalytics gaId="G-MYN4046FMM" />
     </html>
   )
 }
