@@ -102,13 +102,13 @@ export default function NosotrosPage() {
                 overflow: 'hidden',
                 boxShadow: 'var(--shadow-card)',
               }}>
-                <div style={{ height: '300px', overflow: 'hidden', background: 'var(--bg-2)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <div style={{ height: '420px', overflow: 'hidden', background: 'var(--bg-2)' }}>
                   <Image
                     src={person.src}
                     alt={person.alt}
                     width={600}
                     height={300}
-                    style={{ objectFit: 'cover', objectPosition: 'center 15%', width: '100%', height: '100%' }}
+                    style={{ objectFit: 'cover', objectPosition: 'center top', width: '100%', height: '100%' }}
                     loading="lazy"
                     sizes="(max-width: 768px) 100vw, 50vw"
                   />
