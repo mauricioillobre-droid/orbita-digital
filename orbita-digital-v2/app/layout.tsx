@@ -1,21 +1,22 @@
 import type { Metadata } from 'next'
-import { Syne, DM_Sans } from 'next/font/google'
+import { Hanken_Grotesk, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import WhatsAppFAB from '@/components/WhatsAppFAB'
+import RevealProvider from '@/components/RevealProvider'
 
-const syne = Syne({
+const hanken = Hanken_Grotesk({
   subsets: ['latin'],
-  weight: ['400', '700', '800'],
-  variable: '--font-syne',
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-hanken',
   display: 'swap',
 })
 
-const dmSans = DM_Sans({
+const jetbrains = JetBrains_Mono({
   subsets: ['latin'],
   weight: ['400', '500'],
-  variable: '--font-dm-sans',
+  variable: '--font-mono',
   display: 'swap',
 })
 
@@ -57,18 +58,20 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es" className={`${syne.variable} ${dmSans.variable}`}>
+    <html lang="es" className={`${hanken.variable} ${jetbrains.variable}`}>
       <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaOrg) }}
         />
       </head>
-      <body className="font-dm bg-od-black text-white antialiased">
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
-        <WhatsAppFAB />
+      <body className="font-sans antialiased">
+        <RevealProvider>
+          <Navbar />
+          <main>{children}</main>
+          <Footer />
+          <WhatsAppFAB />
+        </RevealProvider>
       </body>
     </html>
   )

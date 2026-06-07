@@ -1,136 +1,99 @@
 'use client'
-
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { motion, AnimatePresence } from 'framer-motion'
-import { IconMenu2, IconX } from '@tabler/icons-react'
-
-const links = [
-  { href: '/servicios', label: 'Servicios' },
-  { href: '/trabajos', label: 'Trabajos' },
-  { href: '/nosotros', label: 'Nosotros' },
-  { href: '/blog', label: 'Blog' },
-]
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
-  const [open, setOpen] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
   const pathname = usePathname()
 
   useEffect(() => {
-    const handler = () => setScrolled(window.scrollY > 20)
-    window.addEventListener('scroll', handler, { passive: true })
-    return () => window.removeEventListener('scroll', handler)
+    const onScroll = () => setScrolled(window.scrollY > 20)
+    window.addEventListener('scroll', onScroll)
+    return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  useEffect(() => {
-    setOpen(false)
-  }, [pathname])
+  const links = [
+    { href: '/servicios', label: 'Servicios' },
+    { href: '/trabajos', label: 'Trabajos' },
+    { href: '/nosotros', label: 'Nosotros' },
+    { href: '/blog', label: 'Blog' },
+  ]
 
   return (
-    <>
-      <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled ? 'bg-[#0b0f17]/90 backdrop-blur-md border-b border-white/5' : 'bg-transparent'
-        }`}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            {/* Logo */}
-            <Link href="/" className="flex items-center gap-2 group" aria-label="Órbita Digital — Inicio">
-              <OrbitaLogo />
-              <span className="font-syne font-700 text-white text-lg leading-none">
-                Órbita <span className="text-[#00b8ff]">Digital</span>
-              </span>
+    <nav style={{
+      position: 'fixed', top: 0, left: 0, right: 0, zIndex: 50,
+      height: '76px',
+      display: 'flex', alignItems: 'center',
+      paddingInline: 'var(--gutter)',
+      transition: 'background 0.4s ease, border-color 0.4s ease, backdrop-filter 0.4s ease',
+      background: scrolled ? 'rgba(245,246,248,0.72)' : 'transparent',
+      backdropFilter: scrolled ? 'blur(18px)' : 'none',
+      borderBottom: scrolled ? '1px solid var(--line)' : '1px solid transparent',
+    }}>
+      <div style={{ maxWidth: 'var(--maxw)', width: '100%', margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+
+        <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}>
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="14" cy="14" rx="6" ry="6" fill="var(--accent)" opacity="0.15"/>
+            <circle cx="14" cy="14" r="3.5" fill="var(--accent)"/>
+            <ellipse cx="14" cy="14" rx="11" ry="5.5" stroke="var(--accent)" strokeWidth="1.5" fill="none" transform="rotate(-30 14 14)"/>
+            <circle className="orbit-dot" cx="14" cy="3" r="2" fill="var(--accent-2)"/>
+          </svg>
+          <span style={{ fontFamily: 'var(--font-hanken)', fontWeight: 600, fontSize: '15.5px', color: 'var(--ink)', letterSpacing: '-0.01em' }}>
+            Órbita <span style={{ color: 'var(--accent)' }}>Digital</span>
+          </span>
+        </Link>
+
+        <div style={{ display: 'flex', gap: '2rem', alignItems: 'center' }} className="hidden md:flex">
+          {links.map(link => (
+            <Link key={link.href} href={link.href} style={{
+              fontFamily: 'var(--font-hanken)',
+              fontSize: '14.5px',
+              color: pathname === link.href ? 'var(--accent)' : 'var(--ink-2)',
+              textDecoration: 'none',
+              fontWeight: pathname === link.href ? 500 : 400,
+              transition: 'color 0.2s ease',
+            }}>
+              {link.label}
             </Link>
-
-            {/* Nav links — desktop */}
-            <nav className="hidden md:flex items-center gap-8" aria-label="Navegación principal">
-              {links.map((l) => (
-                <Link
-                  key={l.href}
-                  href={l.href}
-                  className={`font-dm text-sm transition-colors duration-200 hover:text-[#00b8ff] ${
-                    pathname.startsWith(l.href) ? 'text-[#00b8ff]' : 'text-[#8892a4]'
-                  }`}
-                >
-                  {l.label}
-                </Link>
-              ))}
-            </nav>
-
-            {/* CTA + hamburger */}
-            <div className="flex items-center gap-3">
-              <Link
-                href="/contacto"
-                className="hidden md:inline-flex items-center px-5 py-2 rounded-full text-sm font-dm font-medium text-white gradient-bg hover:opacity-90 transition-opacity duration-200 cursor-pointer"
-              >
-                Hablemos
-              </Link>
-              <button
-                className="md:hidden p-2 text-[#8892a4] hover:text-white transition-colors cursor-pointer"
-                onClick={() => setOpen((v) => !v)}
-                aria-label={open ? 'Cerrar menú' : 'Abrir menú'}
-                aria-expanded={open}
-              >
-                {open ? <IconX size={22} /> : <IconMenu2 size={22} />}
-              </button>
-            </div>
-          </div>
+          ))}
         </div>
-      </header>
 
-      {/* Mobile drawer */}
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            initial={{ opacity: 0, x: '100%' }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: '100%' }}
-            transition={{ duration: 0.25, ease: [0.0, 0.0, 0.2, 1] }}
-            className="fixed inset-0 z-40 bg-[#0b0f17] flex flex-col pt-20 px-6 md:hidden"
-          >
-            <nav className="flex flex-col gap-6 mt-4" aria-label="Menú móvil">
-              {links.map((l) => (
-                <Link
-                  key={l.href}
-                  href={l.href}
-                  className="font-syne font-700 text-2xl text-white hover:text-[#00b8ff] transition-colors cursor-pointer"
-                >
-                  {l.label}
-                </Link>
-              ))}
-              <Link
-                href="/contacto"
-                className="mt-4 inline-flex items-center justify-center px-6 py-3 rounded-full font-dm font-medium text-white gradient-bg hover:opacity-90 transition-opacity cursor-pointer"
-              >
-                Hablemos
-              </Link>
-            </nav>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </>
-  )
-}
+        <Link href="/contacto" className="btn btn-primary btn-sm hidden md:inline-flex">
+          Hablemos →
+        </Link>
 
-function OrbitaLogo() {
-  return (
-    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-      <circle cx="14" cy="14" r="5" fill="url(#g1)" />
-      <ellipse cx="14" cy="14" rx="13" ry="6" stroke="url(#g2)" strokeWidth="1.5" fill="none" />
-      <circle cx="14" cy="7" r="2" fill="#00b8ff" />
-      <defs>
-        <linearGradient id="g1" x1="9" y1="9" x2="19" y2="19" gradientUnits="userSpaceOnUse">
-          <stop stopColor="#0d47ff" />
-          <stop offset="1" stopColor="#00b8ff" />
-        </linearGradient>
-        <linearGradient id="g2" x1="1" y1="14" x2="27" y2="14" gradientUnits="userSpaceOnUse">
-          <stop stopColor="#0d47ff" />
-          <stop offset="1" stopColor="#00b8ff" />
-        </linearGradient>
-      </defs>
-    </svg>
+        <button onClick={() => setMenuOpen(!menuOpen)} className="md:hidden"
+          style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--ink)', padding: '8px' }}
+          aria-label="Menú">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+            {menuOpen
+              ? <><line x1="4" y1="4" x2="18" y2="18" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/><line x1="18" y1="4" x2="4" y2="18" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></>
+              : <><line x1="3" y1="7" x2="19" y2="7" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/><line x1="3" y1="13" x2="19" y2="13" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></>
+            }
+          </svg>
+        </button>
+      </div>
+
+      {menuOpen && (
+        <div style={{
+          position: 'absolute', top: '76px', left: 0, right: 0,
+          background: 'var(--surface)', borderBottom: '1px solid var(--line)',
+          padding: '1.5rem var(--gutter)', display: 'flex', flexDirection: 'column', gap: '1.25rem',
+        }}>
+          {links.map(link => (
+            <Link key={link.href} href={link.href} onClick={() => setMenuOpen(false)}
+              style={{ fontSize: '16px', color: 'var(--ink-2)', textDecoration: 'none', fontFamily: 'var(--font-hanken)' }}>
+              {link.label}
+            </Link>
+          ))}
+          <Link href="/contacto" className="btn btn-primary" onClick={() => setMenuOpen(false)}>
+            Hablemos →
+          </Link>
+        </div>
+      )}
+    </nav>
   )
 }
