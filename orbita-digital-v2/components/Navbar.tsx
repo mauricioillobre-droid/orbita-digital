@@ -39,9 +39,9 @@ export default function Navbar() {
           <Image
             src="/images/orbita-nuevo.png"
             alt="Órbita Digital"
-            width={140}
-            height={44}
-            style={{ objectFit: 'contain', maxHeight: '44px', width: 'auto' }}
+            width={180}
+            height={56}
+            style={{ objectFit: 'contain', maxHeight: '52px', width: 'auto' }}
             priority
           />
         </Link>
