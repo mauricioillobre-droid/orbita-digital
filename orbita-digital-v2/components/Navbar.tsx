@@ -1,6 +1,7 @@
 'use client'
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 
 export default function Navbar() {
@@ -34,16 +35,15 @@ export default function Navbar() {
     }}>
       <div style={{ maxWidth: 'var(--maxw)', width: '100%', margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
 
-        <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}>
-          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <ellipse cx="14" cy="14" rx="6" ry="6" fill="var(--accent)" opacity="0.15"/>
-            <circle cx="14" cy="14" r="3.5" fill="var(--accent)"/>
-            <ellipse cx="14" cy="14" rx="11" ry="5.5" stroke="var(--accent)" strokeWidth="1.5" fill="none" transform="rotate(-30 14 14)"/>
-            <circle className="orbit-dot" cx="14" cy="3" r="2" fill="var(--accent-2)"/>
-          </svg>
-          <span style={{ fontFamily: 'var(--font-hanken)', fontWeight: 600, fontSize: '15.5px', color: 'var(--ink)', letterSpacing: '-0.01em' }}>
-            Órbita <span style={{ color: 'var(--accent)' }}>Digital</span>
-          </span>
+        <Link href="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
+          <Image
+            src="/orbita-nuevo.png"
+            alt="Órbita Digital"
+            width={140}
+            height={44}
+            style={{ objectFit: 'contain', maxHeight: '44px', width: 'auto' }}
+            priority
+          />
         </Link>
 
         <div style={{ display: 'flex', gap: '2rem', alignItems: 'center' }} className="hidden md:flex">

@@ -63,15 +63,16 @@ export default function TrabajosPage() {
           <div className="container-od">
             <article className="project-card reveal" style={{ boxShadow: 'var(--shadow-card)' }}>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', alignItems: 'stretch' }}>
-                <div className="project-img-wrap" style={{ minHeight: '280px', position: 'relative', background: 'var(--bg-2)' }}>
+                <div className="project-img-wrap" style={{ aspectRatio: '16/10', overflow: 'hidden', borderRadius: 'var(--r-lg) var(--r-lg) 0 0', background: 'var(--bg-2)' }}>
                   <Image
                     src={p.image}
                     alt={p.alt}
-                    fill
+                    width={800}
+                    height={500}
                     className="project-img"
                     priority={p.priority}
                     sizes="(max-width: 1024px) 100vw, 50vw"
-                    style={{ position: 'absolute' }}
+                    style={{ objectFit: 'cover', width: '100%', height: '100%' }}
                   />
                 </div>
                 <div style={{ padding: 'clamp(28px, 4vw, 48px)', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>

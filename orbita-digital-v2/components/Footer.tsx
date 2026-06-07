@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 
 export default function Footer() {
   return (
@@ -10,14 +11,14 @@ export default function Footer() {
 
           {/* Col 1 — Brand */}
           <div>
-            <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '8px', textDecoration: 'none', marginBottom: '14px' }}>
-              <svg width="24" height="24" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-                <circle cx="14" cy="14" r="3.5" fill="var(--accent)"/>
-                <ellipse cx="14" cy="14" rx="11" ry="5.5" stroke="var(--accent)" strokeWidth="1.5" fill="none" transform="rotate(-30 14 14)"/>
-              </svg>
-              <span style={{ fontFamily: 'var(--font-hanken)', fontWeight: 600, fontSize: '15px', color: 'var(--ink)' }}>
-                Órbita <span style={{ color: 'var(--accent)' }}>Digital</span>
-              </span>
+            <Link href="/" style={{ display: 'inline-flex', alignItems: 'center', textDecoration: 'none', marginBottom: '14px' }}>
+              <Image
+                src="/orbita-nuevo.png"
+                alt="Órbita Digital"
+                width={130}
+                height={44}
+                style={{ objectFit: 'contain', maxHeight: '44px', width: 'auto' }}
+              />
             </Link>
             <p style={{ fontSize: '14px', color: 'var(--ink-3)', lineHeight: 1.6, maxWidth: '24ch' }}>
               Diseño web, automatización y contenido para pymes en Argentina.
