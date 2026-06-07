@@ -62,8 +62,8 @@ export default function TrabajosPage() {
         >
           <div className="container-od">
             <article className="project-card reveal" style={{ boxShadow: 'var(--shadow-card)', borderRadius: 'var(--r-lg)', overflow: 'hidden', background: 'var(--surface)' }}>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', minHeight: '420px' }}>
-                <div className="project-img-wrap" style={{ overflow: 'hidden', order: i % 2 === 0 ? 0 : 1, minHeight: '360px' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', alignItems: 'stretch', minHeight: '420px' }}>
+                <div className="project-img-wrap" style={{ overflow: 'hidden', order: i % 2 === 0 ? 0 : 1, height: '100%', minHeight: '360px' }}>
                   <Image
                     src={p.image}
                     alt={p.alt}
