@@ -75,22 +75,24 @@ export default function NosotrosPage() {
       <section className="section-pad" style={{ background: 'var(--surface)' }}>
         <div className="container-od">
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px' }}>
-            {[
-              {
-                name: 'Mauri',
-                role: 'Desarrollo & Automatización',
-                src: '/images/mauri.jpg',
-                alt: 'Mauri — Desarrollo Web y Automatización en Órbita Digital, Buenos Aires',
-                bio: 'Programador y especialista en automatización desde Argentina. Me encargo de todo lo técnico: desarrollo web, integraciones con WhatsApp, flujos automatizados y sistemas que hacen que los negocios funcionen solos. Trabajo con Next.js, n8n, Make y la API oficial de WhatsApp Business.',
-                tags: ['Next.js', 'n8n', 'WhatsApp API', 'Make'],
-              },
+            [
               {
                 name: 'Tati',
                 role: 'Diseño & Contenido',
                 src: '/images/tati.jpg',
-                alt: 'Tati — Diseño Gráfico y Contenido en Órbita Digital, Buenos Aires',
-                bio: 'Diseñadora gráfica y creadora de contenido desde Argentina. Me encargo de que todo lo visual tenga coherencia, impacto y sentido estratégico. Branding, redes sociales, reels y edición de video. Diseño para que tu negocio se vea tan bien como funciona.',
-                tags: ['Branding', 'Figma', 'Reels', 'Video'],
+                alt: 'Tati — Diseño Gráfico y Contenido en Órbita Digital',
+                linkedin: 'https://linkedin.com/in/tatiana-daloia',
+                bio: 'Soy Tati, diseñadora gráfica, creadora de Órbita Digital y fundadora de TatsDesign. Vivo en Villa Carlos Paz, Córdoba, y actualmente curso la Licenciatura en Diseño en la Facultad Provincial de Córdoba. Trabajo de manera freelance ayudando a marcas y emprendimientos a mejorar su presencia digital a través del diseño gráfico, desarrollo visual, gestión de redes y marketing digital. En Órbita Digital, ese enfoque se potencia junto al desarrollo y la automatización, dando lugar a soluciones digitales más completas y orientadas a resultados.',
+                tags: ['Branding', 'Figma', 'Redes Sociales', 'Marketing Digital'],
+              },
+              {
+                name: 'Mauri',
+                role: 'Desarrollo & Automatización',
+                src: '/images/mauri.jpg',
+                alt: 'Mauri — Desarrollo Web y Automatización en Órbita Digital',
+                linkedin: 'https://linkedin.com/in/mauricio-illobre-385744368',
+                bio: 'Soy Mauri, project manager y desarrollador, co-creador de Órbita Digital. Actualmente vivo en Florianópolis, Brasil, donde combino mi experiencia laboral con el desarrollo de proyectos digitales orientados a la optimización de procesos y generación de ingresos. Me especializo en sistemas automatizados, integración de herramientas y flujos de trabajo eficientes que permiten a negocios mejorar su gestión, ahorrar tiempo y escalar sus operaciones. Trabajo con una filosofía basada en la simplicidad, la mejora constante y la disciplina.',
+                tags: ['Next.js', 'n8n', 'WhatsApp API', 'Make'],
               },
             ].map((person, i) => (
               <div key={person.name} className="reveal" data-delay={String(i + 1)} style={{
@@ -111,7 +113,14 @@ export default function NosotrosPage() {
                   />
                 </div>
                 <div style={{ padding: '28px' }}>
-                  <h2 style={{ fontFamily: 'var(--font-hanken)', fontWeight: 700, fontSize: '24px', letterSpacing: '-0.02em', color: 'var(--ink)', marginBottom: '4px' }}>{person.name}</h2>
+                  <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: '4px' }}>
+                    <h2 style={{ fontFamily: 'var(--font-hanken)', fontWeight: 700, fontSize: '24px', letterSpacing: '-0.02em', color: 'var(--ink)', margin: 0 }}>{person.name}</h2>
+                    <a href={person.linkedin} target="_blank" rel="noopener noreferrer" title={`LinkedIn de ${person.name}`} style={{ color: 'var(--ink-3)', transition: 'color 0.2s', flexShrink: 0, marginLeft: '12px', marginTop: '2px' }}>
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
+                      </svg>
+                    </a>
+                  </div>
                   <div style={{ fontFamily: 'var(--font-mono)', fontSize: '12px', color: 'var(--accent)', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '16px' }}>{person.role}</div>
                   <p style={{ fontSize: '15px', color: 'var(--ink-2)', lineHeight: 1.7, marginBottom: '20px' }}>{person.bio}</p>
                   <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
