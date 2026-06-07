@@ -61,9 +61,9 @@ export default function TrabajosPage() {
           style={{ background: i % 2 === 0 ? 'var(--surface)' : 'var(--bg-2)' }}
         >
           <div className="container-od">
-            <article className="project-card reveal" style={{ boxShadow: 'var(--shadow-card)', overflow: 'hidden' }}>
-              <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1fr) minmax(0,1fr)', alignItems: 'stretch', minHeight: '380px' }}>
-                <div className="project-img-wrap" style={{ overflow: 'hidden', borderRadius: 'var(--r-lg) 0 0 var(--r-lg)', background: 'var(--bg-2)', minHeight: '300px' }}>
+            <article className="project-card reveal" style={{ boxShadow: 'var(--shadow-card)', borderRadius: 'var(--r-lg)', overflow: 'hidden', background: 'var(--surface)' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', minHeight: '420px' }}>
+                <div className="project-img-wrap" style={{ overflow: 'hidden', order: i % 2 === 0 ? 0 : 1, minHeight: '360px' }}>
                   <Image
                     src={p.image}
                     alt={p.alt}
@@ -75,7 +75,7 @@ export default function TrabajosPage() {
                     style={{ objectFit: 'cover', width: '100%', height: '100%' }}
                   />
                 </div>
-                <div style={{ padding: 'clamp(28px, 4vw, 48px)', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                <div style={{ padding: 'clamp(28px, 4vw, 48px)', display: 'flex', flexDirection: 'column', justifyContent: 'center', order: i % 2 === 0 ? 1 : 0 }}>
                   <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginBottom: '20px' }}>
                     {p.tags.map(t => (
                       <span key={t} style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--accent)', background: 'var(--accent-soft)', padding: '4px 10px', borderRadius: '99px' }}>{t}</span>
