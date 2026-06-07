@@ -18,12 +18,12 @@ const projects = [
     priority: true,
   },
   {
-    title: 'Órbita Digital',
-    shortDesc: 'Diseño web y branding completo para nuestra propia agencia digital argentina. Identidad visual diferenciada, sitio de alta performance y sistema de automatización de leads integrado.',
-    longDesc: 'Un caso que hacemos con mucho orgullo: diseñamos y desarrollamos nuestra propia presencia digital con los mismos estándares que aplicamos a cada cliente.',
-    tags: ['Diseño', 'Desarrollo'],
+    title: 'Good Luck Barbería',
+    shortDesc: 'Identidad visual completa para una barbería con personalidad propia. Logotipo, paleta de colores, tipografías y sistema gráfico pensado para destacarse en redes y en el local.',
+    longDesc: 'Diseñamos cada elemento de marca desde cero: desde el concepto del nombre hasta las piezas digitales para Instagram. El resultado es una identidad sólida, coherente y con carácter — exactamente lo que una barbería moderna necesita para construir comunidad.',
+    tags: ['Branding', 'Identidad Visual', 'Diseño Gráfico'],
     image: '/images/identidad-visual1.jpg',
-    alt: 'Diseño web y branding para agencia digital argentina',
+    alt: 'Identidad visual para Good Luck Barbería diseñada por Órbita Digital',
     priority: false,
   },
 ]
@@ -61,17 +61,17 @@ export default function TrabajosPage() {
           style={{ background: i % 2 === 0 ? 'var(--surface)' : 'var(--bg-2)' }}
         >
           <div className="container-od">
-            <article className="project-card reveal" style={{ boxShadow: 'var(--shadow-card)' }}>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', alignItems: 'stretch' }}>
-                <div className="project-img-wrap" style={{ aspectRatio: '16/10', overflow: 'hidden', borderRadius: 'var(--r-lg) var(--r-lg) 0 0', background: 'var(--bg-2)' }}>
+            <article className="project-card reveal" style={{ boxShadow: 'var(--shadow-card)', overflow: 'hidden' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1fr) minmax(0,1fr)', alignItems: 'stretch', minHeight: '380px' }}>
+                <div className="project-img-wrap" style={{ overflow: 'hidden', borderRadius: 'var(--r-lg) 0 0 var(--r-lg)', background: 'var(--bg-2)', minHeight: '300px' }}>
                   <Image
                     src={p.image}
                     alt={p.alt}
                     width={800}
-                    height={500}
+                    height={600}
                     className="project-img"
                     priority={p.priority}
-                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    sizes="(max-width: 768px) 100vw, 50vw"
                     style={{ objectFit: 'cover', width: '100%', height: '100%' }}
                   />
                 </div>
