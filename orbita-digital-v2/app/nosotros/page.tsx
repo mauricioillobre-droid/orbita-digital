@@ -102,7 +102,7 @@ export default function NosotrosPage() {
                 overflow: 'hidden',
                 boxShadow: 'var(--shadow-card)',
               }}>
-                <div style={{ height: '420px', overflow: 'hidden', background: 'var(--bg-2)' }}>
+                <div style={{ height: '500px', overflow: 'hidden', background: 'var(--bg-2)' }}>
                   <Image
                     src={person.src}
                     alt={person.alt}
