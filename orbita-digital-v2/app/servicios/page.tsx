@@ -166,7 +166,7 @@ export default function ServiciosPage() {
                   ))}
                 </div>
                 <a
-                  href="https://wa.me/5491122355689"
+                  href="https://wa.me/5493541232353"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn btn-wa"
@@ -223,7 +223,7 @@ export default function ServiciosPage() {
               Sin formularios largos. Respondemos en menos de 24hs.
             </p>
             <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
-              <a href="https://wa.me/5491122355689" target="_blank" rel="noopener noreferrer" className="btn btn-wa btn-lg">WhatsApp →</a>
+              <a href="https://wa.me/5493541232353" target="_blank" rel="noopener noreferrer" className="btn btn-wa btn-lg">WhatsApp →</a>
               <a href="/contacto" className="btn btn-ghost btn-lg">Ver formulario</a>
             </div>
           </div>

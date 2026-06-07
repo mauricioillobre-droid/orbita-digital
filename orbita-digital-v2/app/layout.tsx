@@ -27,7 +27,7 @@ const schemaOrg = {
   description:
     'Agencia web y automatización para pymes en Argentina. Diseño web profesional, automatización con WhatsApp e inteligencia artificial.',
   url: 'https://www.orbitadigital.tech',
-  telephone: '+5491122355689',
+  telephone: '+5493541232353',
   address: {
     '@type': 'PostalAddress',
     addressCountry: 'AR',

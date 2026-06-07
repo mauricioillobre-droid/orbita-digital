@@ -56,7 +56,7 @@ export default function HeroAnimated() {
           className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
         >
           <a
-            href="https://wa.me/5491122355689"
+            href="https://wa.me/5493541232353"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-dm font-medium text-white gradient-bg hover:opacity-90 transition-opacity duration-200 cursor-pointer shadow-lg shadow-blue-900/30"

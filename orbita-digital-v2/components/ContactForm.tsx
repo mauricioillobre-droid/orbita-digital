@@ -94,7 +94,7 @@ export default function ContactForm() {
           Te respondemos en menos de 24hs. Si necesitás algo urgente, escribinos por WhatsApp.
         </p>
         <a
-          href="https://wa.me/5491122355689"
+          href="https://wa.me/5493541232353"
           target="_blank"
           rel="noopener noreferrer"
           className="btn btn-wa btn-lg"

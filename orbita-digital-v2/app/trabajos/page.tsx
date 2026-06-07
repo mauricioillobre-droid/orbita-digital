@@ -122,7 +122,7 @@ export default function TrabajosPage() {
                 <p style={{ fontSize: '16px', color: 'var(--ink-2)', lineHeight: 1.7, marginBottom: '12px' }}>{p.shortDesc}</p>
                 <p style={{ fontSize: '15px', color: 'var(--ink-3)', lineHeight: 1.7, marginBottom: '28px' }}>{p.longDesc}</p>
                 <a
-                  href="https://wa.me/5491122355689"
+                  href="https://wa.me/5493541232353"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn btn-wa btn-sm"
@@ -150,7 +150,7 @@ export default function TrabajosPage() {
               Hablemos sobre tu idea. Sin compromiso, sin costo.
             </p>
             <a
-              href="https://wa.me/5491122355689"
+              href="https://wa.me/5493541232353"
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-wa btn-lg"

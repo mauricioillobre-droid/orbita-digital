@@ -6,7 +6,7 @@ import { IconBrandWhatsapp } from '@tabler/icons-react'
 export default function WhatsAppFAB() {
   return (
     <motion.a
-      href="https://wa.me/5491122355689"
+      href="https://wa.me/5493541232353"
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Escribinos por WhatsApp"

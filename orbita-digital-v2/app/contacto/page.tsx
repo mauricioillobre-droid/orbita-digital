@@ -57,7 +57,7 @@ export default function ContactoPage() {
                   Escribinos directamente y te respondemos al toque. Sin formularios.
                 </p>
                 <a
-                  href="https://wa.me/5491122355689"
+                  href="https://wa.me/5493541232353"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn btn-wa"
@@ -88,7 +88,7 @@ export default function ContactoPage() {
                       </svg>
                     ),
                     label: 'Email',
-                    value: 'hola@orbitadigital.tech',
+                    value: 'orbitadigital10@gmail.com',
                   },
                   {
                     icon: (

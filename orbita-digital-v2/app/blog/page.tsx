@@ -217,7 +217,7 @@ export default function BlogPage() {
               Pronto enviamos tips prácticos de marketing digital para pymes argentinas. Mientras tanto, escribinos por WhatsApp con cualquier consulta.
             </p>
             <a
-              href="https://wa.me/5491122355689"
+              href="https://wa.me/5493541232353"
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-wa btn-lg"
