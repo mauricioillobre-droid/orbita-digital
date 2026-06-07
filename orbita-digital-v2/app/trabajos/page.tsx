@@ -16,6 +16,8 @@ const projects = [
     image: '/images/trabajos/25-de-mayo.jpg',
     alt: 'Sistema de turnos online para consultorio médico en Argentina desarrollado por Órbita Digital',
     priority: true,
+    imgFit: 'cover' as const,
+    imgBg: '#0a0a0a',
   },
   {
     title: 'Good Luck Barbería',
@@ -25,6 +27,8 @@ const projects = [
     image: '/images/identidad-visual1.jpg',
     alt: 'Identidad visual para Good Luck Barbería diseñada por Órbita Digital',
     priority: false,
+    imgFit: 'contain' as const,
+    imgBg: '#f0ece4',
   },
 ]
 
@@ -62,8 +66,8 @@ export default function TrabajosPage() {
         >
           <div className="container-od">
             <article className="project-card reveal" style={{ boxShadow: 'var(--shadow-card)', borderRadius: 'var(--r-lg)', overflow: 'hidden', background: 'var(--surface)' }}>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', alignItems: 'stretch', minHeight: '420px' }}>
-                <div className="project-img-wrap" style={{ overflow: 'hidden', order: i % 2 === 0 ? 0 : 1, height: '100%', minHeight: '360px' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: i % 2 === 0 ? '55% 45%' : '45% 55%', alignItems: 'stretch', minHeight: '420px' }}>
+                <div className="project-img-wrap" style={{ overflow: 'hidden', order: i % 2 === 0 ? 0 : 1, height: '100%', minHeight: '360px', background: p.imgBg ?? 'var(--bg-2)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                   <Image
                     src={p.image}
                     alt={p.alt}
@@ -71,8 +75,8 @@ export default function TrabajosPage() {
                     height={600}
                     className="project-img"
                     priority={p.priority}
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    style={{ objectFit: 'cover', width: '100%', height: '100%' }}
+                    sizes="(max-width: 768px) 100vw, 55vw"
+                    style={{ objectFit: p.imgFit ?? 'cover', objectPosition: 'center', width: '100%', height: '100%' }}
                   />
                 </div>
                 <div style={{ padding: 'clamp(28px, 4vw, 48px)', display: 'flex', flexDirection: 'column', justifyContent: 'center', order: i % 2 === 0 ? 1 : 0 }}>
