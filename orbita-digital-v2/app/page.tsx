@@ -303,10 +303,10 @@ export default function Home() {
                 Somos Mauri y Tati
               </h2>
               <p style={{ fontSize: '17px', color: 'var(--ink-2)', lineHeight: 1.65, marginBottom: '12px' }}>
-                Trabajás directo con nosotros — sin cuentas, sin intermediarios, sin sorpresas.
+                Diseño, tecnología y automatización en un solo equipo.
               </p>
               <p style={{ fontSize: '15px', color: 'var(--ink-3)', marginBottom: '32px' }}>
-                Agencia web en Argentina lista para acompañarte.
+                Agencia web en Argentina para pymes que quieren crecer de verdad.
               </p>
               <WALink className="btn btn-wa btn-lg">
                 Escribinos por WhatsApp →
