@@ -3,6 +3,7 @@
 import { motion, useReducedMotion, type Transition } from 'framer-motion'
 import { IconBrandWhatsapp, IconArrowRight, IconCheck } from '@tabler/icons-react'
 import Link from 'next/link'
+import { trackWA } from '@/components/WALink'
 
 const badges = [
   '+20 proyectos entregados',
@@ -60,6 +61,7 @@ export default function HeroAnimated() {
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-dm font-medium text-white gradient-bg hover:opacity-90 transition-opacity duration-200 cursor-pointer shadow-lg shadow-blue-900/30"
+            onClick={trackWA}
           >
             <IconBrandWhatsapp size={20} aria-hidden="true" />
             Hablemos por WhatsApp

@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { IconBrandWhatsapp } from '@tabler/icons-react'
+import { trackWA } from '@/components/WALink'
 
 export default function WhatsAppFAB() {
   return (
@@ -10,6 +11,7 @@ export default function WhatsAppFAB() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Escribinos por WhatsApp"
+      onClick={trackWA}
       className="md:hidden fixed bottom-6 right-4 z-50 flex items-center gap-2 bg-[#25D366] text-white px-4 py-3 rounded-full shadow-lg cursor-pointer"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}

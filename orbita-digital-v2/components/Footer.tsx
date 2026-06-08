@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
+import { trackWA } from '@/components/WALink'
 
 export default function Footer() {
   return (
@@ -101,6 +102,7 @@ export default function Footer() {
             ].map((item, i) => (
               item.href ? (
                 <a key={i} href={item.href} target="_blank" rel="noopener noreferrer"
+                  onClick={item.href.includes('wa.me') ? trackWA : undefined}
                   style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '14px', color: 'var(--ink-2)', marginBottom: '10px', textDecoration: 'none' }}>
                   <span style={{ width: '28px', height: '28px', borderRadius: '6px', background: 'var(--accent-soft)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                     {item.icon}

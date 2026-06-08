@@ -3,6 +3,7 @@
 import { motion, useReducedMotion } from 'framer-motion'
 import Image from 'next/image'
 import { IconBrandWhatsapp } from '@tabler/icons-react'
+import { trackWA } from '@/components/WALink'
 
 export default function TeamCTA() {
   const reduce = useReducedMotion()
@@ -80,6 +81,7 @@ export default function TeamCTA() {
           href="https://wa.me/5493541232353"
           target="_blank"
           rel="noopener noreferrer"
+          onClick={trackWA}
           initial={reduce ? {} : { opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
