@@ -159,6 +159,81 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ─── TESTIMONIOS ─── */}
+      <section className="section-pad" style={{ background: 'var(--surface)' }}>
+        <div className="container-od">
+          <div className="eyebrow reveal" style={{ marginBottom: '16px' }}>Clientes</div>
+          <h2 className="reveal" data-delay="1" style={{ fontFamily: 'var(--font-hanken)', fontSize: 'clamp(28px, 4vw, 48px)', fontWeight: 700, letterSpacing: '-0.03em', color: 'var(--ink)', marginBottom: '48px' }}>
+            Lo que dicen nuestros clientes
+          </h2>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '20px' }}>
+
+            {/* Reseña 1 — German Pompiglio */}
+            <blockquote className="reveal" data-delay="1" style={{ background: 'var(--bg)', border: '1px solid var(--line)', borderRadius: 'var(--r-lg)', padding: '32px', margin: 0 }}>
+              <div style={{ display: 'flex', gap: '2px', marginBottom: '20px' }} aria-label="5 estrellas">
+                {Array.from({ length: 5 }).map((_, j) => (
+                  <svg key={j} width="16" height="16" viewBox="0 0 16 16" fill="var(--accent)" aria-hidden="true">
+                    <path d="M8 1l1.854 3.756L14 5.567l-3 2.927.708 4.127L8 10.5l-3.708 2.121L5 8.494 2 5.567l4.146-.811z"/>
+                  </svg>
+                ))}
+              </div>
+              <p style={{ fontSize: '16px', color: 'var(--ink-2)', lineHeight: 1.7, marginBottom: '24px', fontStyle: 'italic' }}>
+                &ldquo;Implementaron el sistema de turnos online en tiempo récord. Los pacientes ahora sacan turno solos y reciben confirmación por WhatsApp automáticamente. Unos genios ♥&rdquo;
+              </p>
+              <footer style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                <div style={{ width: '40px', height: '40px', borderRadius: '50%', background: 'var(--accent)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                  <span style={{ fontFamily: 'var(--font-hanken)', fontWeight: 700, fontSize: '13px', color: 'white' }}>GP</span>
+                </div>
+                <div>
+                  <div style={{ fontFamily: 'var(--font-hanken)', fontWeight: 600, fontSize: '14px', color: 'var(--ink)' }}>German Pompiglio</div>
+                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: '12px', color: 'var(--ink-3)' }}>25 de Mayo Consultorios</div>
+                </div>
+              </footer>
+            </blockquote>
+
+            {/* Reseña 2 — Evangelina Angeri */}
+            <blockquote className="reveal" data-delay="2" style={{ background: 'var(--bg)', border: '1px solid var(--line)', borderRadius: 'var(--r-lg)', padding: '32px', margin: 0 }}>
+              <div style={{ display: 'flex', gap: '2px', marginBottom: '20px' }} aria-label="5 estrellas">
+                {Array.from({ length: 5 }).map((_, j) => (
+                  <svg key={j} width="16" height="16" viewBox="0 0 16 16" fill="var(--accent)" aria-hidden="true">
+                    <path d="M8 1l1.854 3.756L14 5.567l-3 2.927.708 4.127L8 10.5l-3.708 2.121L5 8.494 2 5.567l4.146-.811z"/>
+                  </svg>
+                ))}
+              </div>
+              <p style={{ fontSize: '16px', color: 'var(--ink-2)', lineHeight: 1.7, marginBottom: '24px', fontStyle: 'italic' }}>
+                &ldquo;Me contacté con los chicos de Órbita Digital porque necesitaba ayuda para promocionar los eventos de mis talleres y la experiencia fue súper positiva. Desde el primer momento me escucharon, entendieron lo que necesitaba y me fueron guiando en todo el proceso. Los resultados fueron muy buenos y pude difundir mis eventos de forma mucho más profesional y organizada. Los super recomiendo.&rdquo;
+              </p>
+              <footer style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                <div style={{ width: '40px', height: '40px', borderRadius: '50%', background: 'var(--accent)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                  <span style={{ fontFamily: 'var(--font-hanken)', fontWeight: 700, fontSize: '13px', color: 'white' }}>EA</span>
+                </div>
+                <div>
+                  <div style={{ fontFamily: 'var(--font-hanken)', fontWeight: 600, fontSize: '14px', color: 'var(--ink)' }}>Evangelina Angeri</div>
+                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: '12px', color: 'var(--ink-3)' }}>Talleres y eventos</div>
+                </div>
+              </footer>
+            </blockquote>
+
+            {/* TODO: agregar próximas reseñas aquí */}
+            <blockquote style={{ display: 'none' }} aria-hidden="true" />
+            <blockquote style={{ display: 'none' }} aria-hidden="true" />
+
+          </div>
+
+          {/* Botón Google Business */}
+          <div style={{ textAlign: 'center', marginTop: '40px' }}>
+            <a
+              href="https://g.page/r/CUYtK1yHSmpSEAE/review"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-ghost btn-sm"
+            >
+              Ver opiniones en Google →
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* ─── PROYECTOS PREVIEW ─── */}
       <section className="section-pad" style={{ background: 'var(--bg-2)' }}>
         <div className="container-od">
@@ -213,51 +288,6 @@ export default function Home() {
                   <p style={{ fontSize: '14.5px', color: 'var(--ink-2)', lineHeight: 1.6, margin: 0 }}>{w.desc}</p>
                 </div>
               </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ─── TESTIMONIOS ─── */}
-      <section className="section-pad" style={{ background: 'var(--surface)' }}>
-        <div className="container-od">
-          <div className="eyebrow reveal" style={{ marginBottom: '16px' }}>Clientes</div>
-          <h2 className="reveal" data-delay="1" style={{ fontFamily: 'var(--font-hanken)', fontSize: 'clamp(28px, 4vw, 48px)', fontWeight: 700, letterSpacing: '-0.03em', color: 'var(--ink)', marginBottom: '48px' }}>
-            Lo que dicen nuestros clientes
-          </h2>
-          {/* TODO: Reemplazar con testimonios reales */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '20px' }}>
-            {[
-              {
-                initials: 'ML', name: 'Mauricio L.', business: '25 de Mayo Consultorios',
-                text: 'Implementaron el sistema de turnos online en tiempo récord. Los pacientes ahora sacan turno solos y reciben confirmación por WhatsApp automáticamente.',
-              },
-              {
-                initials: 'AP', name: 'Ana P.', business: 'Pyme local, Buenos Aires',
-                text: 'Teníamos una web vieja que no generaba nada. El nuevo sitio ya recibió consultas en la primera semana. El equipo estuvo disponible en todo momento.',
-              },
-            ].map((t, i) => (
-              <blockquote key={i} className="reveal" data-delay={String(i + 1)} style={{ background: 'var(--bg)', border: '1px solid var(--line)', borderRadius: 'var(--r-lg)', padding: '32px', margin: 0 }}>
-                <div style={{ display: 'flex', gap: '2px', marginBottom: '20px' }} aria-label="5 estrellas">
-                  {Array.from({ length: 5 }).map((_, j) => (
-                    <svg key={j} width="16" height="16" viewBox="0 0 16 16" fill="var(--accent)" aria-hidden="true">
-                      <path d="M8 1l1.854 3.756L14 5.567l-3 2.927.708 4.127L8 10.5l-3.708 2.121L5 8.494 2 5.567l4.146-.811z"/>
-                    </svg>
-                  ))}
-                </div>
-                <p style={{ fontSize: '16px', color: 'var(--ink-2)', lineHeight: 1.7, marginBottom: '24px', fontStyle: 'italic' }}>
-                  &ldquo;{t.text}&rdquo;
-                </p>
-                <footer style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                  <div style={{ width: '40px', height: '40px', borderRadius: '50%', background: 'var(--accent)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                    <span style={{ fontFamily: 'var(--font-hanken)', fontWeight: 700, fontSize: '13px', color: 'white' }}>{t.initials}</span>
-                  </div>
-                  <div>
-                    <div style={{ fontFamily: 'var(--font-hanken)', fontWeight: 600, fontSize: '14px', color: 'var(--ink)' }}>{t.name}</div>
-                    <div style={{ fontFamily: 'var(--font-mono)', fontSize: '12px', color: 'var(--ink-3)' }}>{t.business}</div>
-                  </div>
-                </footer>
-              </blockquote>
             ))}
           </div>
         </div>
