@@ -58,6 +58,14 @@ export default function ContactForm() {
           event_label: 'contacto_web',
         })
       }
+      if (typeof window !== 'undefined' && window.fbq) {
+        window.fbq('track', 'Lead', {
+          content_name: form.servicio || 'Contacto Web',
+          content_category: 'Servicios Digitales',
+          currency: 'BRL',
+          value: 50.00,
+        })
+      }
     } catch (err) {
       setStatus('error')
       setErrorMsg(err instanceof Error ? err.message : 'Ocurrió un error. Intentá de nuevo.')
@@ -109,6 +117,11 @@ export default function ContactForm() {
               window.gtag('event', 'click_whatsapp', {
                 event_category: 'contacto',
                 event_label: 'whatsapp_cta',
+              })
+            }
+            if (typeof window !== 'undefined' && window.fbq) {
+              window.fbq('track', 'Contact', {
+                content_name: 'WhatsApp post-formulario',
               })
             }
           }}
