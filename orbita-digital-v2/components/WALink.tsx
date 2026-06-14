@@ -11,6 +11,9 @@ export function trackWA() {
       event_label: 'whatsapp_cta',
     })
   }
+  if (typeof window !== 'undefined' && window.fbq) {
+    window.fbq('track', 'Contact', { content_name: 'WhatsApp' })
+  }
 }
 
 interface WALinkProps {
