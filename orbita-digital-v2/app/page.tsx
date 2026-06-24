@@ -275,7 +275,7 @@ export default function Home() {
                     className="project-img"
                     priority={w.priority}
                     sizes="(max-width: 768px) 100vw, 50vw"
-                    style={{ position: 'absolute' }}
+                    style={{ objectFit: 'cover' }}
                   />
                 </div>
                 <div style={{ padding: '24px' }}>
