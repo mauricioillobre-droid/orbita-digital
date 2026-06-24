@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import WALink from '@/components/WALink'
+import AnimatedStat from '@/components/AnimatedStat'
 
 export const metadata: Metadata = {
   title: 'Agencia Web y Automatización para Pymes en Argentina | Órbita Digital',
@@ -20,7 +21,7 @@ export default function Home() {
             Agencia digital · Buenos Aires
           </div>
 
-          <h1 className="reveal reveal-blur" data-delay="1" style={{
+          <h1 style={{
             fontFamily: 'var(--font-hanken)',
             fontSize: 'clamp(42px, 7vw, 96px)',
             fontWeight: 700,
@@ -29,13 +30,14 @@ export default function Home() {
             color: 'var(--ink)',
             marginBottom: '24px',
           }}>
-            Tu negocio necesita<br />
-            una web{' '}
-            <span style={{ color: 'var(--accent)' }}>que trabaje</span>,<br />
-            no que exista
+            <span className="reveal reveal-clip" data-delay="1" style={{ display: 'block' }}>Tu negocio necesita</span>
+            <span className="reveal reveal-clip" data-delay="2" style={{ display: 'block' }}>
+              una web{' '}<span style={{ color: 'var(--accent)' }}>que trabaje</span>,
+            </span>
+            <span className="reveal reveal-clip" data-delay="3" style={{ display: 'block' }}>no que exista</span>
           </h1>
 
-          <p className="reveal reveal-blur" data-delay="2" style={{
+          <p className="reveal reveal-blur" data-delay="4" style={{
             fontSize: 'clamp(17px, 1.5vw, 20px)',
             color: 'var(--ink-2)',
             maxWidth: '46ch',
@@ -45,7 +47,7 @@ export default function Home() {
             Diseño web profesional, automatización y contenido para pymes que quieren crecer en Buenos Aires y todo Argentina.
           </p>
 
-          <div className="reveal" data-delay="3" style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', marginBottom: '40px' }}>
+          <div className="reveal" data-delay="5" style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', marginBottom: '40px' }}>
             <WALink className="btn btn-wa btn-lg">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
@@ -56,7 +58,7 @@ export default function Home() {
           </div>
 
           {/* Trust bar */}
-          <div className="reveal" data-delay="4" style={{ display: 'flex', gap: 0, flexWrap: 'wrap', borderTop: '1px solid var(--line)', paddingTop: '24px' }}>
+          <div className="reveal" data-delay="6" style={{ display: 'flex', gap: 0, flexWrap: 'wrap', borderTop: '1px solid var(--line)', paddingTop: '24px' }}>
             {['+20 proyectos entregados', 'Respondemos en menos de 24hs', 'Trabajás directo con el equipo'].map((item, i) => (
               <div key={i} style={{
                 display: 'flex', alignItems: 'center', gap: '10px',
@@ -97,14 +99,14 @@ export default function Home() {
           </h2>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '16px' }}>
             {[
-              { icon: '🌐', title: 'Desarrollo Web para Pymes', desc: 'Sitios profesionales optimizados para generar leads. Desde landing pages hasta sistemas con reservas online y automatizaciones.', id: 'desarrollo-web' },
-              { icon: '🤖', title: 'Automatización con WhatsApp e IA', desc: 'Automatizamos ventas, turnos y atención al cliente. Menos tareas manuales, más tiempo para lo que importa.', id: 'automatizacion' },
-              { icon: '🎨', title: 'Diseño Gráfico y Branding', desc: 'Identidad visual estratégica para diferenciarte. Logos, piezas publicitarias y branding pensados para vender.', id: 'diseno-grafico' },
-              { icon: '🎬', title: 'Edición de Video y Reels', desc: 'Contenido audiovisual para redes que genera alcance y convierte. Reels de alto impacto para tu negocio.', id: 'edicion-video' },
+              { icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>, title: 'Desarrollo Web para Pymes', desc: 'Sitios profesionales optimizados para generar leads. Desde landing pages hasta sistemas con reservas online y automatizaciones.', id: 'desarrollo-web' },
+              { icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93l-1.41 1.41M4.93 4.93l1.41 1.41M19.07 19.07l-1.41-1.41M4.93 19.07l1.41-1.41M12 2v2M12 20v2M2 12h2M20 12h2"/></svg>, title: 'Automatización con WhatsApp e IA', desc: 'Automatizamos ventas, turnos y atención al cliente. Menos tareas manuales, más tiempo para lo que importa.', id: 'automatizacion' },
+              { icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="10.5" r="2.5"/><circle cx="8.5" cy="7.5" r="2.5"/><circle cx="6.5" cy="12.5" r="2.5"/><path d="M12 20v-4M12 20H8M12 20h4"/></svg>, title: 'Diseño Gráfico y Branding', desc: 'Identidad visual estratégica para diferenciarte. Logos, piezas publicitarias y branding pensados para vender.', id: 'diseno-grafico' },
+              { icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>, title: 'Edición de Video y Reels', desc: 'Contenido audiovisual para redes que genera alcance y convierte. Reels de alto impacto para tu negocio.', id: 'edicion-video' },
             ].map((s, i) => (
               <a key={i} href={`/servicios#${s.id}`} className="service-card reveal" data-delay={String((i % 4) + 1)} style={{ textDecoration: 'none', display: 'block' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '20px' }}>
-                  <div className="card-icon" style={{ fontSize: '20px' }} aria-hidden="true">{s.icon}</div>
+                  <div className="card-icon" aria-hidden="true">{s.icon}</div>
                   <span style={{ fontFamily: 'var(--font-mono)', fontSize: '13px', color: 'var(--ink-3)' }}>/{String(i + 1).padStart(2, '0')}</span>
                 </div>
                 <h3 style={{ fontFamily: 'var(--font-hanken)', fontSize: '22px', fontWeight: 600, letterSpacing: '-0.02em', color: 'var(--ink)', marginBottom: '10px' }}>{s.title}</h3>
@@ -126,9 +128,7 @@ export default function Home() {
               { num: '100%', label: 'Clientes satisfechos' },
             ].map((stat, i) => (
               <div key={i} className="stat-item reveal reveal-scale" data-delay={String(i + 1)}>
-                <div style={{ fontFamily: 'var(--font-hanken)', fontWeight: 700, fontSize: 'clamp(38px, 5vw, 58px)', letterSpacing: '-0.02em', color: 'var(--ink)', lineHeight: 1 }}>
-                  {stat.num}
-                </div>
+                <AnimatedStat value={stat.num} style={{ fontFamily: 'var(--font-hanken)', fontWeight: 700, fontSize: 'clamp(38px, 5vw, 58px)', letterSpacing: '-0.02em', color: 'var(--ink)', lineHeight: 1 }} />
                 <div style={{ fontSize: '14px', color: 'var(--ink-2)', marginTop: '8px' }}>{stat.label}</div>
               </div>
             ))}
