@@ -6,8 +6,10 @@ export function useReveal() {
   const pathname = usePathname()
 
   useEffect(() => {
-    // Reset all .reveal elements on page change so they animate in fresh
-    document.querySelectorAll('.reveal').forEach(el => {
+    const selector = '.reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-blur'
+
+    // Reset all reveal elements on page change so they animate in fresh
+    document.querySelectorAll(selector).forEach(el => {
       el.classList.remove('visible')
     })
 
@@ -23,7 +25,7 @@ export function useReveal() {
         },
         { threshold: 0.12 }
       )
-      document.querySelectorAll('.reveal').forEach(el => observer.observe(el))
+      document.querySelectorAll(selector).forEach(el => observer.observe(el))
 
       // Cleanup stored on window so we can disconnect on next run
       ;(window as Window & { __revealObserver?: IntersectionObserver }).__revealObserver?.disconnect()

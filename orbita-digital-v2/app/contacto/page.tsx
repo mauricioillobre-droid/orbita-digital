@@ -15,8 +15,8 @@ export default function ContactoPage() {
       {/* Header */}
       <section className="section-pad" style={{ background: 'var(--bg)', paddingTop: '120px' }}>
         <div className="container-od">
-          <div className="eyebrow reveal" style={{ marginBottom: '16px' }}>Contacto</div>
-          <h1 className="reveal" data-delay="1" style={{
+          <div className="eyebrow reveal reveal-left" style={{ marginBottom: '16px' }}>Contacto</div>
+          <h1 className="reveal reveal-blur" data-delay="1" style={{
             fontFamily: 'var(--font-hanken)',
             fontSize: 'clamp(36px, 5vw, 72px)',
             fontWeight: 700,
@@ -27,7 +27,7 @@ export default function ContactoPage() {
           }}>
             Hablemos de tu proyecto
           </h1>
-          <p className="reveal" data-delay="2" style={{ fontSize: '18px', color: 'var(--ink-2)', maxWidth: '50ch', lineHeight: 1.6 }}>
+          <p className="reveal reveal-blur" data-delay="2" style={{ fontSize: '18px', color: 'var(--ink-2)', maxWidth: '50ch', lineHeight: 1.6 }}>
             Contanos qué necesitás y te respondemos en menos de 24 horas con una propuesta concreta.
           </p>
         </div>
@@ -38,14 +38,14 @@ export default function ContactoPage() {
         <div className="container-od">
           <div style={{ display: 'grid', gridTemplateColumns: '1.15fr 0.85fr', gap: '40px', alignItems: 'start' }} className="contact-grid">
             {/* Form */}
-            <div className="reveal">
+            <div className="reveal reveal-left">
               <ContactForm />
             </div>
 
             {/* Aside */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
               {/* WhatsApp card */}
-              <div className="reveal" data-delay="1" style={{
+              <div className="reveal reveal-right" data-delay="1" style={{
                 borderRadius: 'var(--r-lg)',
                 border: '1px solid var(--line)',
                 background: 'linear-gradient(to bottom, #f0fff4, white)',
@@ -66,7 +66,7 @@ export default function ContactoPage() {
               </div>
 
               {/* Data card */}
-              <div className="reveal" data-delay="2" style={{
+              <div className="reveal reveal-right" data-delay="2" style={{
                 borderRadius: 'var(--r-lg)',
                 border: '1px solid var(--line)',
                 background: 'var(--surface)',
@@ -117,7 +117,7 @@ export default function ContactoPage() {
               </div>
 
               {/* Note card */}
-              <div className="reveal" data-delay="3" style={{
+              <div className="reveal reveal-right" data-delay="3" style={{
                 borderRadius: 'var(--r-lg)',
                 border: '1px solid var(--line)',
                 background: 'var(--bg-2)',

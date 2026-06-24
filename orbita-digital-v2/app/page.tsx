@@ -16,11 +16,11 @@ export default function Home() {
       {/* ─── HERO ─── */}
       <section style={{ background: 'var(--bg)', paddingTop: '140px', paddingBottom: 'clamp(72px, 11vw, 140px)' }}>
         <div className="container-od">
-          <div className="eyebrow reveal" style={{ marginBottom: '24px' }}>
+          <div className="eyebrow reveal reveal-left" style={{ marginBottom: '24px' }}>
             Agencia digital · Buenos Aires
           </div>
 
-          <h1 className="reveal" data-delay="1" style={{
+          <h1 className="reveal reveal-blur" data-delay="1" style={{
             fontFamily: 'var(--font-hanken)',
             fontSize: 'clamp(42px, 7vw, 96px)',
             fontWeight: 700,
@@ -35,7 +35,7 @@ export default function Home() {
             no que exista
           </h1>
 
-          <p className="reveal" data-delay="2" style={{
+          <p className="reveal reveal-blur" data-delay="2" style={{
             fontSize: 'clamp(17px, 1.5vw, 20px)',
             color: 'var(--ink-2)',
             maxWidth: '46ch',
@@ -91,8 +91,8 @@ export default function Home() {
       {/* ─── SERVICIOS ─── */}
       <section className="section-pad" style={{ background: 'var(--surface)' }}>
         <div className="container-od">
-          <div className="eyebrow reveal" style={{ marginBottom: '16px' }}>Lo que hacemos</div>
-          <h2 className="reveal" data-delay="1" style={{ fontFamily: 'var(--font-hanken)', fontSize: 'clamp(28px, 4vw, 48px)', fontWeight: 700, letterSpacing: '-0.03em', color: 'var(--ink)', marginBottom: '48px' }}>
+          <div className="eyebrow reveal reveal-left" style={{ marginBottom: '16px' }}>Lo que hacemos</div>
+          <h2 className="reveal reveal-blur" data-delay="1" style={{ fontFamily: 'var(--font-hanken)', fontSize: 'clamp(28px, 4vw, 48px)', fontWeight: 700, letterSpacing: '-0.03em', color: 'var(--ink)', marginBottom: '48px' }}>
             Servicios diseñados para crecer
           </h2>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '16px' }}>
@@ -125,7 +125,7 @@ export default function Home() {
               { num: '<24hs', label: 'Tiempo de respuesta' },
               { num: '100%', label: 'Clientes satisfechos' },
             ].map((stat, i) => (
-              <div key={i} className="stat-item reveal" data-delay={String(i + 1)}>
+              <div key={i} className="stat-item reveal reveal-scale" data-delay={String(i + 1)}>
                 <div style={{ fontFamily: 'var(--font-hanken)', fontWeight: 700, fontSize: 'clamp(38px, 5vw, 58px)', letterSpacing: '-0.02em', color: 'var(--ink)', lineHeight: 1 }}>
                   {stat.num}
                 </div>
@@ -139,8 +139,8 @@ export default function Home() {
       {/* ─── CÓMO TRABAJAMOS ─── */}
       <section className="section-pad" style={{ background: 'var(--surface)' }}>
         <div className="container-od">
-          <div className="eyebrow reveal" style={{ marginBottom: '16px' }}>El proceso</div>
-          <h2 className="reveal" data-delay="1" style={{ fontFamily: 'var(--font-hanken)', fontSize: 'clamp(28px, 4vw, 48px)', fontWeight: 700, letterSpacing: '-0.03em', color: 'var(--ink)', marginBottom: '56px' }}>
+          <div className="eyebrow reveal reveal-left" style={{ marginBottom: '16px' }}>El proceso</div>
+          <h2 className="reveal reveal-blur" data-delay="1" style={{ fontFamily: 'var(--font-hanken)', fontSize: 'clamp(28px, 4vw, 48px)', fontWeight: 700, letterSpacing: '-0.03em', color: 'var(--ink)', marginBottom: '56px' }}>
             Así trabajamos
           </h2>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '24px' }}>
@@ -149,7 +149,7 @@ export default function Home() {
               { num: '02', title: 'Diseñamos', desc: 'Construimos la solución con criterio estratégico. Diseño, tecnología y contenido en un solo equipo.' },
               { num: '03', title: 'Ejecutamos', desc: 'Entregamos en tiempos reales. Con seguimiento, soporte y sin sorpresas al final.' },
             ].map((step, i) => (
-              <div key={i} className="reveal" data-delay={String(i + 1)} style={{ padding: '32px', background: 'var(--bg)', borderRadius: 'var(--r-lg)', border: '1px solid var(--line)' }}>
+              <div key={i} className="reveal reveal-scale value-card" data-delay={String(i + 1)} style={{ padding: '32px', background: 'var(--bg)', borderRadius: 'var(--r-lg)', border: '1px solid var(--line)' }}>
                 <div style={{ fontFamily: 'var(--font-mono)', fontSize: '13px', color: 'var(--accent)', letterSpacing: '0.1em', marginBottom: '16px' }}>{step.num}</div>
                 <h3 style={{ fontFamily: 'var(--font-hanken)', fontSize: '22px', fontWeight: 600, letterSpacing: '-0.02em', color: 'var(--ink)', marginBottom: '10px' }}>{step.title}</h3>
                 <p style={{ fontSize: '15px', color: 'var(--ink-2)', lineHeight: 1.65, margin: 0 }}>{step.desc}</p>
@@ -162,14 +162,14 @@ export default function Home() {
       {/* ─── TESTIMONIOS ─── */}
       <section className="section-pad" style={{ background: 'var(--surface)' }}>
         <div className="container-od">
-          <div className="eyebrow reveal" style={{ marginBottom: '16px' }}>Clientes</div>
-          <h2 className="reveal" data-delay="1" style={{ fontFamily: 'var(--font-hanken)', fontSize: 'clamp(28px, 4vw, 48px)', fontWeight: 700, letterSpacing: '-0.03em', color: 'var(--ink)', marginBottom: '48px' }}>
+          <div className="eyebrow reveal reveal-left" style={{ marginBottom: '16px' }}>Clientes</div>
+          <h2 className="reveal reveal-blur" data-delay="1" style={{ fontFamily: 'var(--font-hanken)', fontSize: 'clamp(28px, 4vw, 48px)', fontWeight: 700, letterSpacing: '-0.03em', color: 'var(--ink)', marginBottom: '48px' }}>
             Lo que dicen nuestros clientes
           </h2>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '20px' }}>
 
             {/* Reseña 1 — German Pompiglio */}
-            <blockquote className="reveal" data-delay="1" style={{ background: 'var(--bg)', border: '1px solid var(--line)', borderRadius: 'var(--r-lg)', padding: '32px', margin: 0 }}>
+            <blockquote className="reveal reveal-left" data-delay="1" style={{ background: 'var(--bg)', border: '1px solid var(--line)', borderRadius: 'var(--r-lg)', padding: '32px', margin: 0 }}>
               <div style={{ display: 'flex', gap: '2px', marginBottom: '20px' }} aria-label="5 estrellas">
                 {Array.from({ length: 5 }).map((_, j) => (
                   <svg key={j} width="16" height="16" viewBox="0 0 16 16" fill="var(--accent)" aria-hidden="true">
@@ -192,7 +192,7 @@ export default function Home() {
             </blockquote>
 
             {/* Reseña 2 — Evangelina Angeri */}
-            <blockquote className="reveal" data-delay="2" style={{ background: 'var(--bg)', border: '1px solid var(--line)', borderRadius: 'var(--r-lg)', padding: '32px', margin: 0 }}>
+            <blockquote className="reveal reveal-right" data-delay="2" style={{ background: 'var(--bg)', border: '1px solid var(--line)', borderRadius: 'var(--r-lg)', padding: '32px', margin: 0 }}>
               <div style={{ display: 'flex', gap: '2px', marginBottom: '20px' }} aria-label="5 estrellas">
                 {Array.from({ length: 5 }).map((_, j) => (
                   <svg key={j} width="16" height="16" viewBox="0 0 16 16" fill="var(--accent)" aria-hidden="true">
@@ -221,7 +221,7 @@ export default function Home() {
           </div>
 
           {/* Botón Google Business */}
-          <div style={{ textAlign: 'center', marginTop: '40px' }}>
+          <div className="reveal" data-delay="3" style={{ textAlign: 'center', marginTop: '40px' }}>
             <a
               href="https://g.page/r/CUYtK1yHSmpSEAE/review"
               target="_blank"
@@ -239,8 +239,8 @@ export default function Home() {
         <div className="container-od">
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '48px', flexWrap: 'wrap', gap: '16px' }}>
             <div>
-              <div className="eyebrow reveal" style={{ marginBottom: '16px' }}>Portafolio</div>
-              <h2 className="reveal" data-delay="1" style={{ fontFamily: 'var(--font-hanken)', fontSize: 'clamp(28px, 4vw, 48px)', fontWeight: 700, letterSpacing: '-0.03em', color: 'var(--ink)', margin: 0 }}>
+              <div className="eyebrow reveal reveal-left" style={{ marginBottom: '16px' }}>Portafolio</div>
+              <h2 className="reveal reveal-blur" data-delay="1" style={{ fontFamily: 'var(--font-hanken)', fontSize: 'clamp(28px, 4vw, 48px)', fontWeight: 700, letterSpacing: '-0.03em', color: 'var(--ink)', margin: 0 }}>
                 Algunos proyectos
               </h2>
             </div>
@@ -266,7 +266,7 @@ export default function Home() {
                 priority: false,
               },
             ].map((w, i) => (
-              <article key={i} className="project-card reveal" data-delay={String(i + 1)}>
+              <article key={i} className="project-card reveal reveal-scale" data-delay={String(i + 1)}>
                 <div className="project-img-wrap" style={{ background: 'var(--bg-2)' }}>
                   <Image
                     src={w.image}
@@ -297,29 +297,31 @@ export default function Home() {
       <section className="section-pad" style={{ background: 'var(--bg-2)' }}>
         <div className="container-od">
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '20px', alignItems: 'center' }}>
-            <div className="reveal">
-              <div className="eyebrow" style={{ marginBottom: '20px' }}>El equipo</div>
-              <h2 style={{ fontFamily: 'var(--font-hanken)', fontSize: 'clamp(28px, 3.5vw, 44px)', fontWeight: 700, letterSpacing: '-0.03em', color: 'var(--ink)', marginBottom: '16px' }}>
+            <div>
+              <div className="eyebrow reveal reveal-left" style={{ marginBottom: '20px' }}>El equipo</div>
+              <h2 className="reveal reveal-blur" data-delay="1" style={{ fontFamily: 'var(--font-hanken)', fontSize: 'clamp(28px, 3.5vw, 44px)', fontWeight: 700, letterSpacing: '-0.03em', color: 'var(--ink)', marginBottom: '16px' }}>
                 Somos Mauri y Tati
               </h2>
-              <p style={{ fontSize: '17px', color: 'var(--ink-2)', lineHeight: 1.65, marginBottom: '12px' }}>
+              <p className="reveal" data-delay="2" style={{ fontSize: '17px', color: 'var(--ink-2)', lineHeight: 1.65, marginBottom: '12px' }}>
                 Diseño, tecnología y automatización en un solo equipo.
               </p>
-              <p style={{ fontSize: '15px', color: 'var(--ink-3)', marginBottom: '32px' }}>
+              <p className="reveal" data-delay="3" style={{ fontSize: '15px', color: 'var(--ink-3)', marginBottom: '32px' }}>
                 Agencia web en Argentina para pymes que quieren crecer de verdad.
               </p>
-              <WALink className="btn btn-wa btn-lg">
-                Escribinos por WhatsApp →
-              </WALink>
+              <div className="reveal" data-delay="4">
+                <WALink className="btn btn-wa btn-lg">
+                  Escribinos por WhatsApp →
+                </WALink>
+              </div>
             </div>
 
-            <div className="reveal" data-delay="1" style={{ display: 'flex', gap: '16px' }}>
+            <div style={{ display: 'flex', gap: '16px' }}>
               {[
                 { src: '/images/mauri.jpg', alt: 'Mauri — Desarrollo Web y Automatización en Órbita Digital, Buenos Aires', label: 'Mauri', role: 'Desarrollo & Automatización' },
                 { src: '/images/tati.jpg', alt: 'Tati — Diseño Gráfico y Contenido en Órbita Digital, Buenos Aires', label: 'Tati', role: 'Diseño & Contenido' },
-              ].map((person) => (
-                <div key={person.label} style={{ flex: 1, background: 'var(--surface)', borderRadius: 'var(--r-lg)', overflow: 'hidden', border: '1px solid var(--line)' }}>
-                  <div style={{ position: 'relative', aspectRatio: '3/4', background: 'var(--bg-2)' }}>
+              ].map((person, i) => (
+                <div key={person.label} className={`reveal ${i === 0 ? 'reveal-left' : 'reveal-right'}`} data-delay={String(i + 5)} style={{ flex: 1, background: 'var(--surface)', borderRadius: 'var(--r-lg)', overflow: 'hidden', border: '1px solid var(--line)' }}>
+                  <div className="team-img-wrap" style={{ position: 'relative', aspectRatio: '3/4', background: 'var(--bg-2)' }}>
                     <Image
                       src={person.src}
                       alt={person.alt}
@@ -343,21 +345,21 @@ export default function Home() {
       {/* ─── CTA FINAL ─── */}
       <section className="section-pad" style={{ background: 'var(--surface)' }}>
         <div className="container-od">
-          <div className="reveal" style={{
+          <div className="reveal reveal-scale" style={{
             borderRadius: 'var(--r-xl)',
             border: '1px solid var(--line)',
             background: 'radial-gradient(ellipse at top center, var(--accent-soft), transparent 60%), var(--surface)',
             padding: 'clamp(48px, 7vw, 80px)',
             textAlign: 'center',
           }}>
-            <div className="eyebrow" style={{ justifyContent: 'center', marginBottom: '20px' }}>¿Listo para empezar?</div>
-            <h2 style={{ fontFamily: 'var(--font-hanken)', fontSize: 'clamp(28px, 4vw, 48px)', fontWeight: 700, letterSpacing: '-0.03em', color: 'var(--ink)', marginBottom: '16px' }}>
+            <div className="eyebrow reveal reveal-left" style={{ justifyContent: 'center', marginBottom: '20px' }}>¿Listo para empezar?</div>
+            <h2 className="reveal reveal-blur" data-delay="1" style={{ fontFamily: 'var(--font-hanken)', fontSize: 'clamp(28px, 4vw, 48px)', fontWeight: 700, letterSpacing: '-0.03em', color: 'var(--ink)', marginBottom: '16px' }}>
               Contanos de qué se trata tu proyecto
             </h2>
-            <p style={{ fontSize: '17px', color: 'var(--ink-2)', maxWidth: '44ch', margin: '0 auto 32px' }}>
+            <p className="reveal" data-delay="2" style={{ fontSize: '17px', color: 'var(--ink-2)', maxWidth: '44ch', margin: '0 auto 32px' }}>
               Respondemos en menos de 24hs. Sin formularios largos, sin esperas.
             </p>
-            <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <div className="reveal" data-delay="3" style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
               <WALink className="btn btn-wa btn-lg">WhatsApp →</WALink>
               <a href="/contacto" className="btn btn-ghost btn-lg">Ver formulario</a>
             </div>
