@@ -29,12 +29,13 @@ export default function Home() {
             lineHeight: 0.96,
             color: 'var(--ink)',
             marginBottom: '24px',
+            overflow: 'hidden',
           }}>
-            <span className="reveal reveal-clip" data-delay="1" style={{ display: 'block' }}>Tu negocio necesita</span>
-            <span className="reveal reveal-clip" data-delay="2" style={{ display: 'block' }}>
+            <span className="reveal reveal-mask" data-delay="1" style={{ display: 'block' }}>Tu negocio necesita</span>
+            <span className="reveal reveal-mask" data-delay="2" style={{ display: 'block' }}>
               una web{' '}<span style={{ color: 'var(--accent)' }}>que trabaje</span>,
             </span>
-            <span className="reveal reveal-clip" data-delay="3" style={{ display: 'block' }}>no que exista</span>
+            <span className="reveal reveal-mask" data-delay="3" style={{ display: 'block' }}>no que exista</span>
           </h1>
 
           <p className="reveal reveal-blur" data-delay="4" style={{

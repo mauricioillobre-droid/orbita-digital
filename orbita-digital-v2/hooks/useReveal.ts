@@ -6,7 +6,7 @@ export function useReveal() {
   const pathname = usePathname()
 
   useEffect(() => {
-    const selector = '.reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-blur, .reveal-clip'
+    const selector = '.reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-blur, .reveal-mask'
 
     // Reset all reveal elements on page change so they animate in fresh
     document.querySelectorAll(selector).forEach(el => {

@@ -58,13 +58,11 @@ html { scroll-behavior: smooth; }
 .reveal-scale  { transform: scale(0.88); }
 .reveal-blur   { transform: translateY(30px); filter: blur(12px); }
 
-/* Hero clip-path text reveal */
-.reveal-clip {
-  clip-path: inset(0 0 100% 0);
-  transform: translateY(20px);
+/* Hero text reveal — overflow mask */
+.reveal-mask {
+  transform: translateY(110%);
 }
-.reveal-clip.visible {
-  clip-path: inset(0 0 0% 0);
+.reveal-mask.visible {
   transform: none;
 }
 
@@ -79,8 +77,8 @@ html { scroll-behavior: smooth; }
 [data-delay="8"] { transition-delay: 1.04s; }
 
 @media (prefers-reduced-motion: reduce) {
-  .reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-blur, .reveal-clip {
-    opacity: 1; transform: none; filter: none; clip-path: none; transition: none;
+  .reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-blur, .reveal-mask {
+    opacity: 1; transform: none; filter: none; transition: none;
   }
 }
 
