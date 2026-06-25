@@ -2,7 +2,7 @@
 const nextConfig = {
   images: {
     // Permite imágenes locales del proyecto sin configuración extra
-    formats: ['image/webp'],
+    formats: ['image/avif', 'image/webp'],
   },
 }
 
