@@ -46,7 +46,7 @@ export default function Navbar() {
           />
         </Link>
 
-        <div style={{ display: 'flex', gap: '2rem', alignItems: 'center' }} className="hidden md:flex">
+        <div style={{ gap: '2rem', alignItems: 'center' }} className="hidden md:flex">
           {links.map(link => (
             <Link key={link.href} href={link.href} style={{
               fontFamily: 'var(--font-hanken)',

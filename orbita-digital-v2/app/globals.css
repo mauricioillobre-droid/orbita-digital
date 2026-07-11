@@ -28,11 +28,12 @@
 }
 
 * { box-sizing: border-box; }
-html { -webkit-font-smoothing: antialiased; }
+html { -webkit-font-smoothing: antialiased; overflow-x: hidden; }
 body {
   background: var(--bg);
   color: var(--ink);
   font-family: var(--font-hanken), sans-serif;
+  overflow-x: hidden;
 }
 p { text-wrap: pretty; }
 ::selection { background: var(--accent); color: white; }
@@ -113,50 +114,52 @@ html { scroll-behavior: smooth; }
 .eyebrow.visible::before { width: 22px; }
 
 /* Botones */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  border-radius: 99px;
-  font-family: var(--font-hanken), sans-serif;
-  font-weight: 500;
-  cursor: pointer;
-  transition: transform 0.22s var(--ease), box-shadow 0.22s var(--ease);
-  text-decoration: none;
-  border: none;
-}
-.btn:hover { transform: translateY(-2px); }
-.btn svg, .btn .btn-icon { transition: transform 0.22s var(--ease); }
-.btn:hover svg, .btn:hover .btn-icon { transform: translateX(3px); }
+@layer components {
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    border-radius: 99px;
+    font-family: var(--font-hanken), sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    transition: transform 0.22s var(--ease), box-shadow 0.22s var(--ease);
+    text-decoration: none;
+    border: none;
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .btn svg, .btn .btn-icon { transition: transform 0.22s var(--ease); }
+  .btn:hover svg, .btn:hover .btn-icon { transform: translateX(3px); }
 
-.btn-primary {
-  background: var(--accent);
-  color: white;
-  padding: 12px 22px;
-  font-size: 14.5px;
-  box-shadow: 0 2px 8px color-mix(in srgb, var(--accent) 30%, transparent);
+  .btn-primary {
+    background: var(--accent);
+    color: white;
+    padding: 12px 22px;
+    font-size: 14.5px;
+    box-shadow: 0 2px 8px color-mix(in srgb, var(--accent) 30%, transparent);
+  }
+  .btn-primary:hover {
+    box-shadow: 0 6px 20px color-mix(in srgb, var(--accent) 40%, transparent);
+  }
+  .btn-ghost {
+    background: transparent;
+    color: var(--ink);
+    padding: 12px 22px;
+    font-size: 14.5px;
+    border: 1px solid var(--line-2);
+  }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+  .btn-wa {
+    background: #1faf54;
+    color: white;
+    padding: 12px 22px;
+    font-size: 14.5px;
+    box-shadow: 0 2px 8px rgba(31,175,84,0.3);
+  }
+  .btn-wa:hover { box-shadow: 0 6px 20px rgba(31,175,84,0.4); }
+  .btn-lg { padding: 16px 28px; font-size: 16px; }
+  .btn-sm { padding: 10px 17px; font-size: 13.5px; }
 }
-.btn-primary:hover {
-  box-shadow: 0 6px 20px color-mix(in srgb, var(--accent) 40%, transparent);
-}
-.btn-ghost {
-  background: transparent;
-  color: var(--ink);
-  padding: 12px 22px;
-  font-size: 14.5px;
-  border: 1px solid var(--line-2);
-}
-.btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
-.btn-wa {
-  background: #1faf54;
-  color: white;
-  padding: 12px 22px;
-  font-size: 14.5px;
-  box-shadow: 0 2px 8px rgba(31,175,84,0.3);
-}
-.btn-wa:hover { box-shadow: 0 6px 20px rgba(31,175,84,0.4); }
-.btn-lg { padding: 16px 28px; font-size: 16px; }
-.btn-sm { padding: 10px 17px; font-size: 13.5px; }
 
 /* Cards servicio */
 .service-card {
