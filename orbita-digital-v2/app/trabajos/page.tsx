@@ -8,7 +8,39 @@ export const metadata: Metadata = {
     'Portafolio de proyectos de desarrollo web, automatización y diseño para pymes argentinas.',
 }
 
-const projects = [
+type Project = {
+  title: string
+  shortDesc: string
+  longDesc: string
+  tags: string[]
+  alt: string
+  priority: boolean
+  imgFit: 'cover' | 'contain'
+  imgBg: string
+  image?: string
+  video?: string
+  poster?: string
+  extraVideo?: { label: string; src: string; poster: string }
+}
+
+const projects: Project[] = [
+  {
+    title: 'En Cada Rincón — Tienda Online',
+    shortDesc: 'Tienda online completa desarrollada para En Cada Rincón (importadores de productos regionales), con panel de administración a medida y dos canales de venta diferenciados: minorista y mayorista.',
+    longDesc: 'Catálogo con variantes (color, talle, stock por variante), checkout con Mercado Pago vía OAuth o transferencia bancaria, y un circuito mayorista independiente con aprobación manual, precios diferenciados y descuentos por volumen. El panel de administración cubre productos, pedidos, solicitudes mayoristas y un dashboard de métricas de ventas. Construida sobre Next.js 16, Cloudflare Workers + D1 (base de datos edge) y Drizzle ORM: infraestructura rápida en toda Latinoamérica, pagos sin fricción para el dueño del negocio y control total sin depender de terceros.',
+    tags: ['E-commerce', 'Next.js', 'Mercado Pago', 'Cloudflare'],
+    video: '/videos/en-cada-rincon/tienda-full.mp4',
+    poster: '/videos/en-cada-rincon/tienda-poster.jpg',
+    alt: 'Tienda online En Cada Rincón desarrollada por Órbita Digital, recorrido del sitio',
+    priority: true,
+    imgFit: 'cover' as const,
+    imgBg: '#0a0a0a',
+    extraVideo: {
+      label: 'Panel de administración',
+      src: '/videos/en-cada-rincon/panel-admin.mp4',
+      poster: '/videos/en-cada-rincon/panel-admin-poster.jpg',
+    },
+  },
   {
     title: '25 de Mayo Consultorios Médicos',
     shortDesc: 'Sistema de turnos online con confirmación automática por WhatsApp para consultorio médico en Buenos Aires. Los pacientes sacan turno desde cualquier dispositivo y reciben confirmación instantánea.',
@@ -91,14 +123,26 @@ export default function TrabajosPage() {
                   minHeight: '380px',
                 }}
               >
-                <Image
-                  src={p.image}
-                  alt={p.alt}
-                  fill
-                  priority={p.priority}
-                  sizes="(max-width: 768px) 100vw, 55vw"
-                  style={{ objectFit: p.imgFit ?? 'cover', objectPosition: 'center' }}
-                />
+                {p.video ? (
+                  <video
+                    src={p.video}
+                    poster={p.poster}
+                    controls
+                    preload="none"
+                    playsInline
+                    className="absolute inset-0 w-full h-full"
+                    style={{ objectFit: p.imgFit ?? 'cover', objectPosition: 'center' }}
+                  />
+                ) : (
+                  <Image
+                    src={p.image!}
+                    alt={p.alt}
+                    fill
+                    priority={p.priority}
+                    sizes="(max-width: 768px) 100vw, 55vw"
+                    style={{ objectFit: p.imgFit ?? 'cover', objectPosition: 'center' }}
+                  />
+                )}
               </div>
 
               {/* Texto */}
@@ -130,6 +174,33 @@ export default function TrabajosPage() {
                 </WALink>
               </div>
             </article>
+
+            {p.extraVideo && (
+              <div
+                className="reveal"
+                style={{
+                  marginTop: '24px',
+                  background: 'var(--surface)',
+                  borderRadius: 'var(--r-lg)',
+                  boxShadow: 'var(--shadow-card)',
+                  padding: 'clamp(20px, 3vw, 32px)',
+                }}
+              >
+                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '14px' }}>
+                  {p.extraVideo.label}
+                </div>
+                <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9', background: '#0a0a0a', borderRadius: 'var(--r-md)', overflow: 'hidden' }}>
+                  <video
+                    src={p.extraVideo.src}
+                    poster={p.extraVideo.poster}
+                    controls
+                    preload="none"
+                    playsInline
+                    style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
+                  />
+                </div>
+              </div>
+            )}
           </div>
         </section>
       ))}

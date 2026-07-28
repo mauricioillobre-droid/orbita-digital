@@ -251,12 +251,21 @@ export default function Home() {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '20px' }}>
             {[
               {
+                title: 'En Cada Rincón — Tienda Online',
+                desc: 'E-commerce con panel de administración a medida y circuitos diferenciados para venta minorista y mayorista.',
+                tags: ['E-commerce', 'Next.js', 'Mercado Pago'],
+                video: '/videos/en-cada-rincon/tienda-preview.mp4',
+                poster: '/videos/en-cada-rincon/tienda-poster.jpg',
+                alt: 'Tienda online con panel de administración desarrollada por Órbita Digital para En Cada Rincón',
+                priority: true,
+              },
+              {
                 title: '25 de Mayo Consultorios Médicos',
                 desc: 'Sistema de turnos online con confirmación automática por WhatsApp para consultorio médico en Buenos Aires.',
                 tags: ['Desarrollo Web', 'Automatización', 'WhatsApp'],
                 image: '/images/trabajos/25-de-mayo.jpg',
                 alt: 'Sistema de turnos online para consultorio médico en Argentina desarrollado por Órbita Digital',
-                priority: true,
+                priority: false,
               },
               {
                 title: 'Órbita Digital',
@@ -269,15 +278,29 @@ export default function Home() {
             ].map((w, i) => (
               <article key={i} className="project-card reveal reveal-scale" data-delay={String(i + 1)}>
                 <div className="project-img-wrap" style={{ background: 'var(--bg-2)' }}>
-                  <Image
-                    src={w.image}
-                    alt={w.alt}
-                    fill
-                    className="project-img"
-                    priority={w.priority}
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    style={{ objectFit: 'cover' }}
-                  />
+                  {w.video ? (
+                    <video
+                      src={w.video}
+                      poster={w.poster}
+                      className="project-img"
+                      style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      preload="none"
+                    />
+                  ) : (
+                    <Image
+                      src={w.image!}
+                      alt={w.alt}
+                      fill
+                      className="project-img"
+                      priority={w.priority}
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      style={{ objectFit: 'cover' }}
+                    />
+                  )}
                 </div>
                 <div style={{ padding: '24px' }}>
                   <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginBottom: '12px' }}>

@@ -5,7 +5,28 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { IconArrowRight } from '@tabler/icons-react'
 
-const works = [
+type Work = {
+  slug: string
+  title: string
+  description: string
+  tags: string[]
+  alt: string
+  image?: string
+  video?: string
+  poster?: string
+}
+
+const works: Work[] = [
+  {
+    slug: 'en-cada-rincon',
+    title: 'En Cada Rincón — Tienda Online',
+    description:
+      'E-commerce con panel de administración a medida y circuitos diferenciados para venta minorista y mayorista.',
+    tags: ['E-commerce', 'Next.js', 'Mercado Pago'],
+    video: '/videos/en-cada-rincon/tienda-preview.mp4',
+    poster: '/videos/en-cada-rincon/tienda-poster.jpg',
+    alt: 'Tienda online con panel de administración desarrollada por Órbita Digital para En Cada Rincón',
+  },
   {
     slug: '25-de-mayo',
     title: '25 de Mayo Consultorios Médicos',
@@ -42,7 +63,7 @@ export default function WorksPreview() {
           Algunos proyectos
         </motion.h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {works.map((w, i) => (
             <motion.article
               key={w.slug}
@@ -52,16 +73,29 @@ export default function WorksPreview() {
               transition={{ duration: 0.5, delay: reduce ? 0 : i * 0.15 }}
               className="group relative bg-[#0b0f17] border border-white/5 rounded-2xl overflow-hidden cursor-pointer"
             >
-              {/* Image */}
+              {/* Media */}
               <div className="relative aspect-[16/9] w-full bg-[#0d47ff]/10">
-                <Image
-                  src={w.image}
-                  alt={w.alt}
-                  fill
-                  className="object-cover"
-                  loading="lazy"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
+                {w.video ? (
+                  <video
+                    src={w.video}
+                    poster={w.poster}
+                    className="absolute inset-0 w-full h-full object-cover"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    preload="none"
+                  />
+                ) : (
+                  <Image
+                    src={w.image!}
+                    alt={w.alt}
+                    fill
+                    className="object-cover"
+                    loading="lazy"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                )}
                 {/* Hover overlay */}
                 <div className="absolute inset-0 bg-[#0d47ff]/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                   <span className="text-white font-dm font-medium border border-white/50 rounded-full px-5 py-2 text-sm">
