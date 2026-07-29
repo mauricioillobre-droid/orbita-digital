@@ -60,11 +60,11 @@ export default function Home() {
 
           {/* Trust bar */}
           <div className="reveal" data-delay="6" style={{ display: 'flex', gap: 0, flexWrap: 'wrap', borderTop: '1px solid var(--line)', paddingTop: '24px' }}>
-            {['+20 proyectos entregados', 'Respondemos en menos de 24hs', 'Trabajás directo con el equipo'].map((item, i) => (
+            {['Respondemos en menos de 24hs', 'Trabajás directo con el equipo'].map((item, i, arr) => (
               <div key={i} style={{
                 display: 'flex', alignItems: 'center', gap: '10px',
-                paddingRight: i < 2 ? '28px' : 0, marginRight: i < 2 ? '28px' : 0,
-                borderRight: i < 2 ? '1px solid var(--line)' : 'none',
+                paddingRight: i < arr.length - 1 ? '28px' : 0, marginRight: i < arr.length - 1 ? '28px' : 0,
+                borderRight: i < arr.length - 1 ? '1px solid var(--line)' : 'none',
                 fontSize: '14px', color: 'var(--ink-2)',
                 paddingBottom: '8px', marginBottom: '8px',
               }}>
@@ -123,7 +123,6 @@ export default function Home() {
         <div className="container-od">
           <div className="stats-grid">
             {[
-              { num: '+20', label: 'Proyectos entregados' },
               { num: '2', label: 'Especialistas en el equipo' },
               { num: '<24hs', label: 'Tiempo de respuesta' },
               { num: '100%', label: 'Clientes satisfechos' },
