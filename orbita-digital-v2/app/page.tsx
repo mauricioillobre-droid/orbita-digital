@@ -262,45 +262,35 @@ export default function Home() {
               {
                 title: '25 de Mayo Consultorios Médicos',
                 desc: 'Sistema de turnos online con confirmación automática por WhatsApp para consultorio médico en Buenos Aires.',
-                tags: ['Desarrollo Web', 'Automatización', 'WhatsApp'],
-                image: '/images/trabajos/25-de-mayo.jpg',
+                tags: ['Next.js', 'Supabase', 'WhatsApp'],
+                video: '/videos/25-de-mayo/web-preview.mp4',
+                poster: '/videos/25-de-mayo/web-poster.jpg',
                 alt: 'Sistema de turnos online para consultorio médico en Argentina desarrollado por Órbita Digital',
                 priority: false,
               },
               {
-                title: 'Órbita Digital',
-                desc: 'Diseño web y branding completo para agencia digital argentina. Identidad visual diferenciada y alta performance.',
-                tags: ['Diseño', 'Desarrollo'],
-                image: '/images/trabajos/orbita.jpg',
-                alt: 'Diseño web y branding para agencia digital argentina',
+                title: 'Agente de Contenido — Telegram Bot',
+                desc: 'Sistema propio de generación y publicación de contenido para LinkedIn e Instagram, operado íntegramente por Telegram.',
+                tags: ['Telegram Bot', 'Anthropic', 'Cloudflare'],
+                video: '/videos/agente-ops/demo-preview.mp4',
+                poster: '/videos/agente-ops/demo-poster.jpg',
+                alt: 'Bot de Telegram para generación y publicación de contenido en redes sociales desarrollado por Órbita Digital',
                 priority: false,
               },
             ].map((w, i) => (
               <article key={i} className="project-card reveal reveal-scale" data-delay={String(i + 1)}>
                 <div className="project-img-wrap" style={{ background: 'var(--bg-2)' }}>
-                  {w.video ? (
-                    <video
-                      src={w.video}
-                      poster={w.poster}
-                      className="project-img"
-                      style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
-                      autoPlay
-                      muted
-                      loop
-                      playsInline
-                      preload="none"
-                    />
-                  ) : (
-                    <Image
-                      src={w.image!}
-                      alt={w.alt}
-                      fill
-                      className="project-img"
-                      priority={w.priority}
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                      style={{ objectFit: 'cover' }}
-                    />
-                  )}
+                  <video
+                    src={w.video}
+                    poster={w.poster}
+                    className="project-img"
+                    style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    preload="none"
+                  />
                 </div>
                 <div style={{ padding: '24px' }}>
                   <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginBottom: '12px' }}>
