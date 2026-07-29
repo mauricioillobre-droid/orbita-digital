@@ -33,6 +33,20 @@ const projects: Project[] = [
       poster: '/videos/en-cada-rincon/panel-admin-poster.jpg',
     },
   },
+  {
+    title: 'Sistema de Turnos — 25 de Mayo Consultorios Médicos',
+    shortDesc: 'Plataforma integral para un centro médico con más de 49 profesionales activos, que digitaliza la reserva de turnos y centraliza la operación diaria del consultorio.',
+    longDesc: 'El sitio institucional presenta especialidades y prácticas, con un buscador de turnos en un flujo guiado de cinco pasos: el calendario se ajusta en tiempo real según la disponibilidad real de cada profesional, contemplando frecuencias variables y bloqueos puntuales de agenda. El panel de administración suma dashboard de métricas, agenda diaria, carga manual de turnos e historial con filtros por estado, origen, especialidad y rango de fechas, distinguiendo turnos reservados desde la web, cargados por el personal o —en una fase posterior— gestionados por un agente conversacional. Un flujo de WhatsApp confirma automáticamente cada turno al paciente, con normalización de números y logs de envío para trazabilidad completa. Construido con Next.js (App Router), TypeScript, Tailwind CSS y Framer Motion sobre Supabase (PostgreSQL + Auth), automatizaciones en n8n y despliegue continuo en Vercel.',
+    tags: ['Next.js', 'Supabase', 'WhatsApp', 'n8n'],
+    video: '/videos/25-de-mayo/web-full.mp4',
+    poster: '/videos/25-de-mayo/web-poster.jpg',
+    alt: 'Sistema de turnos online para 25 de Mayo Consultorios Médicos desarrollado por Órbita Digital, recorrido del sitio',
+    extraVideo: {
+      label: 'Panel de administración',
+      src: '/videos/25-de-mayo/panel-admin.mp4',
+      poster: '/videos/25-de-mayo/panel-admin-poster.jpg',
+    },
+  },
 ]
 
 const waIcon = (
