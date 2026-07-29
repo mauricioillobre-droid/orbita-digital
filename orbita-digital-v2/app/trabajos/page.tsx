@@ -47,6 +47,15 @@ const projects: Project[] = [
       poster: '/videos/25-de-mayo/panel-admin-poster.jpg',
     },
   },
+  {
+    title: 'Agente de Contenido — Telegram Bot',
+    shortDesc: 'Sistema propio de generación y publicación de contenido para LinkedIn e Instagram, operado íntegramente por Telegram, con soporte multi-cuenta para gestionar varias marcas desde un mismo bot.',
+    longDesc: 'El pipeline investiga el nicho de cada negocio, redacta el copy de cada pieza basándose únicamente en información real de la marca —sin inventar datos ni cifras— y genera las imágenes de forma automática. Cada publicación queda sujeta a aprobación, con posibilidad de pedir ajustes por chat; una vez validado el funcionamiento, la cuenta puede pasar a modo automático, donde el contenido aprobado se publica solo en el horario programado. También admite publicaciones puntuales a partir de una foto real del negocio, con copy generado al instante. El sistema aprende de los ajustes realizados, incorporándolos como reglas propias para el contenido futuro. Construido en TypeScript sobre Cloudflare, con modelos de Anthropic para investigación y redacción, y publicación automática en redes sociales.',
+    tags: ['Telegram Bot', 'Anthropic', 'Automatización', 'Cloudflare'],
+    video: '/videos/agente-ops/demo-full.mp4',
+    poster: '/videos/agente-ops/demo-poster.jpg',
+    alt: 'Bot de Telegram para generación y publicación de contenido en redes sociales desarrollado por Órbita Digital',
+  },
 ]
 
 const waIcon = (
