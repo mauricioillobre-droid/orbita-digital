@@ -51,11 +51,11 @@ export default function Home() {
           {/* Mosaico de trabajos */}
           <div className="mosaic">
             {[
-              { title: 'Casa de Praia', desc: 'Sitio web y sistema de gestión', video: '/videos/casa-de-praia/sitio.mp4', poster: '/videos/casa-de-praia/sitio-poster.jpg', alt: 'Sitio web de Pousada Casa de Praia desarrollado por Órbita Digital' },
-              { title: 'Loja Rentável', desc: 'Gestión para tiendas', video: '/videos/loja-rentavel/demo.mp4', poster: '/videos/loja-rentavel/demo-poster.jpg', alt: 'Sistema de gestión para tiendas Loja Rentável desarrollado por Órbita Digital' },
-              { title: 'En Cada Rincón', desc: 'Tienda online y panel', video: '/videos/en-cada-rincon/sitio.mp4', poster: '/videos/en-cada-rincon/sitio-poster.jpg', alt: 'Tienda online En Cada Rincón desarrollada por Órbita Digital' },
+              { title: 'Casa de Praia', href: '/trabajos?caso=casa-de-praia', desc: 'Sitio web y sistema de gestión', video: '/videos/casa-de-praia/sitio.mp4', poster: '/videos/casa-de-praia/sitio-poster.jpg', alt: 'Sitio web de Pousada Casa de Praia desarrollado por Órbita Digital' },
+              { title: 'Loja Rentável', href: '/trabajos?caso=loja-rentavel', desc: 'Gestión para tiendas', video: '/videos/loja-rentavel/demo.mp4', poster: '/videos/loja-rentavel/demo-poster.jpg', alt: 'Sistema de gestión para tiendas Loja Rentável desarrollado por Órbita Digital' },
+              { title: 'En Cada Rincón', href: '/trabajos?caso=en-cada-rincon', desc: 'Tienda online y panel', video: '/videos/en-cada-rincon/sitio.mp4', poster: '/videos/en-cada-rincon/sitio-poster.jpg', alt: 'Tienda online En Cada Rincón desarrollada por Órbita Digital' },
             ].map((w, i) => (
-              <a key={w.title} href="/trabajos" className="mosaic-card glass reveal reveal-scale" data-delay={String(i + 5)}>
+              <a key={w.title} href={w.href} className="mosaic-card glass reveal reveal-scale" data-delay={String(i + 5)}>
                 <div className="mosaic-media">
                   <video src={w.video} poster={w.poster} aria-label={w.alt} autoPlay muted loop playsInline preload="none" />
                 </div>
