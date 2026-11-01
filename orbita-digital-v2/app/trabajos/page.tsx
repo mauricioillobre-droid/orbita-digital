@@ -10,10 +10,10 @@ export const metadata: Metadata = {
 
 export default function TrabajosPage() {
   return (
-    <div style={{ background: 'var(--bg)' }}>
+    <div>
 
       {/* Header */}
-      <section className="hero-c" style={{ background: 'var(--bg)' }}>
+      <section className="hero-c">
         <div className="container-od" style={{ position: 'relative', zIndex: 2 }}>
           <div className="hero-eyebrow" data-anim="fade"><i />Portafolio</div>
           <h1 data-anim="split" data-delay="1" style={{
@@ -38,7 +38,7 @@ export default function TrabajosPage() {
       <WorksCarousel />
 
       {/* CTA */}
-      <section className="section-pad" style={{ background: 'var(--bg-2)', borderTop: '1px solid var(--line)' }}>
+      <section className="section-pad" style={{ background: 'var(--bg-2-soft)', borderTop: '1px solid var(--line)' }}>
         <div className="container-od" style={{ textAlign: 'center' }}>
           <div>
             <h2 data-anim="split" style={{ fontFamily: 'var(--font-sans)', fontSize: 'clamp(26px, 3.5vw, 44px)', fontWeight: 700, letterSpacing: '-0.03em', color: 'var(--ink)', marginBottom: '16px' }}>

@@ -343,10 +343,10 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   }
 
   return (
-    <div style={{ background: 'var(--bg)' }}>
+    <div>
 
       {/* Header */}
-      <section style={{ background: 'var(--bg)', paddingTop: 'clamp(120px, 14vw, 170px)', paddingBottom: '48px' }}>
+      <section style={{ paddingTop: 'clamp(120px, 14vw, 170px)', paddingBottom: '48px' }}>
         <div className="container-od" style={{ maxWidth: '760px' }}>
 
           {/* Back */}
@@ -417,7 +417,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       </section>
 
       {/* CTA */}
-      <section className="section-pad" style={{ background: 'var(--bg-2)', borderTop: '1px solid var(--line)' }}>
+      <section className="section-pad" style={{ background: 'var(--bg-2-soft)', borderTop: '1px solid var(--line)' }}>
         <div className="container-od" style={{ textAlign: 'center' }}>
           <h2 style={{ fontFamily: 'var(--font-sans)', fontSize: 'clamp(22px, 3vw, 36px)', fontWeight: 700, letterSpacing: '-0.03em', color: 'var(--ink)', marginBottom: '14px' }}>
             ¿Querés aplicar esto en tu negocio?

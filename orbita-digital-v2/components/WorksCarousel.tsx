@@ -41,7 +41,8 @@ function Styles() {
   return (
     <style dangerouslySetInnerHTML={{ __html: `
       .wc-root { --w: 460px; --r: 345px; position: relative; overflow: hidden; padding: 24px 0 clamp(48px, 8vw, 96px); }
-      .wc-stage, .wc-stage-placeholder { height: calc(var(--w) * 9 / 16 + 90px); }
+      /* Alto = tarjeta del frente ya agrandada (perspectiva x scale 1.1, ~1.46) + aire arriba y abajo */
+      .wc-stage, .wc-stage-placeholder { height: calc(var(--w) * 9 / 16 * 1.46 + 72px); }
       .wc-stage { position: relative; perspective: 1400px; touch-action: pan-y; cursor: grab; user-select: none; -webkit-user-select: none; outline: none; }
       .wc-stage.dragging { cursor: grabbing; }
       .wc-ring { position: absolute; left: 50%; top: 50%; width: var(--w); height: calc(var(--w) * 9 / 16); margin-left: calc(var(--w) / -2); margin-top: calc(var(--w) * 9 / 32 * -1); transform-style: preserve-3d; }
@@ -51,7 +52,7 @@ function Styles() {
       .wc-card button { all: unset; display: block; width: 100%; height: 100%; cursor: pointer; }
       .wc-card.front button { cursor: inherit; }
       .wc-media { width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none; }
-      .wc-nav { display: flex; align-items: center; justify-content: center; gap: 14px; margin-top: 8px; }
+      .wc-nav { display: flex; align-items: center; justify-content: center; gap: 14px; margin-top: 20px; }
       .wc-arrow { width: 44px; height: 44px; border-radius: 99px; border: 1px solid var(--line-2); background: rgba(255,255,255,.04); color: var(--ink); cursor: pointer; display: grid; place-items: center; transition: border-color .2s, background .2s; }
       .wc-arrow:hover { border-color: rgba(255,255,255,.4); background: rgba(255,255,255,.08); }
       .wc-dots { display: flex; gap: 4px; }
@@ -134,6 +135,27 @@ function Carousel() {
     if (i >= 0) goTo(i)
   }, [caso, goTo])
 
+  // Avance automático cada 10 s. Se reinicia con cada cambio de caso (también los manuales) y no avanza
+  // si el mouse está encima, si se está arrastrando, si el carrusel no está en pantalla o la pestaña está oculta.
+  const rootRef = useRef<HTMLDivElement>(null)
+  const hover = useRef(false)
+  const onScreen = useRef(false)
+  useEffect(() => {
+    // Se observa solo el escenario: el contenedor incluye la descripción y en celular es más alto que la pantalla
+    const el = rootRef.current?.querySelector('.wc-stage')
+    if (!el) return
+    const io = new IntersectionObserver(([e]) => { onScreen.current = e.isIntersecting }, { threshold: 0.5 })
+    io.observe(el)
+    return () => io.disconnect()
+  }, [])
+  useEffect(() => {
+    if (reduced.current) return
+    const id = window.setInterval(() => {
+      if (onScreen.current && !hover.current && !drag.current.down && !document.hidden) step(1)
+    }, 10000)
+    return () => window.clearInterval(id)
+  }, [active, step])
+
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       const t = e.target as HTMLElement | null
@@ -190,9 +212,11 @@ function Carousel() {
   }
 
   return (
-    <div className="wc-root">
+    <div className="wc-root" ref={rootRef}>
       <div
         className={`wc-stage${dragging ? ' dragging' : ''}`}
+        onPointerEnter={e => { if (e.pointerType === 'mouse') hover.current = true }}
+        onPointerLeave={() => { hover.current = false }}
         role="group"
         aria-roledescription="carrusel"
         aria-label="Casos de trabajo"

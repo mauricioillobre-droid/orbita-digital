@@ -8,6 +8,7 @@ import Footer from '@/components/Footer'
 import WhatsAppFAB from '@/components/WhatsAppFAB'
 import Motion from '@/components/Motion'
 import GradualBlur from '@/components/GradualBlur'
+import Starfield from '@/components/Starfield'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -71,6 +72,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body className="font-sans antialiased">
+        <Starfield />
         <Navbar />
         <main>{children}</main>
         <Footer />

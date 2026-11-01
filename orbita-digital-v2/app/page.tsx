@@ -100,7 +100,7 @@ export default function Home() {
       </section>
 
       {/* ─── STATS ─── */}
-      <section className="section-pad" style={{ background: 'var(--bg-2)' }}>
+      <section className="section-pad" style={{ background: 'var(--bg-2-soft)' }}>
         <div className="container-od">
           <div className="stats-grid">
             {[
@@ -216,7 +216,7 @@ export default function Home() {
       </section>
 
       {/* ─── EQUIPO ─── */}
-      <section className="section-pad" style={{ background: 'var(--bg-2)' }}>
+      <section className="section-pad" style={{ background: 'var(--bg-2-soft)' }}>
         <div className="container-od">
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '20px', alignItems: 'center' }}>
             <div>

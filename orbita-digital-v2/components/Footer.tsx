@@ -6,7 +6,7 @@ import { trackWA } from '@/components/WALink'
 
 export default function Footer() {
   return (
-    <footer style={{ background: 'var(--bg-2)', borderTop: '1px solid var(--line)' }}>
+    <footer style={{ background: 'var(--bg-2-soft)', borderTop: '1px solid var(--line)' }}>
       <div className="container-od" style={{ paddingBlock: 'clamp(48px, 7vw, 80px)' }}>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '2.5rem', marginBottom: '3rem' }}>
 

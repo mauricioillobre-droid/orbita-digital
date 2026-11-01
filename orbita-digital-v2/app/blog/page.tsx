@@ -80,10 +80,10 @@ const categoryColors: Record<string, string> = {
 
 export default function BlogPage() {
   return (
-    <div style={{ background: 'var(--bg)' }}>
+    <div>
 
       {/* Header */}
-      <section className="hero-c" style={{ background: 'var(--bg)' }}>
+      <section className="hero-c">
         <div className="container-od" style={{ position: 'relative', zIndex: 2 }}>
           <div className="hero-eyebrow" data-anim="fade"><i />Blog</div>
           <h1 data-anim="split" data-delay="1" style={{
@@ -190,7 +190,7 @@ export default function BlogPage() {
       </section>
 
       {/* Newsletter / CTA */}
-      <section className="section-pad" style={{ background: 'var(--bg-2)', borderTop: '1px solid var(--line)' }}>
+      <section className="section-pad" style={{ background: 'var(--bg-2-soft)', borderTop: '1px solid var(--line)' }}>
         <div className="container-od" style={{ textAlign: 'center' }}>
           <div>
             <div data-anim="card" style={{
