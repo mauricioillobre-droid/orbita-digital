@@ -7,8 +7,8 @@ Referencia: https://reactbits.dev (Circular Carousel, Split Text, Scroll Reveal,
 
 | Paso | Estado |
 |---|---|
-| 1. Carrusel 3D en /trabajos | hecho, commit local sin publicar (falta OK de Mauricio) |
-| 2. Muestra en local para Mauricio | mostrada 2026-10-31, esperando su OK |
+| 1. Carrusel 3D en /trabajos | publicado 2026-10-31 |
+| 2. Muestra en local para Mauricio | aprobada 2026-10-31 (mejora pendiente: abrir más el anillo en escritorio) |
 | 3. Animaciones nuevas en todo el sitio | pendiente |
 | 4. Verificar (tsc, `npm run build`, navegador compu + celular) y publicar | pendiente |
 
