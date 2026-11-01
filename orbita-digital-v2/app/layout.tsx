@@ -6,7 +6,8 @@ import './globals.css'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import WhatsAppFAB from '@/components/WhatsAppFAB'
-import RevealProvider from '@/components/RevealProvider'
+import Motion from '@/components/Motion'
+import GradualBlur from '@/components/GradualBlur'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -60,20 +61,22 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es" className={`${inter.variable} ${jetbrains.variable}`}>
+    <html lang="es" className={`${inter.variable} ${jetbrains.variable}`} suppressHydrationWarning>
       <head>
+        {/* Antes de pintar: oculta lo que GSAP va a animar (solo si el sistema no pide menos movimiento) */}
+        <script dangerouslySetInnerHTML={{ __html: "if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('anim')" }} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaOrg) }}
         />
       </head>
       <body className="font-sans antialiased">
-        <RevealProvider>
-          <Navbar />
-          <main>{children}</main>
-          <Footer />
-          <WhatsAppFAB />
-        </RevealProvider>
+        <Navbar />
+        <main>{children}</main>
+        <Footer />
+        <WhatsAppFAB />
+        <GradualBlur />
+        <Motion />
       </body>
       <GoogleAnalytics gaId="G-MYN4046FMM" />
       <Script id="meta-pixel" strategy="afterInteractive">{`

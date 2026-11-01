@@ -92,50 +92,28 @@ main, footer { position: relative; z-index: 1; }
 p { text-wrap: pretty; }
 ::selection { background: color-mix(in srgb, var(--accent) 35%, transparent); color: #fff; }
 
-/* Reveal scroll — cinematic system */
+/* Animaciones (GSAP, components/Motion.tsx). html.anim lo pone un script en <head> si no hay reduced-motion */
 html { scroll-behavior: smooth; }
 :root {
   --ease-dramatic: cubic-bezier(0.22, 1, 0.36, 1);
-  --dur: 1s;
-  --dur-fast: 0.7s;
 }
+html.anim [data-anim="fade"], html.anim [data-anim="card"] { opacity: 0; }
+html.anim [data-anim="split"]:not([data-split]) { visibility: hidden; }
 
-.reveal {
-  opacity: 0;
-  transform: translateY(55px);
-  transition: opacity var(--dur) var(--ease-dramatic), transform var(--dur) var(--ease-dramatic), filter var(--dur) var(--ease-dramatic), clip-path var(--dur) var(--ease-dramatic);
-}
-.reveal.visible { opacity: 1; transform: none; filter: none; }
+/* Split Text: cada palabra sube desde una máscara */
+.sw { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: 0.14em; margin-bottom: -0.14em; }
+.sw-i { display: inline-block; will-change: transform; }
 
-/* Reveal variants */
-.reveal-left   { transform: translateX(-60px); }
-.reveal-right  { transform: translateX(60px); }
-.reveal-scale  { transform: scale(0.88); }
-.reveal-blur   { transform: translateY(30px); filter: blur(12px); }
+/* Scroll Reveal: las palabras se encienden con el scroll */
+.srw { display: inline-block; }
 
-/* Hero text reveal — overflow mask */
-.reveal-mask {
-  transform: translateY(110%);
-}
-.reveal-mask.visible {
-  transform: none;
-}
+.scroll-phrase { font-size: clamp(22px, 2.6vw, 32px); font-weight: 500; letter-spacing: -0.02em; line-height: 1.3; color: var(--ink); }
 
-/* Stagger delays — wider gaps for cinematic feel */
-[data-delay="1"] { transition-delay: 0.13s; }
-[data-delay="2"] { transition-delay: 0.26s; }
-[data-delay="3"] { transition-delay: 0.39s; }
-[data-delay="4"] { transition-delay: 0.52s; }
-[data-delay="5"] { transition-delay: 0.65s; }
-[data-delay="6"] { transition-delay: 0.78s; }
-[data-delay="7"] { transition-delay: 0.91s; }
-[data-delay="8"] { transition-delay: 1.04s; }
-
-@media (prefers-reduced-motion: reduce) {
-  .reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-blur, .reveal-mask {
-    opacity: 1; transform: none; filter: none; transition: none;
-  }
-}
+/* Gradual Blur: borde inferior de la pantalla */
+.gradual-blur { position: fixed; left: 0; right: 0; bottom: 0; height: 88px; pointer-events: none; z-index: 40; transition: opacity 0.4s ease; }
+.gradual-blur > div { position: absolute; inset: 0; }
+.gradual-blur.is-end { opacity: 0; }
+@media (prefers-reduced-motion: reduce) { .gradual-blur { display: none; } }
 
 /* Layout */
 .section-pad { padding-block: clamp(72px, 11vw, 140px); }
@@ -333,7 +311,7 @@ html { scroll-behavior: smooth; }
   width: max-content;
   animation: marquee 22s linear infinite;
 }
-.marquee-wrap:hover .marquee-track { animation-play-state: paused; }
+
 @keyframes marquee {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
@@ -375,5 +353,5 @@ html { scroll-behavior: smooth; }
 .mosaic-card p { font-size: 13.5px; color: var(--ink-2); padding: 12px 6px 6px; margin: 0; }
 .mosaic-card p b { color: var(--ink); margin-right: 8px; font-weight: 600; }
 @media (max-width: 900px) { .mosaic { grid-template-columns: 1fr; } }
-.client-track { gap: 60px; animation-duration: 40s; }
+.client-track { gap: 60px; animation: none; will-change: transform; }
 .client-track span { font-size: clamp(36px, 5vw, 56px); font-weight: 700; letter-spacing: -0.04em; color: rgba(255,255,255,0.09); white-space: nowrap; }

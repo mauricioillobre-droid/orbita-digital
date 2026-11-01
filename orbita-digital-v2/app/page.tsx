@@ -1,7 +1,8 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import WALink from '@/components/WALink'
-import AnimatedStat from '@/components/AnimatedStat'
+import CountUp from '@/components/CountUp'
+import ScrollVelocity from '@/components/ScrollVelocity'
 
 export const metadata: Metadata = {
   title: 'Agencia Web y Automatización para Pymes en Argentina | Órbita Digital',
@@ -24,20 +25,20 @@ export default function Home() {
         </div>
 
         <div className="container-od" style={{ position: 'relative', zIndex: 2 }}>
-          <div className="hero-eyebrow reveal" data-delay="1">
+          <div className="hero-eyebrow" data-anim="fade" data-delay="1">
             <i />Desarrollo a medida <span>Argentina y Brasil</span>
           </div>
 
-          <h1 className="hero-title">
-            <span className="reveal reveal-blur" data-delay="2" style={{ display: 'block' }}>Apps y webs</span>
-            <span className="reveal reveal-blur" data-delay="3" style={{ display: 'block' }}><span className="shiny">a medida.</span></span>
+          <h1 className="hero-title" data-anim="split" data-delay="2">
+            <span style={{ display: 'block' }}>Apps y webs</span>
+            <span style={{ display: 'block' }}><span className="shiny">a medida.</span></span>
           </h1>
 
           <div className="hero-row">
-            <p className="reveal reveal-blur" data-delay="4" style={{ fontSize: 'clamp(16px, 1.4vw, 18px)', color: 'var(--ink-2)', maxWidth: '46ch', lineHeight: 1.6, margin: 0 }}>
+            <p data-anim="fade" data-delay="4" style={{ fontSize: 'clamp(16px, 1.4vw, 18px)', color: 'var(--ink-2)', maxWidth: '46ch', lineHeight: 1.6, margin: 0 }}>
               Sistemas de gestión, tiendas online y sitios que trabajan para tu negocio. Diseño, desarrollo y automatización en un solo equipo.
             </p>
-            <div className="reveal" data-delay="5" style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+            <div data-anim="fade" data-delay="5" style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
               <WALink className="btn btn-wa btn-lg">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
@@ -55,7 +56,7 @@ export default function Home() {
               { title: 'Loja Rentável', href: '/trabajos?caso=loja-rentavel', desc: 'Gestión para tiendas', video: '/videos/loja-rentavel/demo.mp4', poster: '/videos/loja-rentavel/demo-poster.jpg', alt: 'Sistema de gestión para tiendas Loja Rentável desarrollado por Órbita Digital' },
               { title: 'En Cada Rincón', href: '/trabajos?caso=en-cada-rincon', desc: 'Tienda online y panel', video: '/videos/en-cada-rincon/sitio.mp4', poster: '/videos/en-cada-rincon/sitio-poster.jpg', alt: 'Tienda online En Cada Rincón desarrollada por Órbita Digital' },
             ].map((w, i) => (
-              <a key={w.title} href={w.href} className="mosaic-card glass reveal reveal-scale" data-delay={String(i + 5)}>
+              <a key={w.title} href={w.href} className="mosaic-card glass" data-anim="card" data-delay={String(i + 5)}>
                 <div className="mosaic-media">
                   <video src={w.video} poster={w.poster} aria-label={w.alt} autoPlay muted loop playsInline preload="none" />
                 </div>
@@ -67,19 +68,15 @@ export default function Home() {
 
         {/* Clientes en marquesina */}
         <div className="marquee-wrap" style={{ marginTop: 'clamp(56px, 8vw, 96px)' }}>
-          <div className="marquee-track client-track" aria-hidden="true">
-            {['En Cada Rincón', '25 de Mayo', 'Casa de Praia', 'Loja Rentável', 'Tats Design', 'En Cada Rincón', '25 de Mayo', 'Casa de Praia', 'Loja Rentável', 'Tats Design'].map((name, i) => (
-              <span key={i}>{name}</span>
-            ))}
-          </div>
+          <ScrollVelocity className="client-track" items={['En Cada Rincón', '25 de Mayo', 'Casa de Praia', 'Loja Rentável', 'Tats Design']} />
         </div>
       </section>
 
       {/* ─── SERVICIOS ─── */}
       <section className="section-pad" style={{ background: 'var(--surface)' }}>
         <div className="container-od">
-          <div className="eyebrow reveal reveal-left" style={{ marginBottom: '16px' }}>Lo que hacemos</div>
-          <h2 className="reveal reveal-blur" data-delay="1" style={{ fontFamily: 'var(--font-sans)', fontSize: 'clamp(28px, 4vw, 48px)', fontWeight: 700, letterSpacing: '-0.03em', color: 'var(--ink)', marginBottom: '48px' }}>
+          <div className="eyebrow" data-anim="fade" style={{ marginBottom: '16px' }}>Lo que hacemos</div>
+          <h2 data-anim="split" data-delay="1" style={{ fontFamily: 'var(--font-sans)', fontSize: 'clamp(28px, 4vw, 48px)', fontWeight: 700, letterSpacing: '-0.03em', color: 'var(--ink)', marginBottom: '48px' }}>
             Servicios diseñados para crecer
           </h2>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '16px' }}>
@@ -89,7 +86,7 @@ export default function Home() {
               { icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="10.5" r="2.5"/><circle cx="8.5" cy="7.5" r="2.5"/><circle cx="6.5" cy="12.5" r="2.5"/><path d="M12 20v-4M12 20H8M12 20h4"/></svg>, title: 'Diseño Gráfico y Branding', desc: 'Identidad visual estratégica para diferenciarte. Logos, piezas publicitarias y branding pensados para vender.', id: 'diseno-grafico' },
               { icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>, title: 'Edición de Video y Reels', desc: 'Contenido audiovisual para redes que genera alcance y convierte. Reels de alto impacto para tu negocio.', id: 'edicion-video' },
             ].map((s, i) => (
-              <a key={i} href={`/servicios#${s.id}`} className="service-card reveal" data-delay={String((i % 4) + 1)} style={{ textDecoration: 'none', display: 'block' }}>
+              <a key={i} href={`/servicios#${s.id}`} className="service-card" data-anim="card" data-delay={String((i % 4) + 1)} style={{ textDecoration: 'none', display: 'block' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '20px' }}>
                   <div className="card-icon" aria-hidden="true">{s.icon}</div>
                   <span style={{ fontFamily: 'var(--font-mono)', fontSize: '13px', color: 'var(--ink-3)' }}>/{String(i + 1).padStart(2, '0')}</span>
@@ -111,8 +108,8 @@ export default function Home() {
               { num: '<24hs', label: 'Tiempo de respuesta' },
               { num: '100%', label: 'Clientes satisfechos' },
             ].map((stat, i) => (
-              <div key={i} className="stat-item reveal reveal-scale" data-delay={String(i + 1)}>
-                <AnimatedStat value={stat.num} style={{ fontFamily: 'var(--font-sans)', fontWeight: 700, fontSize: 'clamp(38px, 5vw, 58px)', letterSpacing: '-0.02em', color: 'var(--ink)', lineHeight: 1 }} />
+              <div key={i} className="stat-item" data-anim="card" data-delay={String(i + 1)}>
+                <CountUp value={stat.num} style={{ fontFamily: 'var(--font-sans)', fontWeight: 700, fontSize: 'clamp(38px, 5vw, 58px)', letterSpacing: '-0.02em', color: 'var(--ink)', lineHeight: 1 }} />
                 <div style={{ fontSize: '14px', color: 'var(--ink-2)', marginTop: '8px' }}>{stat.label}</div>
               </div>
             ))}
@@ -123,8 +120,8 @@ export default function Home() {
       {/* ─── CÓMO TRABAJAMOS ─── */}
       <section className="section-pad" style={{ background: 'var(--surface)' }}>
         <div className="container-od">
-          <div className="eyebrow reveal reveal-left" style={{ marginBottom: '16px' }}>El proceso</div>
-          <h2 className="reveal reveal-blur" data-delay="1" style={{ fontFamily: 'var(--font-sans)', fontSize: 'clamp(28px, 4vw, 48px)', fontWeight: 700, letterSpacing: '-0.03em', color: 'var(--ink)', marginBottom: '56px' }}>
+          <div className="eyebrow" data-anim="fade" style={{ marginBottom: '16px' }}>El proceso</div>
+          <h2 data-anim="split" data-delay="1" style={{ fontFamily: 'var(--font-sans)', fontSize: 'clamp(28px, 4vw, 48px)', fontWeight: 700, letterSpacing: '-0.03em', color: 'var(--ink)', marginBottom: '56px' }}>
             Así trabajamos
           </h2>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '24px' }}>
@@ -133,7 +130,7 @@ export default function Home() {
               { num: '02', title: 'Diseñamos', desc: 'Construimos la solución con criterio estratégico. Diseño, tecnología y contenido en un solo equipo.' },
               { num: '03', title: 'Ejecutamos', desc: 'Entregamos en tiempos reales. Con seguimiento, soporte y sin sorpresas al final.' },
             ].map((step, i) => (
-              <div key={i} className="reveal reveal-scale value-card" data-delay={String(i + 1)} style={{ padding: '32px', background: 'var(--bg)', borderRadius: 'var(--r-lg)', border: '1px solid var(--line)' }}>
+              <div key={i} className="value-card" data-anim="card" data-delay={String(i + 1)} style={{ padding: '32px', background: 'var(--bg)', borderRadius: 'var(--r-lg)', border: '1px solid var(--line)' }}>
                 <div style={{ fontFamily: 'var(--font-mono)', fontSize: '13px', color: 'var(--accent)', letterSpacing: '0.1em', marginBottom: '16px' }}>{step.num}</div>
                 <h3 style={{ fontFamily: 'var(--font-sans)', fontSize: '22px', fontWeight: 600, letterSpacing: '-0.02em', color: 'var(--ink)', marginBottom: '10px' }}>{step.title}</h3>
                 <p style={{ fontSize: '15px', color: 'var(--ink-2)', lineHeight: 1.65, margin: 0 }}>{step.desc}</p>
@@ -146,14 +143,14 @@ export default function Home() {
       {/* ─── TESTIMONIOS ─── */}
       <section className="section-pad" style={{ background: 'var(--surface)' }}>
         <div className="container-od">
-          <div className="eyebrow reveal reveal-left" style={{ marginBottom: '16px' }}>Clientes</div>
-          <h2 className="reveal reveal-blur" data-delay="1" style={{ fontFamily: 'var(--font-sans)', fontSize: 'clamp(28px, 4vw, 48px)', fontWeight: 700, letterSpacing: '-0.03em', color: 'var(--ink)', marginBottom: '48px' }}>
+          <div className="eyebrow" data-anim="fade" style={{ marginBottom: '16px' }}>Clientes</div>
+          <h2 data-anim="split" data-delay="1" style={{ fontFamily: 'var(--font-sans)', fontSize: 'clamp(28px, 4vw, 48px)', fontWeight: 700, letterSpacing: '-0.03em', color: 'var(--ink)', marginBottom: '48px' }}>
             Lo que dicen nuestros clientes
           </h2>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '20px' }}>
 
             {/* Reseña 1 — German Pompiglio */}
-            <blockquote className="reveal reveal-left" data-delay="1" style={{ background: 'var(--bg)', border: '1px solid var(--line)', borderRadius: 'var(--r-lg)', padding: '32px', margin: 0 }}>
+            <blockquote data-anim="card" data-delay="1" style={{ background: 'var(--bg)', border: '1px solid var(--line)', borderRadius: 'var(--r-lg)', padding: '32px', margin: 0 }}>
               <div style={{ display: 'flex', gap: '2px', marginBottom: '20px' }} aria-label="5 estrellas">
                 {Array.from({ length: 5 }).map((_, j) => (
                   <svg key={j} width="16" height="16" viewBox="0 0 16 16" fill="var(--accent)" aria-hidden="true">
@@ -176,7 +173,7 @@ export default function Home() {
             </blockquote>
 
             {/* Reseña 2 — Evangelina Angeri */}
-            <blockquote className="reveal reveal-right" data-delay="2" style={{ background: 'var(--bg)', border: '1px solid var(--line)', borderRadius: 'var(--r-lg)', padding: '32px', margin: 0 }}>
+            <blockquote data-anim="card" data-delay="2" style={{ background: 'var(--bg)', border: '1px solid var(--line)', borderRadius: 'var(--r-lg)', padding: '32px', margin: 0 }}>
               <div style={{ display: 'flex', gap: '2px', marginBottom: '20px' }} aria-label="5 estrellas">
                 {Array.from({ length: 5 }).map((_, j) => (
                   <svg key={j} width="16" height="16" viewBox="0 0 16 16" fill="var(--accent)" aria-hidden="true">
@@ -205,7 +202,7 @@ export default function Home() {
           </div>
 
           {/* Botón Google Business */}
-          <div className="reveal" data-delay="3" style={{ textAlign: 'center', marginTop: '40px' }}>
+          <div data-anim="fade" data-delay="3" style={{ textAlign: 'center', marginTop: '40px' }}>
             <a
               href="https://g.page/r/CUYtK1yHSmpSEAE/review"
               target="_blank"
@@ -223,17 +220,17 @@ export default function Home() {
         <div className="container-od">
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '20px', alignItems: 'center' }}>
             <div>
-              <div className="eyebrow reveal reveal-left" style={{ marginBottom: '20px' }}>El equipo</div>
-              <h2 className="reveal reveal-blur" data-delay="1" style={{ fontFamily: 'var(--font-sans)', fontSize: 'clamp(28px, 3.5vw, 44px)', fontWeight: 700, letterSpacing: '-0.03em', color: 'var(--ink)', marginBottom: '16px' }}>
+              <div className="eyebrow" data-anim="fade" style={{ marginBottom: '20px' }}>El equipo</div>
+              <h2 data-anim="split" data-delay="1" style={{ fontFamily: 'var(--font-sans)', fontSize: 'clamp(28px, 3.5vw, 44px)', fontWeight: 700, letterSpacing: '-0.03em', color: 'var(--ink)', marginBottom: '16px' }}>
                 Somos Mauri y Tati
               </h2>
-              <p className="reveal" data-delay="2" style={{ fontSize: '17px', color: 'var(--ink-2)', lineHeight: 1.65, marginBottom: '12px' }}>
+              <p data-anim="scroll" className="scroll-phrase" style={{ marginBottom: '16px' }}>
                 Diseño, tecnología y automatización en un solo equipo.
               </p>
-              <p className="reveal" data-delay="3" style={{ fontSize: '15px', color: 'var(--ink-3)', marginBottom: '32px' }}>
+              <p data-anim="fade" data-delay="3" style={{ fontSize: '15px', color: 'var(--ink-3)', marginBottom: '32px' }}>
                 Agencia web en Argentina para pymes que quieren crecer de verdad.
               </p>
-              <div className="reveal" data-delay="4">
+              <div data-anim="fade" data-delay="4">
                 <WALink className="btn btn-wa btn-lg">
                   Escribinos por WhatsApp →
                 </WALink>
@@ -245,7 +242,7 @@ export default function Home() {
                 { src: '/images/mauri.jpg', alt: 'Mauri — Desarrollo Web y Automatización en Órbita Digital, Buenos Aires', label: 'Mauri', role: 'Desarrollo & Automatización' },
                 { src: '/images/tati.jpg', alt: 'Tati — Diseño Gráfico y Contenido en Órbita Digital, Buenos Aires', label: 'Tati', role: 'Diseño & Contenido' },
               ].map((person, i) => (
-                <div key={person.label} className={`reveal ${i === 0 ? 'reveal-left' : 'reveal-right'}`} data-delay={String(i + 5)} style={{ flex: 1, background: 'var(--surface)', borderRadius: 'var(--r-lg)', overflow: 'hidden', border: '1px solid var(--line)' }}>
+                <div key={person.label} data-anim="card" data-delay={String(i + 5)} style={{ flex: 1, background: 'var(--surface)', borderRadius: 'var(--r-lg)', overflow: 'hidden', border: '1px solid var(--line)' }}>
                   <div className="team-img-wrap" style={{ position: 'relative', aspectRatio: '3/4', background: 'var(--bg-2)' }}>
                     <Image
                       src={person.src}
@@ -270,20 +267,20 @@ export default function Home() {
       {/* ─── CTA FINAL ─── */}
       <section className="section-pad" style={{ background: 'var(--surface)' }}>
         <div className="container-od">
-          <div className="glass reveal reveal-scale" style={{
+          <div className="glass" data-anim="card" style={{
             borderRadius: 'var(--r-xl)',
             background: 'radial-gradient(600px circle at 50% 0%, rgba(63,160,255,0.16), transparent 70%), rgba(255,255,255,0.02)',
             padding: 'clamp(48px, 7vw, 80px)',
             textAlign: 'center',
           }}>
-            <div className="eyebrow reveal reveal-left" style={{ justifyContent: 'center', marginBottom: '20px' }}>¿Listo para empezar?</div>
-            <h2 className="reveal reveal-blur" data-delay="1" style={{ fontFamily: 'var(--font-sans)', fontSize: 'clamp(28px, 4vw, 48px)', fontWeight: 700, letterSpacing: '-0.03em', color: 'var(--ink)', marginBottom: '16px' }}>
+            <div className="eyebrow" data-anim="fade" style={{ justifyContent: 'center', marginBottom: '20px' }}>¿Listo para empezar?</div>
+            <h2 data-anim="split" data-delay="1" style={{ fontFamily: 'var(--font-sans)', fontSize: 'clamp(28px, 4vw, 48px)', fontWeight: 700, letterSpacing: '-0.03em', color: 'var(--ink)', marginBottom: '16px' }}>
               Contanos de qué se trata tu proyecto
             </h2>
-            <p className="reveal" data-delay="2" style={{ fontSize: '17px', color: 'var(--ink-2)', maxWidth: '44ch', margin: '0 auto 32px' }}>
+            <p data-anim="fade" data-delay="2" style={{ fontSize: '17px', color: 'var(--ink-2)', maxWidth: '44ch', margin: '0 auto 32px' }}>
               Respondemos en menos de 24hs. Sin formularios largos, sin esperas.
             </p>
-            <div className="reveal" data-delay="3" style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <div data-anim="fade" data-delay="3" style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
               <WALink className="btn btn-wa btn-lg">WhatsApp →</WALink>
               <a href="/contacto" className="btn btn-ghost btn-lg">Ver formulario</a>
             </div>

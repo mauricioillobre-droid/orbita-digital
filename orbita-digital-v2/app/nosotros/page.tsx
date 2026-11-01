@@ -15,8 +15,8 @@ const values = [
         <circle cx="12" cy="12" r="10"/><path d="M12 8l4 4-4 4M8 12h8"/>
       </svg>
     ),
-    title: 'Resultados reales',
-    description: 'No hacemos webs para tener webs. Cada proyecto tiene un objetivo medible.',
+    title: 'Foco en resultados',
+    description: 'Diseñamos cada solución en función de un objetivo medible para tu negocio.',
   },
   {
     icon: (
@@ -24,8 +24,8 @@ const values = [
         <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
       </svg>
     ),
-    title: 'Trato directo',
-    description: 'Sin cuentas ejecutivas ni intermediarios. Hablás con quienes hacen el trabajo.',
+    title: 'Equipo cercano',
+    description: 'Un mismo equipo te acompaña de principio a fin: quienes planifican son quienes ejecutan.',
   },
   {
     icon: (
@@ -33,8 +33,8 @@ const values = [
         <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
       </svg>
     ),
-    title: 'Velocidad sin excusas',
-    description: 'Respondemos en menos de 24hs. Cumplimos los plazos que prometemos.',
+    title: 'Compromiso con los tiempos',
+    description: 'Respuesta en menos de 24 horas y entregas dentro de los plazos pactados.',
   },
   {
     icon: (
@@ -42,8 +42,8 @@ const values = [
         <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
       </svg>
     ),
-    title: 'Transparencia total',
-    description: 'Precios claros, alcance definido y comunicación honesta en todo momento.',
+    title: 'Claridad en cada etapa',
+    description: 'Sabés qué incluye el proyecto, cuánto cuesta y en qué etapa está en todo momento.',
   },
 ]
 
@@ -54,8 +54,8 @@ export default function NosotrosPage() {
       {/* Header */}
       <section className="hero-c">
         <div className="container-od">
-          <div className="hero-eyebrow reveal reveal-blur"><i />El equipo <span>Órbita</span></div>
-          <h1 className="reveal reveal-blur" data-delay="1" style={{
+          <div className="hero-eyebrow" data-anim="fade"><i />El equipo <span>Órbita</span></div>
+          <h1 data-anim="split" data-delay="1" style={{
             fontFamily: 'var(--font-sans)',
             fontSize: 'clamp(44px, 7vw, 96px)',
             fontWeight: 700,
@@ -67,7 +67,7 @@ export default function NosotrosPage() {
           }}>
             El equipo detrás<br />de <span className="shiny">Órbita Digital</span>
           </h1>
-          <p className="reveal reveal-blur" data-delay="2" style={{ fontSize: '18px', color: 'var(--ink-2)', maxWidth: '52ch', lineHeight: 1.6 }}>
+          <p data-anim="fade" data-delay="2" style={{ fontSize: '18px', color: 'var(--ink-2)', maxWidth: '52ch', lineHeight: 1.6 }}>
             Somos dos personas con habilidades complementarias y un objetivo compartido: que tu negocio crezca en internet.
           </p>
         </div>
@@ -97,7 +97,7 @@ export default function NosotrosPage() {
                 tags: ['Next.js', 'n8n', 'WhatsApp API', 'Make'],
               },
             ].map((person, i) => (
-              <div key={person.name} className={`glass reveal ${i === 0 ? 'reveal-left' : 'reveal-right'}`} data-delay={String(i + 1)} style={{
+              <div key={person.name} className="glass" data-anim="card" data-delay={String(i + 1)} style={{
                 borderRadius: 'var(--r-lg)',
               }}>
                 <div className="team-img-wrap" style={{ height: '500px', background: 'var(--bg-2)' }}>
@@ -138,17 +138,17 @@ export default function NosotrosPage() {
       <section className="section-pad" style={{ background: 'transparent', borderTop: '1px solid var(--line)' }}>
         <div className="container-od">
           <div style={{ maxWidth: '680px', margin: '0 auto' }}>
-            <div className="eyebrow reveal reveal-left" style={{ marginBottom: '20px' }}>La historia</div>
-            <h2 className="reveal reveal-blur" data-delay="1" style={{ fontFamily: 'var(--font-sans)', fontSize: 'clamp(26px, 3.5vw, 44px)', fontWeight: 700, letterSpacing: '-0.03em', color: 'var(--ink)', marginBottom: '32px', lineHeight: 1.1 }}>
+            <div className="eyebrow" data-anim="fade" style={{ marginBottom: '20px' }}>La historia</div>
+            <h2 data-anim="split" data-delay="1" style={{ fontFamily: 'var(--font-sans)', fontSize: 'clamp(26px, 3.5vw, 44px)', fontWeight: 700, letterSpacing: '-0.03em', color: 'var(--ink)', marginBottom: '32px', lineHeight: 1.1 }}>
               Por qué Órbita Digital
             </h2>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
               {[
-                'Arrancamos Órbita Digital porque vimos que muchas pymes en CABA y el resto de Argentina tienen un problema real: sus herramientas digitales no trabajan para ellas. Tienen páginas que no convierten, procesos manuales que consumen tiempo y presencia online que no genera nada.',
-                'La solución no era contratar grandes agencias con estructuras pesadas y precios inalcanzables. Era un equipo chico, directo y especializado que pudiera resolver múltiples problemas a la vez: diseño, tecnología y contenido sin intermediarios.',
-                'Eso somos. Dos personas que trabajan desde Argentina, para negocios en CABA y todo el país, con los mismos estándares de calidad que podría tener una empresa grande pero con el trato personalizado de un equipo que realmente conoce tu negocio.',
+                'Creamos Órbita Digital al ver que muchas pymes de CABA y del resto de Argentina enfrentan el mismo desafío: sus herramientas digitales no acompañan el crecimiento del negocio. Sitios que no generan consultas, procesos manuales que consumen horas y una presencia online sin resultados concretos.',
+                'La respuesta no pasaba por agencias grandes, con estructuras complejas y costos elevados, sino por un equipo especializado y cercano, capaz de resolver diseño, tecnología y contenido de forma integral y sin intermediarios.',
+                'Eso es Órbita Digital: dos profesionales que trabajan entre Argentina y Brasil para negocios de CABA y todo el país, con estándares de calidad de una gran empresa y la atención personalizada de un equipo que conoce tu negocio a fondo.',
               ].map((p, i) => (
-                <p key={i} className="reveal" data-delay={String(i + 1)} style={{ fontSize: '17px', color: 'var(--ink-2)', lineHeight: 1.75, margin: 0 }}>{p}</p>
+                <p key={i} data-anim="scroll" style={{ fontSize: '17px', color: 'var(--ink-2)', lineHeight: 1.75, margin: 0 }}>{p}</p>
               ))}
             </div>
           </div>
@@ -158,13 +158,13 @@ export default function NosotrosPage() {
       {/* Values */}
       <section className="section-pad" style={{ background: 'transparent', borderTop: '1px solid var(--line)' }}>
         <div className="container-od">
-          <div className="eyebrow reveal reveal-left" style={{ marginBottom: '16px' }}>Cómo trabajamos</div>
-          <h2 className="reveal reveal-blur" data-delay="1" style={{ fontFamily: 'var(--font-sans)', fontSize: 'clamp(26px, 3.5vw, 44px)', fontWeight: 700, letterSpacing: '-0.03em', color: 'var(--ink)', marginBottom: '40px' }}>
+          <div className="eyebrow" data-anim="fade" style={{ marginBottom: '16px' }}>Cómo trabajamos</div>
+          <h2 data-anim="split" data-delay="1" style={{ fontFamily: 'var(--font-sans)', fontSize: 'clamp(26px, 3.5vw, 44px)', fontWeight: 700, letterSpacing: '-0.03em', color: 'var(--ink)', marginBottom: '40px' }}>
             Nuestros valores
           </h2>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '16px' }}>
             {values.map((v, i) => (
-              <div key={v.title} className="glass reveal reveal-scale value-card" data-delay={String((i % 4) + 1)} style={{
+              <div key={v.title} className="glass value-card" data-anim="card" data-delay={String((i % 4) + 1)} style={{
                 borderRadius: 'var(--r-lg)',
                 padding: '28px',
                 display: 'flex',
@@ -185,13 +185,13 @@ export default function NosotrosPage() {
       <section className="section-pad" style={{ background: 'transparent', borderTop: '1px solid var(--line)' }}>
         <div className="container-od" style={{ textAlign: 'center' }}>
           <div>
-            <h2 className="reveal reveal-blur" style={{ fontFamily: 'var(--font-sans)', fontSize: 'clamp(24px, 3vw, 40px)', fontWeight: 700, letterSpacing: '-0.03em', color: 'var(--ink)', marginBottom: '16px' }}>
+            <h2 data-anim="split" style={{ fontFamily: 'var(--font-sans)', fontSize: 'clamp(24px, 3vw, 40px)', fontWeight: 700, letterSpacing: '-0.03em', color: 'var(--ink)', marginBottom: '16px' }}>
               ¿Querés conocernos mejor?
             </h2>
-            <p className="reveal" data-delay="1" style={{ fontSize: '17px', color: 'var(--ink-2)', maxWidth: '44ch', margin: '0 auto 32px', lineHeight: 1.6 }}>
+            <p data-anim="fade" data-delay="1" style={{ fontSize: '17px', color: 'var(--ink-2)', maxWidth: '44ch', margin: '0 auto 32px', lineHeight: 1.6 }}>
               Escribinos por WhatsApp. Sin compromiso, sin costo.
             </p>
-            <div className="reveal" data-delay="2"><WALink className="btn btn-wa btn-lg">
+            <div data-anim="fade" data-delay="2"><WALink className="btn btn-wa btn-lg">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
               </svg>

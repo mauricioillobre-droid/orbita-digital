@@ -4,7 +4,7 @@
     {
       "name": "mi-website",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev"],
+      "runtimeArgs": ["--prefix", "orbita-digital-v2", "run", "dev"],
       "port": 3000
     }
   ]

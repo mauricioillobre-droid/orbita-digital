@@ -15,8 +15,8 @@ export default function ContactoPage() {
       {/* Header */}
       <section className="hero-c">
         <div className="container-od">
-          <div className="hero-eyebrow reveal reveal-blur"><i />Contacto <span>Órbita</span></div>
-          <h1 className="reveal reveal-blur" data-delay="1" style={{
+          <div className="hero-eyebrow" data-anim="fade"><i />Contacto <span>Órbita</span></div>
+          <h1 data-anim="split" data-delay="1" style={{
             fontFamily: 'var(--font-sans)',
             fontSize: 'clamp(44px, 7vw, 96px)',
             fontWeight: 700,
@@ -28,7 +28,7 @@ export default function ContactoPage() {
           }}>
             Hablemos de <span className="shiny">tu proyecto</span>
           </h1>
-          <p className="reveal reveal-blur" data-delay="2" style={{ fontSize: '18px', color: 'var(--ink-2)', maxWidth: '50ch', lineHeight: 1.6 }}>
+          <p data-anim="fade" data-delay="2" style={{ fontSize: '18px', color: 'var(--ink-2)', maxWidth: '50ch', lineHeight: 1.6 }}>
             Contanos qué necesitás y te respondemos en menos de 24 horas con una propuesta concreta.
           </p>
         </div>
@@ -39,14 +39,14 @@ export default function ContactoPage() {
         <div className="container-od">
           <div style={{ display: 'grid', gridTemplateColumns: '1.15fr 0.85fr', gap: '40px', alignItems: 'start' }} className="contact-grid">
             {/* Form */}
-            <div className="reveal reveal-left">
+            <div data-anim="card">
               <ContactForm />
             </div>
 
             {/* Aside */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
               {/* WhatsApp card */}
-              <div className="glass reveal reveal-right" data-delay="1" style={{
+              <div className="glass" data-anim="card" data-delay="1" style={{
                 borderRadius: 'var(--r-lg)',
                 background: 'linear-gradient(to bottom, rgba(31,175,84,0.10), rgba(255,255,255,0.025))',
                 padding: '28px',
@@ -66,7 +66,7 @@ export default function ContactoPage() {
               </div>
 
               {/* Data card */}
-              <div className="glass reveal reveal-right" data-delay="2" style={{
+              <div className="glass" data-anim="card" data-delay="2" style={{
                 borderRadius: 'var(--r-lg)',
                 padding: '28px',
               }}>
@@ -115,7 +115,7 @@ export default function ContactoPage() {
               </div>
 
               {/* Note card */}
-              <div className="glass reveal reveal-right" data-delay="3" style={{
+              <div className="glass" data-anim="card" data-delay="3" style={{
                 borderRadius: 'var(--r-lg)',
                 padding: '20px 24px',
               }}>
