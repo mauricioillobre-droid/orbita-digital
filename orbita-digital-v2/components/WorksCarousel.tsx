@@ -65,6 +65,11 @@ function Styles() {
       .wc-toggle button { font-family: var(--font-mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); background: transparent; border: 0; padding: 7px 14px; border-radius: 99px; cursor: pointer; transition: background .2s, color .2s; }
       .wc-toggle button[aria-pressed="true"] { background: var(--accent-soft); color: var(--accent); }
       .wc-seo { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+      /* Escritorio: anillo más abierto. Perspectiva elegida para que p / (p - r) quede igual que antes (1400 / 1055) y el frente no cambie de tamaño */
+      @media (min-width: 1024px) {
+        .wc-root { --r: 520px; }
+        .wc-stage { perspective: 2110px; }
+      }
       @media (max-width: 767px) {
         .wc-root { --w: 230px; --r: 175px; perspective: none; }
         .wc-stage { perspective: 900px; }
