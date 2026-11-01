@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { GoogleAnalytics } from '@next/third-parties/google'
-import { Hanken_Grotesk, JetBrains_Mono } from 'next/font/google'
+import { Inter, JetBrains_Mono } from 'next/font/google'
 import Script from 'next/script'
 import './globals.css'
 import Navbar from '@/components/Navbar'
@@ -8,10 +8,10 @@ import Footer from '@/components/Footer'
 import WhatsAppFAB from '@/components/WhatsAppFAB'
 import RevealProvider from '@/components/RevealProvider'
 
-const hanken = Hanken_Grotesk({
+const inter = Inter({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-hanken',
+  weight: ['400', '500', '600', '700', '800'],
+  variable: '--font-sans',
   display: 'swap',
 })
 
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es" className={`${hanken.variable} ${jetbrains.variable}`}>
+    <html lang="es" className={`${inter.variable} ${jetbrains.variable}`}>
       <head>
         <script
           type="application/ld+json"

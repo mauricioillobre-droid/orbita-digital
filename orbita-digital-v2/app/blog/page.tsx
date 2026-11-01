@@ -72,10 +72,10 @@ const posts = [
 ]
 
 const categoryColors: Record<string, string> = {
-  'Desarrollo Web': '#1f6fd0',
-  'Automatización': '#7c3aed',
-  'SEO': '#059669',
-  'Redes Sociales': '#db2777',
+  'Desarrollo Web': '#5aaeff',
+  'Automatización': '#b69cff',
+  'SEO': '#3ddc9c',
+  'Redes Sociales': '#ff7ab6',
 }
 
 export default function BlogPage() {
@@ -83,19 +83,20 @@ export default function BlogPage() {
     <div style={{ background: 'var(--bg)' }}>
 
       {/* Header */}
-      <section className="section-pad" style={{ background: 'var(--bg)', paddingTop: '120px' }}>
-        <div className="container-od">
-          <div className="eyebrow reveal reveal-left" style={{ marginBottom: '16px' }}>Blog</div>
+      <section className="hero-c" style={{ background: 'var(--bg)' }}>
+        <div className="container-od" style={{ position: 'relative', zIndex: 2 }}>
+          <div className="hero-eyebrow reveal reveal-blur"><i />Blog</div>
           <h1 className="reveal reveal-blur" data-delay="1" style={{
-            fontFamily: 'var(--font-hanken)',
-            fontSize: 'clamp(36px, 5vw, 72px)',
+            fontFamily: 'var(--font-sans)',
+            fontSize: 'clamp(44px, 7vw, 96px)',
             fontWeight: 700,
-            letterSpacing: '-0.035em',
-            lineHeight: 1,
+            letterSpacing: '-0.05em',
+            lineHeight: 0.95,
+            paddingBottom: '0.06em',
             color: 'var(--ink)',
-            marginBottom: '20px',
+            margin: '26px 0 24px',
           }}>
-            Ideas para hacer crecer<br />tu negocio digital
+            Ideas para hacer crecer<br /><span className="shiny">tu negocio digital</span>
           </h1>
           <p className="reveal reveal-blur" data-delay="2" style={{ fontSize: '18px', color: 'var(--ink-2)', maxWidth: '52ch', lineHeight: 1.6 }}>
             Artículos prácticos sobre diseño web, automatización, WhatsApp Business e inteligencia artificial para pymes argentinas.
@@ -104,20 +105,16 @@ export default function BlogPage() {
       </section>
 
       {/* Posts grid */}
-      <section className="section-pad" style={{ background: 'var(--surface)' }}>
+      <section className="section-pad" style={{ background: 'transparent', paddingTop: 0 }}>
         <div className="container-od">
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '24px' }}>
             {posts.map((post, i) => (
               <article
                 key={post.slug}
-                className="reveal reveal-scale blog-card"
+                className="reveal reveal-scale blog-card glass"
                 data-delay={String((i % 3) + 1)}
                 style={{
-                  background: 'var(--surface)',
-                  border: '1px solid var(--line)',
                   borderRadius: 'var(--r-lg)',
-                  overflow: 'hidden',
-                  boxShadow: 'var(--shadow-card)',
                   display: 'flex',
                   flexDirection: 'column',
                 }}
@@ -146,7 +143,7 @@ export default function BlogPage() {
                   </div>
 
                   <h2 style={{
-                    fontFamily: 'var(--font-hanken)',
+                    fontFamily: 'var(--font-sans)',
                     fontWeight: 700,
                     fontSize: '19px',
                     letterSpacing: '-0.02em',
@@ -169,7 +166,7 @@ export default function BlogPage() {
                       href={`/blog/${post.slug}`}
                       className="blog-link"
                       style={{
-                        fontFamily: 'var(--font-hanken)',
+                        fontFamily: 'var(--font-sans)',
                         fontWeight: 600,
                         fontSize: '13.5px',
                         color: 'var(--accent)',
@@ -193,7 +190,7 @@ export default function BlogPage() {
       </section>
 
       {/* Newsletter / CTA */}
-      <section className="section-pad" style={{ background: 'var(--bg-2)' }}>
+      <section className="section-pad" style={{ background: 'var(--bg-2)', borderTop: '1px solid var(--line)' }}>
         <div className="container-od" style={{ textAlign: 'center' }}>
           <div>
             <div className="reveal reveal-scale" style={{
@@ -212,7 +209,7 @@ export default function BlogPage() {
               <span style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', color: 'var(--accent)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Newsletter en camino</span>
             </div>
 
-            <h2 className="reveal reveal-blur" data-delay="1" style={{ fontFamily: 'var(--font-hanken)', fontSize: 'clamp(24px, 3vw, 40px)', fontWeight: 700, letterSpacing: '-0.03em', color: 'var(--ink)', marginBottom: '16px' }}>
+            <h2 className="reveal reveal-blur" data-delay="1" style={{ fontFamily: 'var(--font-sans)', fontSize: 'clamp(24px, 3vw, 40px)', fontWeight: 700, letterSpacing: '-0.03em', color: 'var(--ink)', marginBottom: '16px' }}>
               Consejos directo a tu email
             </h2>
             <p className="reveal" data-delay="2" style={{ fontSize: '17px', color: 'var(--ink-2)', maxWidth: '46ch', margin: '0 auto 32px', lineHeight: 1.6 }}>

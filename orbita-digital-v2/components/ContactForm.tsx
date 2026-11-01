@@ -74,7 +74,7 @@ export default function ContactForm() {
 
   const labelStyle: React.CSSProperties = {
     display: 'block',
-    fontFamily: 'var(--font-hanken)',
+    fontFamily: 'var(--font-sans)',
     fontSize: '13.5px',
     fontWeight: 500,
     color: 'var(--ink-2)',
@@ -83,13 +83,10 @@ export default function ContactForm() {
 
   if (status === 'success') {
     return (
-      <div style={{
-        background: 'var(--surface)',
-        border: '1px solid var(--line)',
+      <div className="glass" style={{
         borderRadius: 'var(--r-lg)',
         padding: '48px 32px',
         textAlign: 'center',
-        boxShadow: 'var(--shadow-card)',
       }}>
         <div style={{
           width: '56px', height: '56px', borderRadius: '50%',
@@ -101,7 +98,7 @@ export default function ContactForm() {
             <path d="M5 13l4 4L19 7" stroke="var(--accent)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </div>
-        <h2 style={{ fontFamily: 'var(--font-hanken)', fontWeight: 700, fontSize: '26px', letterSpacing: '-0.02em', color: 'var(--ink)', marginBottom: '12px' }}>
+        <h2 style={{ fontFamily: 'var(--font-sans)', fontWeight: 700, fontSize: '26px', letterSpacing: '-0.02em', color: 'var(--ink)', marginBottom: '12px' }}>
           ¡Mensaje enviado!
         </h2>
         <p style={{ fontSize: '16px', color: 'var(--ink-2)', marginBottom: '32px', lineHeight: 1.6 }}>
@@ -136,12 +133,9 @@ export default function ContactForm() {
   }
 
   return (
-    <div style={{
-      background: 'var(--surface)',
-      border: '1px solid var(--line)',
+    <div className="glass" style={{
       borderRadius: 'var(--r-lg)',
       padding: '32px',
-      boxShadow: 'var(--shadow-card)',
     }}>
       <form onSubmit={handleSubmit} noValidate aria-label="Formulario de contacto" style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
 
@@ -223,7 +217,7 @@ export default function ContactForm() {
             value={form.servicio}
             onChange={handleChange}
             className="form-input"
-            style={{ cursor: 'pointer' }}
+            style={{ cursor: 'pointer', colorScheme: 'dark' }}
           >
             <option value="" disabled>Seleccioná un servicio</option>
             <option value="Desarrollo Web">Desarrollo Web</option>
@@ -251,7 +245,7 @@ export default function ContactForm() {
         </div>
 
         {status === 'error' && (
-          <p role="alert" style={{ fontSize: '14px', color: '#dc2626', background: '#fef2f2', border: '1px solid #fecaca', borderRadius: 'var(--r-sm)', padding: '12px 14px', margin: 0 }}>
+          <p role="alert" style={{ fontSize: '14px', color: '#ff8a8a', background: 'rgba(239,68,68,0.12)', border: '1px solid rgba(239,68,68,0.35)', borderRadius: 'var(--r-sm)', padding: '12px 14px', margin: 0 }}>
             {errorMsg}
           </p>
         )}

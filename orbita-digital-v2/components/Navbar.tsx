@@ -29,29 +29,30 @@ export default function Navbar() {
       display: 'flex', alignItems: 'center',
       paddingInline: 'var(--gutter)',
       transition: 'background 0.4s ease, border-color 0.4s ease, backdrop-filter 0.4s ease',
-      background: scrolled ? 'rgba(245,246,248,0.72)' : 'transparent',
+      background: scrolled ? 'rgba(12,12,12,0.72)' : 'transparent',
       backdropFilter: scrolled ? 'blur(18px)' : 'none',
       borderBottom: scrolled ? '1px solid var(--line)' : '1px solid transparent',
     }}>
       <div style={{ maxWidth: 'var(--maxw)', width: '100%', margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
 
-        <Link href="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
+        <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none', color: 'var(--ink)' }}>
           <Image
-            src="/images/orbita-nuevo.png"
-            alt="Órbita Digital"
-            width={180}
-            height={56}
-            style={{ objectFit: 'contain', maxHeight: '52px', width: 'auto' }}
+            src="/images/orbita-nuevo-white.png"
+            alt=""
+            width={38}
+            height={38}
+            style={{ objectFit: 'contain' }}
             priority
           />
+          <span style={{ fontFamily: 'var(--font-sans)', fontWeight: 700, fontSize: '18px', letterSpacing: '-0.02em' }}>Órbita Digital</span>
         </Link>
 
         <div style={{ gap: '2rem', alignItems: 'center' }} className="hidden md:flex">
           {links.map(link => (
             <Link key={link.href} href={link.href} style={{
-              fontFamily: 'var(--font-hanken)',
+              fontFamily: 'var(--font-sans)',
               fontSize: '14.5px',
-              color: pathname === link.href ? 'var(--accent)' : 'var(--ink-2)',
+              color: pathname === link.href ? 'var(--ink)' : 'var(--ink-2)',
               textDecoration: 'none',
               fontWeight: pathname === link.href ? 500 : 400,
               transition: 'color 0.2s ease',
@@ -62,7 +63,7 @@ export default function Navbar() {
         </div>
 
         <Link href="/contacto" className="btn btn-primary btn-sm hidden md:inline-flex">
-          Hablemos →
+          Hablemos ›
         </Link>
 
         <button onClick={() => setMenuOpen(!menuOpen)} className="md:hidden"
@@ -80,12 +81,12 @@ export default function Navbar() {
       {menuOpen && (
         <div style={{
           position: 'absolute', top: '76px', left: 0, right: 0,
-          background: 'var(--surface)', borderBottom: '1px solid var(--line)',
+          background: 'rgba(12,12,12,0.96)', backdropFilter: 'blur(18px)', borderBottom: '1px solid var(--line)',
           padding: '1.5rem var(--gutter)', display: 'flex', flexDirection: 'column', gap: '1.25rem',
         }}>
           {links.map(link => (
             <Link key={link.href} href={link.href} onClick={() => setMenuOpen(false)}
-              style={{ fontSize: '16px', color: 'var(--ink-2)', textDecoration: 'none', fontFamily: 'var(--font-hanken)' }}>
+              style={{ fontSize: '16px', color: 'var(--ink-2)', textDecoration: 'none', fontFamily: 'var(--font-sans)' }}>
               {link.label}
             </Link>
           ))}

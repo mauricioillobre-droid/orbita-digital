@@ -49,22 +49,23 @@ const values = [
 
 export default function NosotrosPage() {
   return (
-    <div style={{ background: 'var(--bg)' }}>
+    <div>
 
       {/* Header */}
-      <section className="section-pad" style={{ background: 'var(--bg)', paddingTop: '120px' }}>
+      <section className="hero-c">
         <div className="container-od">
-          <div className="eyebrow reveal reveal-left" style={{ marginBottom: '16px' }}>El equipo</div>
+          <div className="hero-eyebrow reveal reveal-blur"><i />El equipo <span>Órbita</span></div>
           <h1 className="reveal reveal-blur" data-delay="1" style={{
-            fontFamily: 'var(--font-hanken)',
-            fontSize: 'clamp(36px, 5vw, 72px)',
+            fontFamily: 'var(--font-sans)',
+            fontSize: 'clamp(44px, 7vw, 96px)',
             fontWeight: 700,
-            letterSpacing: '-0.035em',
-            lineHeight: 1,
+            letterSpacing: '-0.05em',
+            lineHeight: 0.95,
+            paddingBottom: '0.06em',
             color: 'var(--ink)',
-            marginBottom: '20px',
+            margin: '26px 0 20px',
           }}>
-            El equipo detrás<br />de Órbita Digital
+            El equipo detrás<br />de <span className="shiny">Órbita Digital</span>
           </h1>
           <p className="reveal reveal-blur" data-delay="2" style={{ fontSize: '18px', color: 'var(--ink-2)', maxWidth: '52ch', lineHeight: 1.6 }}>
             Somos dos personas con habilidades complementarias y un objetivo compartido: que tu negocio crezca en internet.
@@ -73,7 +74,7 @@ export default function NosotrosPage() {
       </section>
 
       {/* Team cards */}
-      <section className="section-pad" style={{ background: 'var(--surface)' }}>
+      <section className="section-pad" style={{ background: 'transparent', paddingTop: 0 }}>
         <div className="container-od">
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px' }}>
             {[
@@ -96,12 +97,8 @@ export default function NosotrosPage() {
                 tags: ['Next.js', 'n8n', 'WhatsApp API', 'Make'],
               },
             ].map((person, i) => (
-              <div key={person.name} className={`reveal ${i === 0 ? 'reveal-left' : 'reveal-right'}`} data-delay={String(i + 1)} style={{
-                background: 'var(--surface)',
-                border: '1px solid var(--line)',
+              <div key={person.name} className={`glass reveal ${i === 0 ? 'reveal-left' : 'reveal-right'}`} data-delay={String(i + 1)} style={{
                 borderRadius: 'var(--r-lg)',
-                overflow: 'hidden',
-                boxShadow: 'var(--shadow-card)',
               }}>
                 <div className="team-img-wrap" style={{ height: '500px', background: 'var(--bg-2)' }}>
                   <Image
@@ -116,7 +113,7 @@ export default function NosotrosPage() {
                 </div>
                 <div style={{ padding: '28px' }}>
                   <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: '4px' }}>
-                    <h2 style={{ fontFamily: 'var(--font-hanken)', fontWeight: 700, fontSize: '24px', letterSpacing: '-0.02em', color: 'var(--ink)', margin: 0 }}>{person.name}</h2>
+                    <h2 style={{ fontFamily: 'var(--font-sans)', fontWeight: 700, fontSize: '24px', letterSpacing: '-0.02em', color: 'var(--ink)', margin: 0 }}>{person.name}</h2>
                     <a href={person.linkedin} target="_blank" rel="noopener noreferrer" title={`LinkedIn de ${person.name}`} style={{ color: 'var(--ink-3)', transition: 'color 0.2s', flexShrink: 0, marginLeft: '12px', marginTop: '2px' }}>
                       <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                         <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
@@ -127,7 +124,7 @@ export default function NosotrosPage() {
                   <p style={{ fontSize: '15px', color: 'var(--ink-2)', lineHeight: 1.7, marginBottom: '20px' }}>{person.bio}</p>
                   <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
                     {person.tags.map(t => (
-                      <span key={t} style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', color: 'var(--ink-3)', background: 'var(--bg-2)', border: '1px solid var(--line)', padding: '4px 10px', borderRadius: '99px' }}>{t}</span>
+                      <span key={t} style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', color: 'var(--ink-3)', background: 'var(--surface-2)', border: '1px solid var(--line)', padding: '4px 10px', borderRadius: '99px' }}>{t}</span>
                     ))}
                   </div>
                 </div>
@@ -138,11 +135,11 @@ export default function NosotrosPage() {
       </section>
 
       {/* Story */}
-      <section className="section-pad" style={{ background: 'var(--bg-2)' }}>
+      <section className="section-pad" style={{ background: 'transparent', borderTop: '1px solid var(--line)' }}>
         <div className="container-od">
           <div style={{ maxWidth: '680px', margin: '0 auto' }}>
             <div className="eyebrow reveal reveal-left" style={{ marginBottom: '20px' }}>La historia</div>
-            <h2 className="reveal reveal-blur" data-delay="1" style={{ fontFamily: 'var(--font-hanken)', fontSize: 'clamp(26px, 3.5vw, 44px)', fontWeight: 700, letterSpacing: '-0.03em', color: 'var(--ink)', marginBottom: '32px', lineHeight: 1.1 }}>
+            <h2 className="reveal reveal-blur" data-delay="1" style={{ fontFamily: 'var(--font-sans)', fontSize: 'clamp(26px, 3.5vw, 44px)', fontWeight: 700, letterSpacing: '-0.03em', color: 'var(--ink)', marginBottom: '32px', lineHeight: 1.1 }}>
               Por qué Órbita Digital
             </h2>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
@@ -159,17 +156,15 @@ export default function NosotrosPage() {
       </section>
 
       {/* Values */}
-      <section className="section-pad" style={{ background: 'var(--surface)' }}>
+      <section className="section-pad" style={{ background: 'transparent', borderTop: '1px solid var(--line)' }}>
         <div className="container-od">
           <div className="eyebrow reveal reveal-left" style={{ marginBottom: '16px' }}>Cómo trabajamos</div>
-          <h2 className="reveal reveal-blur" data-delay="1" style={{ fontFamily: 'var(--font-hanken)', fontSize: 'clamp(26px, 3.5vw, 44px)', fontWeight: 700, letterSpacing: '-0.03em', color: 'var(--ink)', marginBottom: '40px' }}>
+          <h2 className="reveal reveal-blur" data-delay="1" style={{ fontFamily: 'var(--font-sans)', fontSize: 'clamp(26px, 3.5vw, 44px)', fontWeight: 700, letterSpacing: '-0.03em', color: 'var(--ink)', marginBottom: '40px' }}>
             Nuestros valores
           </h2>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '16px' }}>
             {values.map((v, i) => (
-              <div key={v.title} className="reveal reveal-scale value-card" data-delay={String((i % 4) + 1)} style={{
-                background: 'var(--bg)',
-                border: '1px solid var(--line)',
+              <div key={v.title} className="glass reveal reveal-scale value-card" data-delay={String((i % 4) + 1)} style={{
                 borderRadius: 'var(--r-lg)',
                 padding: '28px',
                 display: 'flex',
@@ -177,7 +172,7 @@ export default function NosotrosPage() {
               }}>
                 <div className="card-icon" style={{ flexShrink: 0 }}>{v.icon}</div>
                 <div>
-                  <h3 style={{ fontFamily: 'var(--font-hanken)', fontWeight: 600, fontSize: '17px', color: 'var(--ink)', marginBottom: '8px' }}>{v.title}</h3>
+                  <h3 style={{ fontFamily: 'var(--font-sans)', fontWeight: 600, fontSize: '17px', color: 'var(--ink)', marginBottom: '8px' }}>{v.title}</h3>
                   <p style={{ fontSize: '14.5px', color: 'var(--ink-2)', lineHeight: 1.65, margin: 0 }}>{v.description}</p>
                 </div>
               </div>
@@ -187,10 +182,10 @@ export default function NosotrosPage() {
       </section>
 
       {/* CTA */}
-      <section className="section-pad" style={{ background: 'var(--bg-2)' }}>
+      <section className="section-pad" style={{ background: 'transparent', borderTop: '1px solid var(--line)' }}>
         <div className="container-od" style={{ textAlign: 'center' }}>
           <div>
-            <h2 className="reveal reveal-blur" style={{ fontFamily: 'var(--font-hanken)', fontSize: 'clamp(24px, 3vw, 40px)', fontWeight: 700, letterSpacing: '-0.03em', color: 'var(--ink)', marginBottom: '16px' }}>
+            <h2 className="reveal reveal-blur" style={{ fontFamily: 'var(--font-sans)', fontSize: 'clamp(24px, 3vw, 40px)', fontWeight: 700, letterSpacing: '-0.03em', color: 'var(--ink)', marginBottom: '16px' }}>
               ¿Querés conocernos mejor?
             </h2>
             <p className="reveal" data-delay="1" style={{ fontSize: '17px', color: 'var(--ink-2)', maxWidth: '44ch', margin: '0 auto 32px', lineHeight: 1.6 }}>

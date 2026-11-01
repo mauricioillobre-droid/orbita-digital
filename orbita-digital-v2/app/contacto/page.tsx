@@ -10,22 +10,23 @@ export const metadata: Metadata = {
 
 export default function ContactoPage() {
   return (
-    <div style={{ background: 'var(--bg)', minHeight: '100vh' }}>
+    <div style={{ minHeight: '100vh' }}>
 
       {/* Header */}
-      <section className="section-pad" style={{ background: 'var(--bg)', paddingTop: '120px' }}>
+      <section className="hero-c">
         <div className="container-od">
-          <div className="eyebrow reveal reveal-left" style={{ marginBottom: '16px' }}>Contacto</div>
+          <div className="hero-eyebrow reveal reveal-blur"><i />Contacto <span>Órbita</span></div>
           <h1 className="reveal reveal-blur" data-delay="1" style={{
-            fontFamily: 'var(--font-hanken)',
-            fontSize: 'clamp(36px, 5vw, 72px)',
+            fontFamily: 'var(--font-sans)',
+            fontSize: 'clamp(44px, 7vw, 96px)',
             fontWeight: 700,
-            letterSpacing: '-0.035em',
-            lineHeight: 1,
+            letterSpacing: '-0.05em',
+            lineHeight: 0.95,
+            paddingBottom: '0.06em',
             color: 'var(--ink)',
-            marginBottom: '20px',
+            margin: '26px 0 20px',
           }}>
-            Hablemos de tu proyecto
+            Hablemos de <span className="shiny">tu proyecto</span>
           </h1>
           <p className="reveal reveal-blur" data-delay="2" style={{ fontSize: '18px', color: 'var(--ink-2)', maxWidth: '50ch', lineHeight: 1.6 }}>
             Contanos qué necesitás y te respondemos en menos de 24 horas con una propuesta concreta.
@@ -34,7 +35,7 @@ export default function ContactoPage() {
       </section>
 
       {/* Form + Sidebar */}
-      <section className="section-pad" style={{ background: 'var(--surface)', paddingTop: 0 }}>
+      <section className="section-pad" style={{ background: 'transparent', paddingTop: 0 }}>
         <div className="container-od">
           <div style={{ display: 'grid', gridTemplateColumns: '1.15fr 0.85fr', gap: '40px', alignItems: 'start' }} className="contact-grid">
             {/* Form */}
@@ -45,13 +46,12 @@ export default function ContactoPage() {
             {/* Aside */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
               {/* WhatsApp card */}
-              <div className="reveal reveal-right" data-delay="1" style={{
+              <div className="glass reveal reveal-right" data-delay="1" style={{
                 borderRadius: 'var(--r-lg)',
-                border: '1px solid var(--line)',
-                background: 'linear-gradient(to bottom, #f0fff4, white)',
+                background: 'linear-gradient(to bottom, rgba(31,175,84,0.10), rgba(255,255,255,0.025))',
                 padding: '28px',
               }}>
-                <h2 style={{ fontFamily: 'var(--font-hanken)', fontWeight: 600, fontSize: '17px', color: 'var(--ink)', marginBottom: '8px' }}>
+                <h2 style={{ fontFamily: 'var(--font-sans)', fontWeight: 600, fontSize: '17px', color: 'var(--ink)', marginBottom: '8px' }}>
                   ¿Preferís el WhatsApp?
                 </h2>
                 <p style={{ fontSize: '14px', color: 'var(--ink-2)', lineHeight: 1.6, marginBottom: '20px' }}>
@@ -66,13 +66,11 @@ export default function ContactoPage() {
               </div>
 
               {/* Data card */}
-              <div className="reveal reveal-right" data-delay="2" style={{
+              <div className="glass reveal reveal-right" data-delay="2" style={{
                 borderRadius: 'var(--r-lg)',
-                border: '1px solid var(--line)',
-                background: 'var(--surface)',
                 padding: '28px',
               }}>
-                <h3 style={{ fontFamily: 'var(--font-hanken)', fontWeight: 600, fontSize: '15px', color: 'var(--ink)', marginBottom: '20px' }}>
+                <h3 style={{ fontFamily: 'var(--font-sans)', fontWeight: 600, fontSize: '15px', color: 'var(--ink)', marginBottom: '20px' }}>
                   Información de contacto
                 </h3>
                 {[
@@ -117,10 +115,8 @@ export default function ContactoPage() {
               </div>
 
               {/* Note card */}
-              <div className="reveal reveal-right" data-delay="3" style={{
+              <div className="glass reveal reveal-right" data-delay="3" style={{
                 borderRadius: 'var(--r-lg)',
-                border: '1px solid var(--line)',
-                background: 'var(--bg-2)',
                 padding: '20px 24px',
               }}>
                 <p style={{ fontSize: '13.5px', color: 'var(--ink-2)', lineHeight: 1.65, margin: 0 }}>

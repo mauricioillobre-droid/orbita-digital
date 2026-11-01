@@ -6,20 +6,15 @@ import { trackWA } from '@/components/WALink'
 
 export default function Footer() {
   return (
-    <footer style={{ background: 'var(--surface)', borderTop: '1px solid var(--line)' }}>
+    <footer style={{ background: 'var(--bg-2)', borderTop: '1px solid var(--line)' }}>
       <div className="container-od" style={{ paddingBlock: 'clamp(48px, 7vw, 80px)' }}>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '2.5rem', marginBottom: '3rem' }}>
 
           {/* Col 1 — Brand */}
           <div>
-            <Link href="/" style={{ display: 'inline-flex', alignItems: 'center', textDecoration: 'none', marginBottom: '14px' }}>
-              <Image
-                src="/images/orbita-nuevo.png"
-                alt="Órbita Digital"
-                width={180}
-                height={56}
-                style={{ objectFit: 'contain', maxHeight: '56px', width: 'auto' }}
-              />
+            <Link href="/" style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', textDecoration: 'none', marginBottom: '14px', color: 'var(--ink)' }}>
+              <Image src="/images/orbita-nuevo-white.png" alt="" width={40} height={40} style={{ objectFit: 'contain' }} />
+              <span style={{ fontWeight: 700, fontSize: '18px', letterSpacing: '-0.02em' }}>Órbita Digital</span>
             </Link>
             <p style={{ fontSize: '14px', color: 'var(--ink-3)', lineHeight: 1.6, maxWidth: '24ch' }}>
               Diseño web, automatización y contenido para pymes en Argentina.
@@ -37,7 +32,7 @@ export default function Footer() {
             ].map(l => (
               <Link key={l.href} href={l.href}
                 style={{ display: 'block', fontSize: '14.5px', color: 'var(--ink-2)', textDecoration: 'none', marginBottom: '10px', transition: 'color 0.2s' }}
-                onMouseEnter={e => (e.currentTarget.style.color = 'var(--accent)')}
+                onMouseEnter={e => (e.currentTarget.style.color = 'var(--ink)')}
                 onMouseLeave={e => (e.currentTarget.style.color = 'var(--ink-2)')}>
                 {l.label}
               </Link>
@@ -55,7 +50,7 @@ export default function Footer() {
             ].map(l => (
               <Link key={l.href} href={l.href}
                 style={{ display: 'block', fontSize: '14.5px', color: 'var(--ink-2)', textDecoration: 'none', marginBottom: '10px', transition: 'color 0.2s' }}
-                onMouseEnter={e => (e.currentTarget.style.color = 'var(--accent)')}
+                onMouseEnter={e => (e.currentTarget.style.color = 'var(--ink)')}
                 onMouseLeave={e => (e.currentTarget.style.color = 'var(--ink-2)')}>
                 {l.label}
               </Link>

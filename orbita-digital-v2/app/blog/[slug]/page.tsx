@@ -261,10 +261,10 @@ Un sitio desarrollado correctamente — imágenes en formato WebP, código limpi
 ]
 
 const categoryColors: Record<string, string> = {
-  'Desarrollo Web': '#1f6fd0',
-  'Automatización': '#7c3aed',
-  'SEO': '#059669',
-  'Redes Sociales': '#db2777',
+  'Desarrollo Web': '#5aaeff',
+  'Automatización': '#b69cff',
+  'SEO': '#3ddc9c',
+  'Redes Sociales': '#ff7ab6',
 }
 
 export async function generateStaticParams() {
@@ -296,7 +296,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       if (trimmed.startsWith('## ')) {
         return (
           <h2 key={i} style={{
-            fontFamily: 'var(--font-hanken)',
+            fontFamily: 'var(--font-sans)',
             fontWeight: 700,
             fontSize: 'clamp(20px, 2.5vw, 26px)',
             letterSpacing: '-0.02em',
@@ -346,7 +346,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     <div style={{ background: 'var(--bg)' }}>
 
       {/* Header */}
-      <section style={{ background: 'var(--bg)', paddingTop: '120px', paddingBottom: '48px' }}>
+      <section style={{ background: 'var(--bg)', paddingTop: 'clamp(120px, 14vw, 170px)', paddingBottom: '48px' }}>
         <div className="container-od" style={{ maxWidth: '760px' }}>
 
           {/* Back */}
@@ -388,15 +388,17 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           </div>
 
           <h1 style={{
-            fontFamily: 'var(--font-hanken)',
-            fontSize: 'clamp(28px, 4vw, 48px)',
+            fontFamily: 'var(--font-sans)',
+            fontSize: 'clamp(32px, 5.2vw, 60px)',
             fontWeight: 700,
-            letterSpacing: '-0.03em',
-            lineHeight: 1.1,
+            letterSpacing: '-0.045em',
+            lineHeight: 1,
+            paddingBottom: '0.06em',
             color: 'var(--ink)',
-            marginBottom: '20px',
+            marginBottom: '24px',
           }}>
-            {post.title}
+            {post.title.split(' ').slice(0, -3).join(' ')}{' '}
+            <span className="shiny">{post.title.split(' ').slice(-3).join(' ')}</span>
           </h1>
 
           <p style={{ fontSize: '18px', color: 'var(--ink-2)', lineHeight: 1.65, borderLeft: `3px solid ${color}`, paddingLeft: '18px' }}>
@@ -406,18 +408,18 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       </section>
 
       {/* Content */}
-      <section style={{ background: 'var(--surface)', paddingBlock: 'clamp(40px, 6vw, 80px)' }}>
+      <section style={{ background: 'transparent', paddingBlock: 'clamp(24px, 4vw, 56px) clamp(56px, 8vw, 96px)' }}>
         <div className="container-od" style={{ maxWidth: '760px' }}>
-          <div style={{ borderRadius: 'var(--r-lg)', padding: 'clamp(28px, 5vw, 56px)', background: 'var(--surface)' }}>
+          <div className="glass" style={{ borderRadius: 'var(--r-xl)', padding: 'clamp(28px, 5vw, 56px)' }}>
             {renderContent(post.content)}
           </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="section-pad" style={{ background: 'var(--bg-2)' }}>
+      <section className="section-pad" style={{ background: 'var(--bg-2)', borderTop: '1px solid var(--line)' }}>
         <div className="container-od" style={{ textAlign: 'center' }}>
-          <h2 style={{ fontFamily: 'var(--font-hanken)', fontSize: 'clamp(22px, 3vw, 36px)', fontWeight: 700, letterSpacing: '-0.03em', color: 'var(--ink)', marginBottom: '14px' }}>
+          <h2 style={{ fontFamily: 'var(--font-sans)', fontSize: 'clamp(22px, 3vw, 36px)', fontWeight: 700, letterSpacing: '-0.03em', color: 'var(--ink)', marginBottom: '14px' }}>
             ¿Querés aplicar esto en tu negocio?
           </h2>
           <p style={{ fontSize: '16px', color: 'var(--ink-2)', maxWidth: '44ch', margin: '0 auto 28px', lineHeight: 1.6 }}>

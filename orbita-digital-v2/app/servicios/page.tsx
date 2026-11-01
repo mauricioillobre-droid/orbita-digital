@@ -108,22 +108,23 @@ const services = [
 
 export default function ServiciosPage() {
   return (
-    <div style={{ background: 'var(--bg)' }}>
+    <div>
 
       {/* Header */}
-      <section className="section-pad" style={{ background: 'var(--bg)', paddingTop: '120px' }}>
+      <section className="hero-c">
         <div className="container-od">
-          <div className="eyebrow reveal reveal-left" style={{ marginBottom: '16px' }}>Servicios</div>
+          <div className="hero-eyebrow reveal reveal-blur"><i />Servicios <span>Órbita</span></div>
           <h1 className="reveal reveal-blur" data-delay="1" style={{
-            fontFamily: 'var(--font-hanken)',
-            fontSize: 'clamp(36px, 5vw, 72px)',
+            fontFamily: 'var(--font-sans)',
+            fontSize: 'clamp(44px, 7vw, 96px)',
             fontWeight: 700,
-            letterSpacing: '-0.035em',
-            lineHeight: 1,
+            letterSpacing: '-0.05em',
+            lineHeight: 0.95,
+            paddingBottom: '0.06em',
             color: 'var(--ink)',
-            marginBottom: '20px',
+            margin: '26px 0 20px',
           }}>
-            Lo que podemos hacer<br />por tu negocio
+            Lo que podemos hacer<br /><span className="shiny">por tu negocio</span>
           </h1>
           <p className="reveal reveal-blur" data-delay="2" style={{ fontSize: '18px', color: 'var(--ink-2)', maxWidth: '52ch', lineHeight: 1.6 }}>
             Diseño, tecnología y automatización en un solo equipo. Sin intermediarios, sin cuentas, con resultados reales.
@@ -132,12 +133,12 @@ export default function ServiciosPage() {
       </section>
 
       {/* Services */}
-      {services.map((s, i) => (
+      {services.map((s) => (
         <section
           key={s.id}
           id={s.id}
           className="section-pad"
-          style={{ background: i % 2 === 0 ? 'var(--surface)' : 'var(--bg-2)', scrollMarginTop: '90px' }}
+          style={{ background: 'transparent', borderTop: '1px solid var(--line)', scrollMarginTop: '90px' }}
         >
           <div className="container-od">
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '48px', alignItems: 'start' }}>
@@ -149,7 +150,7 @@ export default function ServiciosPage() {
                   <span style={{ fontFamily: 'var(--font-mono)', fontSize: '13px', color: 'var(--ink-3)' }}>{s.num}</span>
                 </div>
                 <h2 className="reveal reveal-blur" data-delay="1" style={{
-                  fontFamily: 'var(--font-hanken)',
+                  fontFamily: 'var(--font-sans)',
                   fontSize: 'clamp(24px, 3vw, 40px)',
                   fontWeight: 700,
                   letterSpacing: '-0.03em',
@@ -177,12 +178,9 @@ export default function ServiciosPage() {
               </div>
 
               {/* Right: deliverables card */}
-              <div className="reveal reveal-right" data-delay="2" style={{
-                background: 'var(--surface)',
-                border: '1px solid var(--line)',
+              <div className="glass reveal reveal-right" data-delay="2" style={{
                 borderRadius: 'var(--r-lg)',
                 padding: '32px',
-                boxShadow: 'var(--shadow-card)',
               }}>
                 <div style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--ink-3)', marginBottom: '20px' }}>¿Qué incluye?</div>
                 <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '12px' }}>
@@ -204,17 +202,16 @@ export default function ServiciosPage() {
       ))}
 
       {/* CTA */}
-      <section className="section-pad" style={{ background: 'var(--surface)' }}>
+      <section className="section-pad" style={{ background: 'transparent' }}>
         <div className="container-od">
-          <div className="reveal reveal-scale" style={{
+          <div className="glass reveal reveal-scale" style={{
             borderRadius: 'var(--r-xl)',
-            border: '1px solid var(--line)',
-            background: 'radial-gradient(ellipse at top center, var(--accent-soft), transparent 60%), var(--surface)',
+            background: 'radial-gradient(ellipse at top center, var(--accent-soft), transparent 60%), rgba(255,255,255,0.025)',
             padding: 'clamp(48px, 7vw, 80px)',
             textAlign: 'center',
           }}>
             <div className="eyebrow reveal reveal-left" style={{ justifyContent: 'center', marginBottom: '20px' }}>¿Listo para empezar?</div>
-            <h2 className="reveal reveal-blur" data-delay="1" style={{ fontFamily: 'var(--font-hanken)', fontSize: 'clamp(26px, 3.5vw, 44px)', fontWeight: 700, letterSpacing: '-0.03em', color: 'var(--ink)', marginBottom: '16px' }}>
+            <h2 className="reveal reveal-blur" data-delay="1" style={{ fontFamily: 'var(--font-sans)', fontSize: 'clamp(26px, 3.5vw, 44px)', fontWeight: 700, letterSpacing: '-0.03em', color: 'var(--ink)', marginBottom: '16px' }}>
               Contanos de qué se trata tu proyecto
             </h2>
             <p className="reveal" data-delay="2" style={{ fontSize: '17px', color: 'var(--ink-2)', maxWidth: '44ch', margin: '0 auto 32px' }}>

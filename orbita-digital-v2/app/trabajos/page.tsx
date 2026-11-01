@@ -99,22 +99,14 @@ const waIcon = (
 
 function VideoFrame({ src, poster, motion }: { src: string; poster: string; motion?: boolean }) {
   return (
-    <div
-      style={{
-        borderRadius: 'var(--r-lg)',
-        overflow: 'hidden',
-        border: '1px solid var(--line-2)',
-        boxShadow: 'var(--shadow-card)',
-        background: '#0a0a0a',
-      }}
-    >
+    <div className="glass" style={{ borderRadius: '18px', padding: '10px' }}>
       <video
         src={src}
         poster={poster}
         {...(motion ? { autoPlay: true, muted: true, loop: true } : { controls: true })}
         preload="none"
         playsInline
-        style={{ width: '100%', aspectRatio: '16/9', display: 'block', background: '#000' }}
+        style={{ width: '100%', aspectRatio: '16/9', display: 'block', background: '#000', borderRadius: '12px' }}
       />
     </div>
   )
@@ -125,19 +117,20 @@ export default function TrabajosPage() {
     <div style={{ background: 'var(--bg)' }}>
 
       {/* Header */}
-      <section className="section-pad" style={{ background: 'var(--bg)', paddingTop: '120px' }}>
-        <div className="container-od">
-          <div className="eyebrow reveal reveal-left" style={{ marginBottom: '16px' }}>Portafolio</div>
+      <section className="hero-c" style={{ background: 'var(--bg)' }}>
+        <div className="container-od" style={{ position: 'relative', zIndex: 2 }}>
+          <div className="hero-eyebrow reveal reveal-blur"><i />Portafolio</div>
           <h1 className="reveal reveal-blur" data-delay="1" style={{
-            fontFamily: 'var(--font-hanken)',
-            fontSize: 'clamp(36px, 5vw, 72px)',
+            fontFamily: 'var(--font-sans)',
+            fontSize: 'clamp(44px, 7vw, 96px)',
             fontWeight: 700,
-            letterSpacing: '-0.035em',
-            lineHeight: 1,
+            letterSpacing: '-0.05em',
+            lineHeight: 0.95,
+            paddingBottom: '0.06em',
             color: 'var(--ink)',
-            marginBottom: '20px',
+            margin: '26px 0 24px',
           }}>
-            Proyectos que hablan solos
+            Proyectos que <span className="shiny">hablan solos</span>
           </h1>
           <p className="reveal reveal-blur" data-delay="2" style={{ fontSize: '18px', color: 'var(--ink-2)', maxWidth: '52ch', lineHeight: 1.6 }}>
             Cada proyecto tiene una historia. Acá mostramos algunos de los trabajos que más nos enorgullecen.
@@ -150,7 +143,7 @@ export default function TrabajosPage() {
         <section
           key={p.title}
           className="section-pad"
-          style={{ background: i % 2 === 0 ? 'var(--surface)' : 'var(--bg-2)' }}
+          style={{ background: i % 2 === 0 ? 'transparent' : 'var(--bg-2)', borderTop: '1px solid var(--line)' }}
         >
           <div className="container-od" style={{ maxWidth: '920px' }}>
             <div className="reveal" data-delay="1" style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginBottom: '20px' }}>
@@ -158,7 +151,7 @@ export default function TrabajosPage() {
                 <span key={t} style={{ fontFamily: 'var(--font-mono)', fontSize: '11px', letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--accent)', background: 'var(--accent-soft)', padding: '4px 10px', borderRadius: '99px' }}>{t}</span>
               ))}
             </div>
-            <h2 className="reveal reveal-blur" data-delay="2" style={{ fontFamily: 'var(--font-hanken)', fontWeight: 700, fontSize: 'clamp(26px, 3vw, 40px)', letterSpacing: '-0.03em', color: 'var(--ink)', marginBottom: '18px', lineHeight: 1.1, maxWidth: '22ch' }}>
+            <h2 className="reveal reveal-blur" data-delay="2" style={{ fontFamily: 'var(--font-sans)', fontWeight: 700, fontSize: 'clamp(26px, 3vw, 40px)', letterSpacing: '-0.03em', color: 'var(--ink)', marginBottom: '18px', lineHeight: 1.1, maxWidth: '22ch' }}>
               {p.title}
             </h2>
             <p className="reveal" data-delay="3" style={{ fontSize: '17px', color: 'var(--ink-2)', lineHeight: 1.7, marginBottom: '14px', maxWidth: '68ch' }}>{p.shortDesc}</p>
@@ -187,10 +180,10 @@ export default function TrabajosPage() {
       ))}
 
       {/* CTA */}
-      <section className="section-pad" style={{ background: 'var(--surface)' }}>
+      <section className="section-pad" style={{ background: 'var(--bg-2)', borderTop: '1px solid var(--line)' }}>
         <div className="container-od" style={{ textAlign: 'center' }}>
           <div>
-            <h2 className="reveal reveal-blur" style={{ fontFamily: 'var(--font-hanken)', fontSize: 'clamp(26px, 3.5vw, 44px)', fontWeight: 700, letterSpacing: '-0.03em', color: 'var(--ink)', marginBottom: '16px' }}>
+            <h2 className="reveal reveal-blur" style={{ fontFamily: 'var(--font-sans)', fontSize: 'clamp(26px, 3.5vw, 44px)', fontWeight: 700, letterSpacing: '-0.03em', color: 'var(--ink)', marginBottom: '16px' }}>
               ¿Tu proyecto podría ser el próximo?
             </h2>
             <p className="reveal" data-delay="1" style={{ fontSize: '17px', color: 'var(--ink-2)', maxWidth: '44ch', margin: '0 auto 32px', lineHeight: 1.6 }}>
