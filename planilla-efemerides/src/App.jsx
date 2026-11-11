@@ -167,9 +167,9 @@ export default function App() {
     }
   };
 
-  const exportarJson = () => {
-    descargar(`efemerides-backup-${new Date().toISOString().slice(0, 10)}.json`, JSON.stringify(datos, null, 2), 'application/json');
-    avisar('Backup descargado.');
+  const exportarJson = async () => {
+    const ok = await descargar(`efemerides-backup-${new Date().toISOString().slice(0, 10)}.json`, JSON.stringify(datos, null, 2), 'application/json');
+    if (ok) avisar('Backup descargado.');
   };
 
   const importarJson = async (e) => {
@@ -194,7 +194,7 @@ export default function App() {
     avisar('Datos importados.');
   };
 
-  const exportarCsv = () => {
+  const exportarCsv = async () => {
     const cab = ['Fecha', 'Nombre', 'Categoría', 'Tipo de fecha', 'Clasificación', 'Clientes', 'Notas'];
     const filasCsv = visibles.map((r) => [
       r.fecha ? formatear(r.fecha) : '',
@@ -205,8 +205,8 @@ export default function App() {
       r.clientes.map((c) => c.nombre).join(', '),
       [r.ef.notas, ...r.asignaciones.filter((a) => a.nota).map((a) => `${r.clientes.find((c) => c.id === a.clienteId).nombre}: ${a.nota}`)].filter(Boolean).join(' | '),
     ]);
-    descargar(`efemerides-${anio}.csv`, aCsv([cab, ...filasCsv]), 'text/csv;charset=utf-8');
-    avisar(`Se exportaron ${filasCsv.length} filas.`);
+    const ok = await descargar(`efemerides-${anio}.csv`, aCsv([cab, ...filasCsv]), 'text/csv;charset=utf-8');
+    if (ok) avisar(`Se exportaron ${filasCsv.length} filas.`);
   };
 
   const restaurar = async () => {

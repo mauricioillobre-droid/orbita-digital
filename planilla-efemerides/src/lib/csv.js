@@ -43,7 +43,23 @@ export function leerCsv(texto) {
   return { sep, filas: filas.filter((f) => f.some((c) => c.trim())) };
 }
 
-export function descargar(nombreArchivo, contenido, tipo) {
+/**
+ * Ofrece un archivo para guardar. Dentro de claude.ai usa el permiso de descargas
+ * del visor; en un navegador común, un enlace de descarga.
+ * Devuelve true si se guardó, false si la persona canceló o no se pudo.
+ */
+export async function descargar(nombreArchivo, contenido, tipo) {
+  if (typeof window !== 'undefined' && window.claude?.use) {
+    const downloads = await window.claude.use('downloads').catch(() => null);
+    if (downloads) {
+      try {
+        await downloads.save({ filename: nombreArchivo, data: contenido });
+        return true;
+      } catch {
+        return false;
+      }
+    }
+  }
   const blob = new Blob([contenido], { type: tipo });
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
@@ -53,4 +69,5 @@ export function descargar(nombreArchivo, contenido, tipo) {
   a.click();
   a.remove();
   setTimeout(() => URL.revokeObjectURL(url), 1000);
+  return true;
 }
