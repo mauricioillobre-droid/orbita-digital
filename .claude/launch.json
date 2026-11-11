@@ -4,8 +4,24 @@
     {
       "name": "mi-website",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["--prefix", "orbita-digital-v2", "run", "dev"],
+      "runtimeArgs": [
+        "--prefix",
+        "orbita-digital-v2",
+        "run",
+        "dev"
+      ],
       "port": 3000
+    },
+    {
+      "name": "planilla-efemerides",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "--prefix",
+        "planilla-efemerides",
+        "run",
+        "dev"
+      ],
+      "port": 5173
     }
   ]
 }
